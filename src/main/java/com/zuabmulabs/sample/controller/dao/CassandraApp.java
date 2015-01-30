@@ -22,7 +22,7 @@ public class CassandraApp {
  public static void main(String[] args) { 
  
   try { 
-  cluster =  Cluster.builder().addContactPoint("localhost").withPort(9042).build();
+  cluster =  Cluster.builder().addContactPoint("192.168.109.130").withPort(9042).build();
    
  /* 
   * session = cluster.connect("mykeyspace");

@@ -43,14 +43,20 @@
 			<artifactId>cassandra-driver-core</artifactId>
 			<version>2.1.4</version>
 		</dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>jstl</artifactId>
+			<version>1.1.1</version>
+		</dependency>
 	</dependencies>
-<repositories>
-  <repository>
-    <id>spring-milestone</id>
-    <name>Spring Maven MILESTONE Repository</name>
-    <url>http://repo.spring.io/libs-milestone</url>
-  </repository>
-</repositories>
+
+	<repositories>
+		<repository>
+			<id>spring-milestone</id>
+			<name>Spring Maven MILESTONE Repository</name>
+			<url>http://repo.spring.io/libs-milestone</url>
+		</repository>
+	</repositories>
 	<build>
 		<finalName>SpringCassandra</finalName>
 		<plugins>

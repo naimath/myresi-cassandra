@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.zuabmulabs.sample.controller.dao.Person;
 import com.zuabmulabs.sample.service.PersonService;
 
 @Controller
@@ -19,7 +20,8 @@ public class PersonController {
 	
 	@RequestMapping(value="/get", method = RequestMethod.GET)
 	public String getPerson(ModelMap map){
-		personService.getPerson();
+		Person person =personService.getPerson();
+		map.addAttribute("person", person);
 		return "list";
 	}
 	
