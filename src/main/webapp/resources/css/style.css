@@ -1,0 +1,191 @@
+@font-face {
+    font-family: Signika;
+    src: url('../fonts/signika/Signika-Regular.otf');
+}
+
+body{
+    background-color: #E4E2D9;
+    /*
+    background:url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAJElEQVQIW2N8+fLlfw4ODoYfP34wwGjGjx8//kcWAEkwUqYSAGMOMNhzUIQIAAAAAElFTkSuQmCC');*/
+}
+
+
+a, h1, h2, h3, h4, h5, h6, p, .top-bar-section ul li>a, label, button, sub{
+    font-family: 'Signika',sans-serif;
+}
+
+a, h1, h2, h3, h4, h5, h6, p{
+    color: #333;
+}
+
+.size-12 { font-size: 12px; }
+.size-14 { font-size: 14px; }
+.size-16 { font-size: 16px; }
+.size-18 { font-size: 18px; }
+.size-21 { font-size: 21px; }
+.size-24 { font-size: 24px; }
+.size-36 { font-size: 36px; }
+.size-48 { font-size: 48px; }
+.size-60 { font-size: 60px; }
+.size-72 { font-size: 72px; }
+
+footer{
+    background: #333;
+    color: #ffffff;
+}
+
+footer a, footer p{
+    color: #ffffff;
+}
+
+footer p{
+    display: inline-block;
+    padding: 0 10px;
+    margin: 0 auto;
+}
+
+footer a:hover{
+
+}
+
+#profileImage, #profileImagePopup{
+    position: relative;
+    width: 150px;
+    height: 150px;
+    background:url('/images/avatar.png') no-repeat center 50%;
+    background-size: 100% 100%;
+    border:3px solid #dddddd;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    margin:0 auto;
+}
+
+#imageUploder{
+    z-index: -1;
+}
+
+#profileImageOverlay{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background:#ffffff url("/images/edit.png") no-repeat;;
+    color: #fff;
+    visibility: hidden;
+    opacity: 0;
+    width: 150px;
+    height: 150px;
+    background-position: 55% 50%;
+    background-size: 50px 50px;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+}
+
+
+#profileImage:hover #profileImageOverlay, #profileImagePopup:hover #profileImageOverlay{
+    visibility: visible;
+    opacity: 0.5;
+}
+
+
+.tabs dd.active a, .tabs .tab-title.active a{
+    background-color: lightsteelblue;
+}
+
+.joyride-tip-guide{
+    background:#f5f5f5;
+}
+
+.joyride-tip-guide h1,.joyride-tip-guide h2,.joyride-tip-guide h3,.joyride-tip-guide h4,.joyride-tip-guide h5{
+    color: #333;
+}
+
+.joyride-tip, .joyride-tip-guide{
+    width:100%;
+    min-height: 100%;
+}
+
+.draggableItem{
+    text-shadow: 0 1px 0 rgba(0, 51, 83, 0.3);
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    background-color: #0085d4;
+    background-image: -moz-linear-gradient(top, #008fd8, #0075cf);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#008fd8), to(#0075cf));
+    background-image: -webkit-linear-gradient(top, #008fd8, #0075cf);
+    background-image: -o-linear-gradient(top, #008fd8, #0075cf);
+    background-image: linear-gradient(to bottom, #008fd8, #0075cf);
+    background-repeat: repeat-x;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff008fd8', endColorstr='#ff0075cf', GradientType=0);
+    -webkit-box-shadow: 0 1px 0 rgba(0,0,0,0.2),inset 0 1px rgba(255,255,255,0.03);
+    box-shadow: 0 1px 0 rgba(0,0,0,0.2),inset 0 1px rgba(255,255,255,0.03);
+    cursor: pointer;
+    margin:  10px auto ;
+    padding: 0 6px 25px 6px ;
+    color: #ffffff;
+    font-size: 13px;
+    height: 24px;
+    display: inline-block;
+    overflow: visible;
+    z-index: 1008;
+
+}
+
+#logoIcon {
+    height: 250px;
+    background: url('/images/glass.png') no-repeat;
+    background-size: contain;
+}
+
+.top-bar input[type="text"], .top-bar .button {
+    font-size: 0.77778rem;
+    position: relative;
+    top: 7px;
+}
+
+.top-bar input[type="text"] {
+    height: auto;
+    padding-top: 0.35rem;
+    padding-bottom: 0.35rem;
+    font-size: 0.75rem;
+}
+
+
+hr{
+    border: solid #aaa;
+    border-width: 1px 0 0;
+}
+
+#editIcon{
+    position: relative;
+    left:  50%;
+}
+
+
+.selectize-control .selectize-input.disabled{
+    background-color: #ffffff;
+
+}
+
+.selectize-control.multi .selectize-input.disabled [data-value]{
+    color: #000;
+    border-color:#333 ;
+}
+
+.ui-state-hover{
+    background: #000;
+}
+
+.selectize-input {
+    line-height: 14px;
+    min-height: 59px;
+}
+
+.ui-sortable-helper{
+    z-index: 1008;
+}
+

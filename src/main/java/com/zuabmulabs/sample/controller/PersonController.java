@@ -17,6 +17,48 @@ public class PersonController {
 	
 	@Autowired
 	private PersonService personService;
+//-----------------------------------------------------------------------Routing for myResi UI----------------------------------------------------------------
+	
+	@RequestMapping(value = "/index", method = RequestMethod.GET)
+	public String welcome(ModelMap map) {
+		// Mostly static home page.
+		return "index";
+	}
+	
+	
+	@RequestMapping(value = "/firstlogin", method = RequestMethod.GET)
+	public String firstlogin(ModelMap map) {
+		// Rendered only if user has logged in for the first time, this is used to collect and validate users information. 
+		// Will also be displayed if a user clicks on the link in the registration 
+		// mail they were sent to validate registration.
+		// Each slide on this page does a post to the server to save information and will need success confirmation from server to display next slide. 
+		return "firstlogin";
+	}
+	
+	
+	@RequestMapping(value = "/profile", method = RequestMethod.GET)
+	public String profile(ModelMap map) {
+		// Rendered only if user had logged in. Can see his own profile only.
+		return "profile";
+	}
+	
+	
+	@RequestMapping(value = "/user/{url}", method = RequestMethod.GET)
+	public String profileurl(ModelMap map) {
+		// Rendered only if user is logged in. Can see profile of the person whose URL matches.
+		// The URL will be auto generated for that user on registration, but they can edit that URL so it can be what they want.
+		return "profile";
+	}
+	
+	
+	@RequestMapping(value = "/profilepartial", method = RequestMethod.GET)
+	public String profilepartial(ModelMap map) {
+		// Rendered only if user is NOT logged in. 
+		// Also this template will be used to display the search results if a user searches the site for other users.
+		return "profilepartial";
+	}
+	
+//-----------------------------------------------------------------------End routing for myResi UI----------------------------------------------------------------
 	
 	@RequestMapping(value="/get", method = RequestMethod.GET)
 	public String getPerson(ModelMap map){

@@ -50,6 +50,8 @@
     your base packages to scan here -->
   <cassandra:repositories base-package="org.spring.cassandra.example.repo" />
 	
+ <mvc:annotation-driven/>
+ <mvc:resources mapping="/resources/**" location="resources/"/>
 
 </beans>
 
