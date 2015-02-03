@@ -7,7 +7,7 @@ $(document).foundation({
     abide: {
         validators: {
             badWordsValidator: function (el, required, parent) {
-                console.log(el.value);
+                //console.log(el.value);
                 if ($.inArray(el.value, badwords) > -1) {
                     console.log("parent");
                     console.log($(parent).children('small'));
@@ -38,7 +38,7 @@ $('#registrationForm')
     .on('valid.fndtn.abide', function () {
         $.ajax({
             type: "POST",
-            url: '/users/register',
+            url: '/SpringCassandra/person/register',
             data: $('#registrationForm').serialize(),
             success: function(data){
                 if(data.error){

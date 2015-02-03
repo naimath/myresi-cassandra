@@ -265,6 +265,7 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/vendor/foundation/js/vendor/jquery.js"  ></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/vendor/foundation/js/foundation.min.js" ></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/vendor/foundation/js/vendor/stickyfooter.js" ></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/javascripts/header.js"></script>
 <script>
     $(document).foundation();
   </script>

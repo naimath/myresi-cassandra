@@ -24,8 +24,14 @@ public class PersonController {
 		// Mostly static home page.
 		return "index";
 	}
-	
-	
+
+    @RequestMapping(value = "/register", method = RequestMethod.POST)
+    public String register(ModelMap map) {
+        // Mostly static home page.
+        return "profile";
+    }
+
+
 	@RequestMapping(value = "/firstlogin", method = RequestMethod.GET)
 	public String firstlogin(ModelMap map) {
 		// Rendered only if user has logged in for the first time, this is used to collect and validate users information. 
