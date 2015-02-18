@@ -1,4 +1,4 @@
-package com.zuabmulabs.sample.controller.dao;
+package com.zuabmulabs.myresi.controller.dao;
 
 import org.springframework.data.cassandra.mapping.PrimaryKey;
 import org.springframework.data.cassandra.mapping.Table;

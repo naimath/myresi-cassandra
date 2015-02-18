@@ -14,7 +14,7 @@
         http://www.springframework.org/schema/mvc
         http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd">
 
-	<context:component-scan base-package="com.zuabmulabs.sample" />
+	<context:component-scan base-package="com.zuabmulabs.myresi" />
 
 	<mvc:annotation-driven />
 
@@ -34,7 +34,7 @@
 
   <!-- REQUIRED: The Cassandra Session, built from the Cluster, and attaching 
     to a keyspace -->
-  <cassandra:session keyspace-name="mykeyspace" />
+  <cassandra:session keyspace-name="myresitest" />
 
   <!-- REQUIRED: The Default Cassandra Mapping Context used by CassandraConverter -->
   <cassandra:mapping />
@@ -52,7 +52,26 @@
 	
  <mvc:annotation-driven/>
  <mvc:resources mapping="/resources/**" location="resources/"/>
-
+ 
+  <bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+        <property name="host" value="smtp.gmail.com" />
+        <property name="port" value="587" />
+        <property name="username" value="mdnaimathullah@gmail.com" />
+        <property name="password" value="IRONDESK16" />
+ 
+        <property name="javaMailProperties">
+            <props>
+                <prop key="mail.smtp.auth">true</prop>
+                <prop key="mail.smtp.starttls.enable">true</prop>
+                <prop key="mail.smtp.debug">true</prop>
+            </props>
+        </property>
+    </bean>
+ 
+	<bean id="emailSenderBean" class="com.zuabmulabs.myresi.email.EmailSender">
+        <property name="mailSender" ref="mailSender" />
+    </bean>
+  
 </beans>
 
 

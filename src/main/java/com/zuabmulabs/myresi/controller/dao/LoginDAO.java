@@ -1,4 +1,4 @@
-package com.zuabmulabs.sample.controller.dao;
+package com.zuabmulabs.myresi.controller.dao;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.cassandra.core.CassandraOperations;
@@ -7,11 +7,13 @@ import org.springframework.stereotype.Repository;
 
 import com.datastax.driver.core.ResultSet;
 import com.datastax.driver.core.Row;
+import com.datastax.driver.core.querybuilder.Clause;
 import com.datastax.driver.core.querybuilder.QueryBuilder;
 import com.datastax.driver.core.querybuilder.Select;
+import com.zuabmulabs.myresi.model.User;
 
 @Repository
-public class PersonDAO {
+public class LoginDAO {
 	
 	@Autowired
 	private CassandraOperations cassandraOperations;
@@ -42,5 +44,51 @@ public class PersonDAO {
 		 String query = "create table mykeyspace.person (id text primary key,name text, age text);";
 		 ((CassandraTemplate)cassandraOperations).getSession().execute(query);
 	}
+
+	public boolean insertUser(User user) {
+		try{
+		 cassandraOperations.insert(user); 
+		}catch(Exception e){
+			e.printStackTrace();
+			return false;
+		}
+		return true;
+	}
+	
+	public boolean verifyUser(User user) {
+		try{
+			
+			
+			 Select s = QueryBuilder.select().from("registeredusers"); 
+			 s.where(QueryBuilder.eq("email", user.getEmail())).and(QueryBuilder.eq("activate", "Y"));
+			 
+			 ResultSet result = cassandraOperations.query(s);
+			if( result.one() == null){
+				return false;
+			}
+			
+		}catch(Exception e){
+			e.printStackTrace();
+			return false;
+		}
+		return true;
+	}
+
+	public boolean validateRegistration(String token) {
+		try{
+			 Select s = QueryBuilder.select().from("registeredusers"); 
+			 s.where(QueryBuilder.eq("activationtoken", token)); 
+			 ResultSet result = cassandraOperations.query(s);
+			if( result.one() == null){
+				return false;
+			}
+			
+		}catch(Exception e){
+			e.printStackTrace();
+			return false;
+		}
+		return true;
+	}
+
 
 }

@@ -38,9 +38,10 @@ $('#registrationForm')
     .on('valid.fndtn.abide', function () {
         $.ajax({
             type: "POST",
-            url: '/SpringCassandra/person/register',
+            url: '/SpringCassandra/users/register',
             data: $('#registrationForm').serialize(),
             success: function(data){
+            	var data = JSON.parse(data);
                 if(data.error){
                     $('#loginModal').foundation('reveal', 'close');
                     $( "#secondModal" ).remove();
@@ -61,7 +62,13 @@ $('#registrationForm')
                     $('#secondModal').foundation('reveal', 'open');
                 }
             }
-        });
+        }).fail(function(html) {
+            alert( html);
+          })
+
+
+
+
         return false;
     });
 
@@ -80,9 +87,10 @@ $('#loginForm')
     .on('valid.fndtn.abide', function () {
         $.ajax({
             type: "POST",
-            url: '/users/login',
+            url: '/SpringCassandra/users/login',
             data: $('#loginForm').serialize(),
             success: function(data){
+            	var data = JSON.parse(data);
                 if(data.error){
                     $('#loginModal').foundation('reveal', 'close');
                     $( "#secondModal" ).remove();
