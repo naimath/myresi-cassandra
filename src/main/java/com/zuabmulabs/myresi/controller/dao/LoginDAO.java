@@ -7,9 +7,9 @@ import org.springframework.stereotype.Repository;
 
 import com.datastax.driver.core.ResultSet;
 import com.datastax.driver.core.Row;
-import com.datastax.driver.core.querybuilder.Clause;
 import com.datastax.driver.core.querybuilder.QueryBuilder;
 import com.datastax.driver.core.querybuilder.Select;
+import com.datastax.driver.core.querybuilder.Update;
 import com.zuabmulabs.myresi.model.User;
 
 @Repository
@@ -79,8 +79,14 @@ public class LoginDAO {
 			 Select s = QueryBuilder.select().from("registeredusers"); 
 			 s.where(QueryBuilder.eq("activationtoken", token)); 
 			 ResultSet result = cassandraOperations.query(s);
-			if( result.one() == null){
+			 Row row = result.one();
+			if( row == null){
 				return false;
+			}else{
+				Update u =	QueryBuilder.update("registeredusers");
+				u.with(QueryBuilder.set("activate", "Y"));
+				u.where(QueryBuilder.eq("email", row.getString(0)));
+				cassandraOperations.execute(u);
 			}
 			
 		}catch(Exception e){
