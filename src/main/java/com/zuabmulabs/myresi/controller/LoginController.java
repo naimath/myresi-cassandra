@@ -2,6 +2,8 @@ package com.zuabmulabs.myresi.controller;
 
 import java.util.UUID;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -14,6 +16,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.zuabmulabs.myresi.controller.dao.Person;
 import com.zuabmulabs.myresi.model.User;
 import com.zuabmulabs.myresi.service.LoginService;
+
+
+
 
 @Controller
 public class LoginController {
@@ -29,15 +34,6 @@ public class LoginController {
 		return "index";
 	}
 	
-	
-	@RequestMapping(value = "/firstlogin", method = RequestMethod.GET)
-	public String firstlogin(ModelMap map) {
-		// Rendered only if user has logged in for the first time, this is used to collect and validate users information. 
-		// Will also be displayed if a user clicks on the link in the registration 
-		// mail they were sent to validate registration.
-		// Each slide on this page does a post to the server to save information and will need success confirmation from server to display next slide. 
-		return "firstlogin";
-	}
 	
 	
 	@RequestMapping(value = "/profile", method = RequestMethod.GET)
@@ -94,10 +90,6 @@ public class LoginController {
 
 	}
 	
-	@RequestMapping(value="/users/profile", method = RequestMethod.GET)
-	public String getProfile() {		
-		return "profile";
-	}
 	
 	@RequestMapping(value="/registration/{token}", method = RequestMethod.GET)
 	public @ResponseBody String validateRegistration(@PathVariable String token) {	
@@ -106,7 +98,7 @@ public class LoginController {
 	}
 	
 	@RequestMapping(value = "/users/register", method = RequestMethod.POST)
-	public @ResponseBody String userRegistraion(@RequestParam String firstName,@RequestParam String lastName,@RequestParam String email,@RequestParam String password,ModelMap map) {
+	public @ResponseBody String userRegistraion(HttpServletRequest request,@RequestParam String firstName,@RequestParam String lastName,@RequestParam String email,@RequestParam String password,ModelMap map) {
 		User user = new User();
 		String uuid = UUID.randomUUID().toString();
 
@@ -118,25 +110,17 @@ public class LoginController {
 		user.setActivate("N");
 		
 		
-		if(loginService.resisterUser(user)){			
-			return "{\"success\":\"Mail sent, Registration successfull\"}";
+		if(loginService.resisterUser(user)){	
+			if(loginService.sendEmail(user,request.getServerName(), request.getServerPort(),request.getContextPath())){
+				return "{\"success\":\"Mail sent, Registration successfull\"}";
+			}else{
+				return "{\"error\":\"Error in sending mail\"}";
+			}
+			
 		}else{						
 			return "{\"error\":\"Error in registration\"}";
 		}
 	}
 	
-	@RequestMapping(value = "/users/login", method = RequestMethod.POST)
-	public @ResponseBody String userLogin(@RequestParam String username,@RequestParam String password,ModelMap map) {
-		User user = new User();
-		user.setPassword(password);
-		user.setEmail(username);
-		if(loginService.verifyUser(user)){
-			return "{\"redirect\":\"/SpringCassandra/users/profile\"}";
-			
-		}else{
-						
-			return "{\"failed\":\" Login failed either wrong password or not active\"}";
-			
-		}
-	}
+	
 }

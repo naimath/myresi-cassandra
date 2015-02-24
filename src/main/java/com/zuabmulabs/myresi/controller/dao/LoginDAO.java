@@ -55,24 +55,7 @@ public class LoginDAO {
 		return true;
 	}
 	
-	public boolean verifyUser(User user) {
-		try{
-			
-			
-			 Select s = QueryBuilder.select().from("registeredusers"); 
-			 s.where(QueryBuilder.eq("email", user.getEmail())).and(QueryBuilder.eq("activate", "Y"));
-			 
-			 ResultSet result = cassandraOperations.query(s);
-			if( result.one() == null){
-				return false;
-			}
-			
-		}catch(Exception e){
-			e.printStackTrace();
-			return false;
-		}
-		return true;
-	}
+	
 
 	public boolean validateRegistration(String token) {
 		try{

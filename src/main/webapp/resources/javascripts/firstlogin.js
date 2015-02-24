@@ -41,7 +41,7 @@ $('#editSkills')
     .on('valid.fndtn.abide', function () {
         $.ajax({
             type: "POST",
-            url: '/users/editSkills',
+            url: '/SpringCassandra/users/editSkills',
             data: $('#editSkills').serialize(),
             success: function(data){
                 if(data.error){
@@ -69,9 +69,10 @@ $('#editProfile')
     .on('valid.fndtn.abide', function () {
         $.ajax({
             type: "POST",
-            url: '/users/editprofile',
+            url: '/SpringCassandra/users/editprofile',
             data: $('#editProfile').serialize(),
             success: function(data){
+            	var data = JSON.parse(data);
                 if(data.error){
                     $('#result2').html("<div data-alert class=\"alert-box alert \">"+data.error+"<a href=\"#\" class=\"close\">&times;</a></div>");
                 }else{
@@ -97,7 +98,7 @@ $('#saveemail')
     .on('valid.fndtn.abide', function () {
         $.ajax({
             type: "POST",
-            url: '/users/saveemail',
+            url: '/SpringCassandra/users/saveemail',
             data: $('#saveemail').serialize(),
             success: function(data){
                 if(data.error){
@@ -171,9 +172,10 @@ $('#workDetails')
     .on('valid.fndtn.abide', function () {
         $.ajax({
             type: "POST",
-            url: '/users/editwork',
+            url: '/SpringCassandra/users/editwork',
             data: $('#workDetails').serialize(),
             success: function(data){
+            	var data = JSON.parse(data);
                 if(data.error){
                     $('#result').html("<div data-alert class=\"alert-box alert \">"+data.error+"<a href=\"#\" class=\"close\">&times;</a></div>");
                 }else{

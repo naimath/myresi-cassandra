@@ -229,7 +229,7 @@
             <div class="large-12 columns">
                 <div class="large-6 medium-3 small-3 columns"><a href="#" data-reveal-id="thirdModal" class="secondary button">Back</a>
                 </div>
-                <div class="large-6 medium-3 small-3 columns"><a href="/SpringCassandra/person/profile" class="primary button right">Done</a>
+                <div class="large-6 medium-3 small-3 columns"><a href="${pageContext.request.contextPath}/users/profile" class="primary button right">Done</a>
                 </div>
             </div>
             <!--a.close-reveal-modal ×-->

@@ -32,20 +32,19 @@ public class LoginService {
 
 	public boolean resisterUser(User user) {
 		if(loginDao.insertUser(user)){
-			String text = "Please click on below link to register ... "+"http://localhost:8080/SpringCassandra/registration/"+user.getActivationToken();
-			emailSender.sendEmail("nullah@pdxinc.com",user.getEmail(), "Registration Request ...", text);
+		
 			return true;
 		}
 		return false;
 	}
 	
-	public boolean verifyUser(User user) {
-		if(loginDao.verifyUser(user)){
-			return true;
-		}
-		return false;
-	}
 
+	public boolean sendEmail(User user, String serverName, int port, String contextPath){
+		String text = "Please click on below link to register ... "+"http://"+serverName+":"+port+contextPath+"/registration/"+user.getActivationToken();
+		emailSender.sendEmail("welcome@myresi.com",user.getEmail(), "Registration Request ...", text);
+		return true;
+	}
+	
 	public boolean validateRegistration(String token) {
 		if(loginDao.validateRegistration(token)){
 			return true;

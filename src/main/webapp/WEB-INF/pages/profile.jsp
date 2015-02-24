@@ -85,12 +85,12 @@
             <a href="#" data-reveal-id="secondModal" class="right fi-page-edit size-24"></a>
             <div id="profileImage" style="background-image:url(${pageContext.request.contextPath}/resources/images/avatar.png)" class="large-centered"></div>
             <div class="large-centered">
-                <h3>Rahul Shelke</h3>
+                <h3>${user.firstName} ${user.lastName}</h3>
             </div>
             <h5>Web Developer at TAG Solutions</h5>
             <div class="large-centered">
                 <p>Software/IT
-                    <br>Pune, Maharashtra, India
+                    <br>${user.city}, ${user.state}, ${user.country}
                     <br>Computer Science</p>
             </div>
             <!--div.large-offset-8.center-->
@@ -141,7 +141,7 @@
     <div style="background-color:#f9f9f9;" class="row">
         <hr>
         <div class="large-12 columns">
-            <h4>About Me<p>New blood joins this earth,And quickly he's subdued.Through constant pained disgraceThe young boy learns their rules.With time the child draws in.This whipping boy done wrong.Deprived of all his thoughtsThe young man struggles on and on.He's known a </p></h4>
+            <h4>About Me<p> ${user.aboutMe} </p></h4>
         </div>
     </div>
     <div id="secondModal" data-reveal="" class="reveal-modal xlarge">
