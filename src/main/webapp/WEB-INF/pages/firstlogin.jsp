@@ -195,21 +195,21 @@
                             <label>Expert Skills</label>
                         </div>
                         <div class="large-9 columns">
-                            <input type="text" name="expertSkills" id="expertSkills" placeholder="Select Your skills by typing the name">
+                            <input type="text" name="expertSkills" id="expertSkills" placeholder="Select Your skills by typing the name" class="skillsInput">
                             <!--small.error Cannot be Empty-->
                         </div>
                         <div class="large-3 columns">
                             <label>Intermediate Skills</label>
                         </div>
                         <div class="large-9 columns">
-                            <input type="text" name="intermediateSkills" id="intermediateSkills" placeholder="Select Your skills by typing the name">
+                            <input type="text" name="intermediateSkills" id="intermediateSkills" placeholder="Select Your skills by typing the name" class="skillsInput">
                             <!--small.error Cannot be Empty-->
                         </div>
                         <div class="large-3 columns">
                             <label>Familiar Skills</label>
                         </div>
                         <div class="large-9 columns">
-                            <input type="text" name="familiarSkills" id="familiarSkills" placeholder="Select Your skills by typing the name">
+                            <input type="text" name="familiarSkills" id="familiarSkills" placeholder="Select Your skills by typing the name" class="skillsInput">
                             <!--small.error Cannot be Empty-->
                         </div>
                         <div style="margin-bottom:10px;" class="large-12 columns text-center">
@@ -248,14 +248,15 @@
         api_key: 75 rmn6s0ittiqp
         authorize: true
     </script>
-    <script type="text/javascript" src="${pageContext.request.contextPath}/resources/javascripts/linkedinwizard.js"></script>
+
     <script type="text/javascript" src="${pageContext.request.contextPath}/resources/vendor/foundation/js/vendor/jquery.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/resources/vendor/foundation/js/vendor/jquery-ui.min.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/resources/vendor/foundation/js/vendor/jquery.ui.touch-punch.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/resources/vendor/foundation/js/foundation.min.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/resources/vendor/selectize/js/selectize.min.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/resources/javascripts/linkedinwizard.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/resources/javascripts/firstlogin.js"></script>
-    <script type="text/javascript" src="${pageContext.request.contextPath}/resources/javascripts/skills2.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/resources/javascripts/sortableskills.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/resources/javascripts/foundation-datepicker.js"></script>
 </body>
 
