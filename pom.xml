@@ -68,7 +68,7 @@
 			<artifactId>jackson-mapper-asl</artifactId>
 			<version>1.9.10</version>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>javax.mail</groupId>
 			<artifactId>mail</artifactId>
@@ -80,18 +80,23 @@
 			<artifactId>spring-support</artifactId>
 			<version>2.0.6</version>
 		</dependency>
-<dependency>
-	<groupId>org.eclipse.persistence</groupId>
-	<artifactId>eclipselink</artifactId>
-	<version>2.5.1</version>
-</dependency>
-		
-<dependency>
-	<groupId>org.eclipse.persistence</groupId>
-	<artifactId>org.eclipse.persistence.jpa.modelgen.processor</artifactId>
-	<version>2.5.1</version>
-</dependency>
+		<dependency>
+			<groupId>org.eclipse.persistence</groupId>
+			<artifactId>eclipselink</artifactId>
+			<version>2.5.1</version>
+		</dependency>
 
+		<dependency>
+			<groupId>org.eclipse.persistence</groupId>
+			<artifactId>org.eclipse.persistence.jpa.modelgen.processor</artifactId>
+			<version>2.5.1</version>
+		</dependency>
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>1.2.17</version>
+			<scope>compile</scope>
+		</dependency>
 	</dependencies>
 
 	<repositories>

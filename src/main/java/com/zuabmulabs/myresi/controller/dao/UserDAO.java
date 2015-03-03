@@ -98,7 +98,10 @@ public class UserDAO {
 			 user.setCity(row.getString("city"));
 			 user.setState(row.getString("state"));
 			 user.setCountry(row.getString("country"));
+			 user.setPosition(row.getString("position"));
+			 user.setWorkField(row.getString("workfield"));
 			 user.setExpertSkills(row.getString("expertskills"));
+			 user.setIntermediateSkills(row.getString("intermediateskills"));
 			 user.setFamiliarSkills(row.getString("familiarskills"));
 			 user.setAboutMe(row.getString("aboutme"));
 			 user.setProfileadded(row.getString("profileadded"));
@@ -107,6 +110,18 @@ public class UserDAO {
 			return null;
 		}
 		return user;
+	}
+
+	public boolean profileCompleted(String email) {
+		try{
+			Update u =	QueryBuilder.update("registeredusers");
+			u.with(QueryBuilder.set("profileadded", "Y"));			
+			u.where(QueryBuilder.eq("email", email));
+			cassandraOperations.execute(u);
+		}catch(Exception e){
+			return false;
+		}
+		return true;
 	}
 	
 }

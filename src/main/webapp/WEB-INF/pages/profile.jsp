@@ -76,7 +76,7 @@
             </div>
             <div class="large-3 columns text-center"><a class="button small radius right center expand">Send Message</a>
             </div>
-            <div class="large-3 columns text-center"><a href="/users/logout" class="button small radius right center expand">Logout</a>
+            <div class="large-3 columns text-center"><a href="${pageContext.request.contextPath}/logout" class="button small radius right center expand">Logout</a>
             </div>
         </div>
         <hr>
@@ -87,9 +87,9 @@
             <div class="large-centered">
                 <h3>${user.firstName} ${user.lastName}</h3>
             </div>
-            <h5>Web Developer at TAG Solutions</h5>
-            <div class="large-centered">
-                <p>Software/IT
+            <h5>${user.position} at ${user.currentWorkplace}</h5>
+            <div class="large-centered">            
+                <p>${user.workField}
                     <br>${user.city}, ${user.state}, ${user.country}
                     <br>Computer Science</p>
             </div>
@@ -121,19 +121,19 @@
                     <label>Expert Skills</label>
                 </div>
                 <div class="large-9 columns">
-                    <input type="text" name="skills" id="expertSkillsShow" placeholder="Select Your skills by typing the name" required="" value="Node.js HTML 5 AJAX JavaScript jQuery JSON">
+                    <input type="text" name="skills" id="expertSkillsShow" placeholder="Select Your skills by typing the name" required="" value="${user.expertSkills}">
                 </div>
                 <div class="large-3 columns">
                     <label>Intermediate Skills</label>
                 </div>
                 <div class="large-9 columns">
-                    <input type="text" name="skills" id="intermediateSkillsShow" placeholder="Select Your skills by typing the name" required="" value="PHP Web Services Git XML">
+                    <input type="text" name="skills" id="intermediateSkillsShow" placeholder="Select Your skills by typing the name" required="" value="${user.intermediateSkills}">
                 </div>
                 <div class="large-3 columns">
                     <label>Familiar Skills</label>
                 </div>
                 <div class="large-9 columns">
-                    <input type="text" name="skills" id="familiarSkillsShow" placeholder="Select Your skills by typing the name" required="" value="Subversion">
+                    <input type="text" name="skills" id="familiarSkillsShow" placeholder="Select Your skills by typing the name" required="" value="${user.familiarSkills}">
                 </div>
             </div>
         </div>
@@ -156,18 +156,18 @@
             </div>
             <div class="large-6 columns">
                 <label>First Name
-                    <input type="text" name="firstName" placeholder="Enter your first name" required="">
+                    <input type="text" name="firstName" placeholder="Enter your first name" value="${user.firstName}" required="">
                 </label>
             </div>
             <div class="large-6 columns">
                 <label>Last Name
-                    <input type="text" name="lastName" placeholder="Enter your last name" required="">
+                    <input type="text" name="lastName" placeholder="Enter your last name" value="${user.lastName}" required="">
                 </label>
             </div>
             <div style="border-left:1px solid #ddd" class="large-centered">
                 <div class="large-12 columns">
                     <label>About Me
-                        <textarea rows="1" name="aboutMe" placeholder="Write somehting about yourself, no more than 250 characters."></textarea>
+                        <textarea rows="1" name="aboutMe" placeholder="Write somehting about yourself, no more than 250 characters.">${user.aboutMe}</textarea>
                     </label>
                 </div>
             </div>
@@ -176,17 +176,17 @@
                 <br>
                 <div class="large-6 columns">
                     <label>City
-                        <input type="text" name="city" placeholder="City" required="">
+                        <input type="text" name="city" placeholder="City" value="${user.city}" required="">
                     </label>
                 </div>
                 <div class="large-6 columns">
                     <label>State
-                        <input type="text" name="state" placeholder="State" required="">
+                        <input type="text" name="state" placeholder="State" value="${user.state}" required="">
                     </label>
                 </div>
                 <div class="large-6 columns">
                     <label>Country
-                        <input type="text" name="country" placeholder="Country" required="">
+                        <input type="text" name="country" placeholder="Country" value="${user.country}" required="">
                     </label>
                 </div>
                 <div class="text-center large-12 columns">
@@ -216,19 +216,19 @@ div.large-6.medium-3.small-3.columns
                         <label>Expert Skills</label>
                     </div>
                     <div class="large-9 columns">
-                        <input type="text" name="expertSkills" id="expertSkills" placeholder="Select Your skills by typing the name" required="" class="skillsInput">
+                        <input type="text" name="expertSkills" id="expertSkills" placeholder="Select Your skills by typing the name"  value="${user.expertSkills}" required="" class="skillsInput">
                     </div>
                     <div class="large-3 columns">
                         <label>Intermediate Skills</label>
                     </div>
                     <div class="large-9 columns">
-                        <input type="text" , name="intermediateSkills" id="intermediateSkills" placeholder="Select Your skills by typing the name" required="" class="skillsInput">
+                        <input type="text" , name="intermediateSkills" id="intermediateSkills" placeholder="Select Your skills by typing the name" value="${user.intermediateSkills}" required="" class="skillsInput">
                     </div>
                     <div class="large-3 columns">
                         <label>Familiar Skills</label>
                     </div>
                     <div class="large-9 columns">
-                        <input type="text" , name="familiarSkills" id="familiarSkills" placeholder="Select Your skills by typing the name" required="" class="skillsInput">
+                        <input type="text" , name="familiarSkills" id="familiarSkills" placeholder="Select Your skills by typing the name" required="" value="${user.familiarSkills}" class="skillsInput">
                     </div>
                     <div style="margin-bottom:10px;" class="large-12 columns text-center">
                         <input type="submit" value="Update Skills" class="button">

@@ -2,6 +2,7 @@ package com.zuabmulabs.myresi.controller;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -17,12 +18,13 @@ import com.zuabmulabs.myresi.service.UserService;
 @Controller
 public class UserController {
 
-	
+	private static final Logger logger = Logger.getLogger(UserController.class);
 	@Autowired
 	private UserService userService;
 
 	@RequestMapping(value="/users/profile", method = RequestMethod.GET)
 	public ModelAndView getProfile(HttpServletRequest request) {		
+	
 		User user= userService.getProfile((String)request.getSession().getAttribute("email"));		
 		ModelAndView modelAndView = new ModelAndView("profile");		
 		modelAndView.addObject("user", user); 
@@ -38,6 +40,15 @@ public class UserController {
 		return "firstlogin";
 	}
 	
+	@RequestMapping(value = "/users/firstLoginCompleted", method = RequestMethod.GET)
+	public String firstLoginCompleted(HttpServletRequest request) {
+		 String email = (String)request.getSession().getAttribute("email");
+		
+		 userService.profileCompleted(email);
+		
+		return "redirect:/users/profile";
+	}
+	
 	@RequestMapping(value = "/users/login", method = RequestMethod.POST)
 	public @ResponseBody String userLogin(@RequestParam String username,@RequestParam String password,ModelMap map,HttpServletRequest request) {
 		User user = new User();
@@ -46,7 +57,7 @@ public class UserController {
 		user = userService.verifyUser(user);
 		if(user !=null){
 			request.getSession().setAttribute("email", username);
-			if(user.getProfileadded()!=null){
+			if(user.getProfileadded()!=null && "Y".equals(user.getProfileadded())){
 				return "{\"redirect\":\"/SpringCassandra/users/profile\"}";		
 			}else{
 				return "{\"redirect\":\"/SpringCassandra/users/firstlogin\"}";		
@@ -94,6 +105,7 @@ public class UserController {
 	
 	@RequestMapping(value = "/users/editSkills", method = RequestMethod.POST)
 	public @ResponseBody String editSkills(HttpServletRequest request,@RequestParam String expertSkills,@RequestParam String intermediateSkills,@RequestParam  String familiarSkills) {
+		logger.info("Editing Skills");
 		User user = new User();
 		user.setEmail((String)request.getSession().getAttribute("email"));
 		user.setExpertSkills(expertSkills);

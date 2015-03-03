@@ -4,6 +4,7 @@ import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -13,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.zuabmulabs.myresi.controller.dao.Person;
 import com.zuabmulabs.myresi.model.User;
 import com.zuabmulabs.myresi.service.LoginService;
 
@@ -23,23 +23,15 @@ import com.zuabmulabs.myresi.service.LoginService;
 @Controller
 public class LoginController {
 
-	
+	private static final Logger logger = Logger.getLogger(LoginController.class);
 	@Autowired
 	private LoginService loginService;
 //-----------------------------------------------------------------------Routing for myResi UI----------------------------------------------------------------
 	
-	@RequestMapping(value = "/index", method = RequestMethod.GET)
+	@RequestMapping(value = "/home", method = RequestMethod.GET)
 	public String welcome(ModelMap map) {
 		// Mostly static home page.
-		return "index";
-	}
-	
-	
-	
-	@RequestMapping(value = "/profile", method = RequestMethod.GET)
-	public String profile(ModelMap map) {
-		// Rendered only if user had logged in. Can see his own profile only.
-		return "profile";
+		return "home";
 	}
 	
 	
@@ -60,28 +52,15 @@ public class LoginController {
 	
 //-----------------------------------------------------------------------End routing for myResi UI----------------------------------------------------------------
 	
-	@RequestMapping(value="/get", method = RequestMethod.GET)
-	public String getPerson(ModelMap map){
-		Person person =loginService.getPerson();
-		map.addAttribute("person", person);
-		return "list";
+	
+	
+	
+	
+	@RequestMapping(value = "/logout", method = RequestMethod.GET)
+	public String logout(HttpServletRequest request) {
+		request.getSession().invalidate();
+		return "logout";
 	}
-	
-	
-	@RequestMapping(value="/insert", method = RequestMethod.GET)
-	public String insertPerson(ModelMap map){
-		loginService.insertPerson();
-		return "list";
-	
-	}
-	
-	@RequestMapping(value="/create", method = RequestMethod.GET)
-	public String createPerson(ModelMap map){
-		loginService.createPerson();
-		return "list";
-	
-	}
-	
 
 	@RequestMapping(value="/{name}", method = RequestMethod.GET)
 	public String getMovie(@PathVariable String name, ModelMap model) {

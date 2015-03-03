@@ -35,6 +35,11 @@ public class UserService {
 		return userDao.getProfile(email);
 		
 	}
+
+	public void profileCompleted(String email) {
+		userDao.profileCompleted(email);
+		
+	}
 	
 
 }

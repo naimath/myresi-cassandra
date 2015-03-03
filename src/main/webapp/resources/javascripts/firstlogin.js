@@ -44,6 +44,7 @@ $('#editSkills')
             url: '/SpringCassandra/users/editSkills',
             data: $('#editSkills').serialize(),
             success: function(data){
+            	var data = JSON.parse(data);
                 if(data.error){
                     $('#result1').html("<div data-alert class=\"alert-box alert \">"+data.error+"<a href=\"#\" class=\"close\">&times;</a></div>");
                 }else{
