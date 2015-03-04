@@ -65,12 +65,12 @@
                 <form id="saveemail" data-abide="ajax">
                     <div class="large-12 columns">
                         <label>Email address
-                            <input type="email" id="enterEmail" name="enterEmail" placeholder="Enter email address" required="">
+                            <input type="email" id="enterEmail" name="enterEmail" placeholder="Enter email address" required="" value="${user.email}">
                         </label><small class="error">Email cannot be empty</small>
                     </div>
                     <div class="large-12 columns">
                         <label>Confirm Email Address
-                            <input type="email" name="confirmEmail" placeholder="Confirm Email Address" required="" data-equalto="enterEmail">
+                            <input type="email" name="confirmEmail" placeholder="Confirm Email Address" required="" data-equalto="enterEmail" value="${user.email}">
                         </label><small class="error">Email does not match</small>
                     </div>
                     <div class="large-12 columns text-center">
@@ -92,12 +92,12 @@
                     </div>
                     <div class="large-6 columns">
                         <label>First Name
-                            <input type="text" name="firstName" placeholder="Enter your first name" required="">
+                            <input type="text" name="firstName" placeholder="Enter your first name" required="" value="${user.firstName}">
                         </label>
                     </div>
                     <div class="large-6 columns">
                         <label>Last Name
-                            <input type="text" name="lastName" placeholder="Enter your last name" required="">
+                            <input type="text" name="lastName" placeholder="Enter your last name" required="" value="${user.lastName}">
                         </label>
                     </div>
                     <div style="border-left:1px solid #ddd" class="large-centered">

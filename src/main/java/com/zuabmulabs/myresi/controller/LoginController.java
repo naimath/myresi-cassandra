@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.zuabmulabs.myresi.model.User;
 import com.zuabmulabs.myresi.service.LoginService;
@@ -71,9 +72,16 @@ public class LoginController {
 	
 	
 	@RequestMapping(value="/registration/{token}", method = RequestMethod.GET)
-	public @ResponseBody String validateRegistration(@PathVariable String token) {	
-		loginService.validateRegistration(token);
-		return "Successfully Validated";
+	public ModelAndView  validateRegistration(@PathVariable String token) {	
+		User user = loginService.validateRegistration(token);
+		ModelAndView modelAndView = new ModelAndView("firstlogin");	
+		if(user!=null){				
+			modelAndView.addObject("user", user); 			
+		}else{
+			modelAndView.addObject("user", new User()); 
+		}
+		return modelAndView;	
+		
 	}
 	
 	@RequestMapping(value = "/users/register", method = RequestMethod.POST)

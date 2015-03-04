@@ -34,11 +34,8 @@ public class LoginService {
 		return true;
 	}
 	
-	public boolean validateRegistration(String token) {
-		if(loginDao.validateRegistration(token)){
-			return true;
-		}
-		return false;
+	public User validateRegistration(String token) {
+		return loginDao.validateRegistration(token) ;
 		
 	}
 

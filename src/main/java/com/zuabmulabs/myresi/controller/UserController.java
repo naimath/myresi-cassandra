@@ -32,12 +32,17 @@ public class UserController {
 	}
 	
 	@RequestMapping(value = "/users/firstlogin", method = RequestMethod.GET)
-	public String firstlogin(ModelMap map) {
+	public ModelAndView firstlogin(HttpServletRequest request) {
 		// Rendered only if user has logged in for the first time, this is used to collect and validate users information. 
 		// Will also be displayed if a user clicks on the link in the registration 
 		// mail they were sent to validate registration.
 		// Each slide on this page does a post to the server to save information and will need success confirmation from server to display next slide. 
-		return "firstlogin";
+		
+		User user= userService.getProfile((String)request.getSession().getAttribute("email"));		
+		ModelAndView modelAndView = new ModelAndView("firstlogin");		
+		modelAndView.addObject("user", user); 
+		return modelAndView;	
+		
 	}
 	
 	@RequestMapping(value = "/users/firstLoginCompleted", method = RequestMethod.GET)

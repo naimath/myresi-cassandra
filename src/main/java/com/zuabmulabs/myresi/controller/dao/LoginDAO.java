@@ -37,26 +37,32 @@ public class LoginDAO {
 	
 	
 
-	public boolean validateRegistration(String token) {
+	public User validateRegistration(String token) {
 		try{
 			 Select s = QueryBuilder.select().from("registeredusers"); 
 			 s.where(QueryBuilder.eq("activationtoken", token)); 
 			 ResultSet result = cassandraOperations.query(s);
 			 Row row = result.one();
 			if( row == null){
-				return false;
+				return null;
 			}else{
+				 User user = new User();
+				 user.setEmail(row.getString("email"));
+				 user.setFirstName(row.getString("firstname"));
+				 user.setLastName(row.getString("lastname"));
+								
 				Update u =	QueryBuilder.update("registeredusers");
 				u.with(QueryBuilder.set("activate", "Y"));
 				u.where(QueryBuilder.eq("email", row.getString(0)));
 				cassandraOperations.execute(u);
+				return user;
 			}
 			
 		}catch(Exception e){
 			e.printStackTrace();
-			return false;
+			return null;
 		}
-		return true;
+		
 	}
 
 

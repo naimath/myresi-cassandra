@@ -93,6 +93,7 @@ public class UserDAO {
 					return null;
 			 }
 			 user = new User();
+			 user.setEmail(row.getString("email"));
 			 user.setFirstName(row.getString("firstname"));
 			 user.setLastName(row.getString("lastname"));
 			 user.setCity(row.getString("city"));
