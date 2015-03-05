@@ -72,10 +72,11 @@ public class LoginController {
 	
 	
 	@RequestMapping(value="/registration/{token}", method = RequestMethod.GET)
-	public ModelAndView  validateRegistration(@PathVariable String token) {	
+	public ModelAndView  validateRegistration(@PathVariable String token,HttpServletRequest request) {	
 		User user = loginService.validateRegistration(token);
-		ModelAndView modelAndView = new ModelAndView("firstlogin");	
-		if(user!=null){				
+		ModelAndView modelAndView = new ModelAndView("firstlogin");		
+		if(user!=null){			
+			request.getSession().setAttribute("email", user.getEmail());
 			modelAndView.addObject("user", user); 			
 		}else{
 			modelAndView.addObject("user", new User()); 

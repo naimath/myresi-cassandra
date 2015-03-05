@@ -47,7 +47,7 @@ public class UserController {
 	
 	@RequestMapping(value = "/users/firstLoginCompleted", method = RequestMethod.GET)
 	public String firstLoginCompleted(HttpServletRequest request) {
-		logger.info("Inside firstLoginCompleted ...");
+		logger.info("Inside firstLoginCompleted ..."+request.getSession().getAttribute("email"));
 		 String email = (String)request.getSession().getAttribute("email");
 		
 		 userService.profileCompleted(email);
@@ -57,7 +57,7 @@ public class UserController {
 	
 	@RequestMapping(value = "/users/login", method = RequestMethod.POST)
 	public @ResponseBody String userLogin(@RequestParam String username,@RequestParam String password,ModelMap map,HttpServletRequest request) {
-		logger.info("Inside userLogin ...");
+		logger.info("Inside userLogin ..."+request.getSession().getAttribute("email"));
 		User user = new User();
 		user.setPassword(password);
 		user.setEmail(username);
@@ -77,7 +77,7 @@ public class UserController {
 	
 	@RequestMapping(value = "/users/editprofile", method = RequestMethod.POST)
 	public @ResponseBody String editProfile(HttpServletRequest request,@RequestParam String firstName,@RequestParam String lastName,@RequestParam String aboutMe,@RequestParam String city,@RequestParam  String state,@RequestParam  String country, ModelMap map) {
-		logger.info("Inside editProfile ...");
+		logger.info("Inside editProfile ..."+request.getSession().getAttribute("email"));
 		User user = new User();
 		user.setEmail((String)request.getSession().getAttribute("email"));
 		user.setFirstName(firstName);
@@ -96,7 +96,7 @@ public class UserController {
 	
 	@RequestMapping(value = "/users/editwork", method = RequestMethod.POST)
 	public @ResponseBody String editWork(HttpServletRequest request,@RequestParam String position,@RequestParam String currentWorkplace,@RequestParam  String workField,@RequestParam  String educationalQualification) {
-		logger.info("Inside editWork ...");
+		logger.info("Inside editWork ..."+request.getSession().getAttribute("email"));
 		User user = new User();
 		user.setEmail((String)request.getSession().getAttribute("email"));
 		user.setPosition(position);
@@ -114,7 +114,7 @@ public class UserController {
 	
 	@RequestMapping(value = "/users/editSkills", method = RequestMethod.POST)
 	public @ResponseBody String editSkills(HttpServletRequest request,@RequestParam String expertSkills,@RequestParam String intermediateSkills,@RequestParam  String familiarSkills) {
-		logger.info("Editing Skills");
+		logger.info("Editing Skills .."+request.getSession().getAttribute("email"));
 		User user = new User();
 		user.setEmail((String)request.getSession().getAttribute("email"));
 		user.setExpertSkills(expertSkills);
