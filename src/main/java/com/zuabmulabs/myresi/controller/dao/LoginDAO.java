@@ -1,5 +1,6 @@
 package com.zuabmulabs.myresi.controller.dao;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.cassandra.core.CassandraOperations;
 import org.springframework.data.cassandra.core.CassandraTemplate;
@@ -10,26 +11,26 @@ import com.datastax.driver.core.Row;
 import com.datastax.driver.core.querybuilder.QueryBuilder;
 import com.datastax.driver.core.querybuilder.Select;
 import com.datastax.driver.core.querybuilder.Update;
+import com.zuabmulabs.myresi.controller.LoginController;
 import com.zuabmulabs.myresi.model.User;
 
 @Repository
 public class LoginDAO {
-	
+	private static final Logger logger = Logger.getLogger(LoginDAO.class);
 	@Autowired
 	private CassandraOperations cassandraOperations;
-	
-	
+		
 
 	public void createPerson(){
-		 String query = "create table mykeyspace.person (id text primary key,name text, age text);";
-		 ((CassandraTemplate)cassandraOperations).getSession().execute(query);
+		/* String query = "create table mykeyspace.person (id text primary key,name text, age text);";
+		 ((CassandraTemplate)cassandraOperations).getSession().execute(query);*/
 	}
 
 	public boolean insertUser(User user) {
 		try{
 		 cassandraOperations.insert(user); 
 		}catch(Exception e){
-			e.printStackTrace();
+			logger.error("Error Occured whild doing inserUser .. "+e);
 			return false;
 		}
 		return true;
@@ -59,7 +60,7 @@ public class LoginDAO {
 			}
 			
 		}catch(Exception e){
-			e.printStackTrace();
+			logger.error("Error Occured whild doing validateRegistration .. "+e);
 			return null;
 		}
 		

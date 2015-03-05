@@ -47,6 +47,7 @@ public class UserController {
 	
 	@RequestMapping(value = "/users/firstLoginCompleted", method = RequestMethod.GET)
 	public String firstLoginCompleted(HttpServletRequest request) {
+		logger.info("Inside firstLoginCompleted ...");
 		 String email = (String)request.getSession().getAttribute("email");
 		
 		 userService.profileCompleted(email);
@@ -56,6 +57,7 @@ public class UserController {
 	
 	@RequestMapping(value = "/users/login", method = RequestMethod.POST)
 	public @ResponseBody String userLogin(@RequestParam String username,@RequestParam String password,ModelMap map,HttpServletRequest request) {
+		logger.info("Inside userLogin ...");
 		User user = new User();
 		user.setPassword(password);
 		user.setEmail(username);
@@ -75,6 +77,7 @@ public class UserController {
 	
 	@RequestMapping(value = "/users/editprofile", method = RequestMethod.POST)
 	public @ResponseBody String editProfile(HttpServletRequest request,@RequestParam String firstName,@RequestParam String lastName,@RequestParam String aboutMe,@RequestParam String city,@RequestParam  String state,@RequestParam  String country, ModelMap map) {
+		logger.info("Inside editProfile ...");
 		User user = new User();
 		user.setEmail((String)request.getSession().getAttribute("email"));
 		user.setFirstName(firstName);
@@ -93,6 +96,7 @@ public class UserController {
 	
 	@RequestMapping(value = "/users/editwork", method = RequestMethod.POST)
 	public @ResponseBody String editWork(HttpServletRequest request,@RequestParam String position,@RequestParam String currentWorkplace,@RequestParam  String workField,@RequestParam  String educationalQualification) {
+		logger.info("Inside editWork ...");
 		User user = new User();
 		user.setEmail((String)request.getSession().getAttribute("email"));
 		user.setPosition(position);

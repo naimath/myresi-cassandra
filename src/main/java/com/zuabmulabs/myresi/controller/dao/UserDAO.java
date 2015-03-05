@@ -1,5 +1,6 @@
 package com.zuabmulabs.myresi.controller.dao;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.cassandra.core.CassandraOperations;
 import org.springframework.stereotype.Repository;
@@ -13,7 +14,7 @@ import com.zuabmulabs.myresi.model.User;
 
 @Repository
 public class UserDAO {
-	
+	private static final Logger logger = Logger.getLogger(LoginDAO.class);
 	@Autowired
 	private CassandraOperations cassandraOperations;
 	
@@ -29,7 +30,7 @@ public class UserDAO {
 			 }
 			user.setProfileadded(row.getString("profileadded"));
 		}catch(Exception e){
-			e.printStackTrace();
+			logger.error("Error Occured whild doing verifyUser .. "+e);
 			return null;
 		}
 		return user;
@@ -47,6 +48,7 @@ public class UserDAO {
 			u.where(QueryBuilder.eq("email", user.getEmail()));
 			cassandraOperations.execute(u);
 		}catch(Exception e){
+			logger.error("Error Occured whild doing editUser .. "+e);
 			return false;
 		}
 			return true;
@@ -62,6 +64,7 @@ public class UserDAO {
 			u.where(QueryBuilder.eq("email", user.getEmail()));
 			cassandraOperations.execute(u);
 		}catch(Exception e){
+			logger.error("Error Occured whild doing editWork .. "+e);
 			return false;
 		}
 		return true;
@@ -76,6 +79,7 @@ public class UserDAO {
 			u.where(QueryBuilder.eq("email", user.getEmail()));
 			cassandraOperations.execute(u);
 		}catch(Exception e){
+			logger.error("Error Occured whild doing editSkills .. "+e);
 			return false;
 		}
 		return true;
@@ -107,7 +111,7 @@ public class UserDAO {
 			 user.setAboutMe(row.getString("aboutme"));
 			 user.setProfileadded(row.getString("profileadded"));
 		}catch(Exception e){
-			e.printStackTrace();
+			logger.error("Error Occured whild doing getProfile .. "+e);
 			return null;
 		}
 		return user;
@@ -120,6 +124,7 @@ public class UserDAO {
 			u.where(QueryBuilder.eq("email", email));
 			cassandraOperations.execute(u);
 		}catch(Exception e){
+			logger.error("Error Occured whild doing profileCompleted .. "+e);
 			return false;
 		}
 		return true;
