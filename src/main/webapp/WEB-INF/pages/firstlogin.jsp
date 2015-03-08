@@ -81,7 +81,7 @@
                 <div id="resultEmail"></div><a href="#" data-reveal-id="secondModal" class="secondary button right">Next</a>
             </div>
         </div>
-        <div id="secondModal" data-reveal="" data-options="close_on_background_click:false" class="reveal-modal">
+        <div id="secondModal" data-reveal="" data-options="close_on_background_click:false" class="reveal-modal" style="top: 0">
             <form id="editProfile" data-abide="ajax">
                 <h4>Personal Info</h4><sub>Step 2 of 4</sub>
                 <hr>
@@ -124,6 +124,11 @@
                     <div class="large-6 columns">
                         <label>Country
                             <input type="text" name="country" placeholder="Country" required="">
+                        </label>
+                    </div>
+                    <div class="large-6 columns">
+                        <label>Date Of birth
+                            <input id="dp-margin" class="span2" type="text" name="dateOfBirth" placeholder="mm/dd/yyyy" data-date-format="mm/dd/yyyy" required=""/>
                         </label>
                     </div>
                     <div class="text-center large-12 columns">
@@ -216,12 +221,6 @@
                             <input type="submit" value="Update Skills" class="button">
                         </div>
                     </div>
-                    <div class="linked-inButton large-12 columns text-center">
-                        <hr>
-                        <h3>Or import from Linked-in</h3>
-                    </div>
-                    <div class="linked-inButton large-12 columns text-center"><a href="#" onclick="onLinkedInLoad()" data-reveal-id="linkedInWizard1" class="secondary button">Import From Linked-in</a>
-                    </div>
                     <hr>
                     <div id="result1" class="large-12 columns text-center"></div>
                 </form>
@@ -258,6 +257,10 @@
     <script type="text/javascript" src="${pageContext.request.contextPath}/resources/javascripts/firstlogin.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/resources/javascripts/sortableskills.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/resources/javascripts/foundation-datepicker.js"></script>
+    <script type="text/javascript">
+        $('#dp-margin').fdatepicker();
+        $('.datepicker.datepicker-dropdown.dropdown-menu').css('width','250');
+    </script>
 </body>
 
 </html>
