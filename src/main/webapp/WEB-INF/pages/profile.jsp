@@ -145,6 +145,10 @@
         </div>
     </div>
     <div id="secondModal" data-reveal="" class="reveal-modal xlarge">
+  			  <form  id="imageUpload" method="POST"  enctype="multipart/form-data" data-abide="ajax">
+       				    <input type="file" name="file">    				   
+   				        <input type="submit" value="Upload"> Press here to upload the file!
+ 				 </form>
         <form id="editProfile" data-abide="ajax">
             <h4>Personal Info</h4>
             <hr>

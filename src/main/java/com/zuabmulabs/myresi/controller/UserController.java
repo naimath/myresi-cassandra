@@ -1,5 +1,7 @@
 package com.zuabmulabs.myresi.controller;
 
+import java.nio.ByteBuffer;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.log4j.Logger;
@@ -10,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.zuabmulabs.myresi.model.User;
@@ -143,5 +146,23 @@ public class UserController {
 		}	
 		
 	}
+	
+	@RequestMapping(value = "/users/imageupload", method = RequestMethod.POST)
+	public @ResponseBody String imageUpload(HttpServletRequest request, @RequestParam("file") MultipartFile file) {
+		logger.info("Editing Skills .."+request.getSession().getAttribute("email"));
+		User user = new User();
+		ByteBuffer fileByteBuffer = ByteBuffer.wrap( file.getBytes()) ;
+
+		
+			
+		if(userService.userSearch(user)==null){			
+			return "{\"success\":\"Modificaion Successfull\"}";
+		}else{						
+			return "{\"error\":\"Error in Edit Skills\"}";
+		}	
+		
+	}
+	
+	
 	
 }
