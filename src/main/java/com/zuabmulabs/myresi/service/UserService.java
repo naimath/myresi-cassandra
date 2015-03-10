@@ -41,5 +41,7 @@ public class UserService {
 		
 	}
 	
-
+	public User userSearch(User user) {
+		return userDao.userSearch(user);
+	}
 }

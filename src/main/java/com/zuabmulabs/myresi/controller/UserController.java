@@ -24,7 +24,7 @@ public class UserController {
 
 	@RequestMapping(value="/users/profile", method = RequestMethod.GET)
 	public ModelAndView getProfile(HttpServletRequest request) {		
-	
+		logger.info("Inside getProfile ..."+request.getSession().getAttribute("email"));
 		User user= userService.getProfile((String)request.getSession().getAttribute("email"));		
 		ModelAndView modelAndView = new ModelAndView("profile");		
 		modelAndView.addObject("user", user); 
@@ -37,7 +37,7 @@ public class UserController {
 		// Will also be displayed if a user clicks on the link in the registration 
 		// mail they were sent to validate registration.
 		// Each slide on this page does a post to the server to save information and will need success confirmation from server to display next slide. 
-		
+		logger.info("Inside getProfile ..."+request.getSession().getAttribute("email"));
 		User user= userService.getProfile((String)request.getSession().getAttribute("email"));		
 		ModelAndView modelAndView = new ModelAndView("firstlogin");		
 		modelAndView.addObject("user", user); 
@@ -129,5 +129,19 @@ public class UserController {
 		
 	}
 	
+	@RequestMapping(value = "/users/search", method = RequestMethod.POST)
+	public @ResponseBody String userSearch(HttpServletRequest request,@RequestParam String usersearchterm) {
+		logger.info("Editing Skills .."+request.getSession().getAttribute("email"));
+		User user = new User();
+		user.setEmail(usersearchterm);
+		
+			
+		if(userService.userSearch(user)==null){			
+			return "{\"success\":\"Modificaion Successfull\"}";
+		}else{						
+			return "{\"error\":\"Error in Edit Skills\"}";
+		}	
+		
+	}
 	
 }

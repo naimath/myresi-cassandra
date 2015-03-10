@@ -50,12 +50,13 @@
      console.log(form1);
      $.ajax({
          type: "POST",
-         url: '/users/imageupload',
+         url: '/SpringCassandra/users/imageupload',
          cache: false,
          contentType: false,
          processData: false,
          data: form1,
          success: function(data){
+        	 var data = JSON.parse(data);
              if(data.error){
                  //$('#loginModal').foundation('reveal', 'close');
                  $( "#secondModal" ).remove();
@@ -84,9 +85,10 @@
      .on('valid.fndtn.abide', function () {
          $.ajax({
              type: "POST",
-             url: '/users/editSkills',
+             url: '/SpringCassandra/users/editSkills',
              data: $('#editSkills').serialize(),
              success: function(data){
+            	 var data = JSON.parse(data);
                  if(data.error){
                      $('#result1').html("<div data-alert class=\"alert-box alert \">"+data.error+"<a href=\"#\" class=\"close\">&times;</a></div>");
                  }else{
@@ -112,9 +114,10 @@
      .on('valid.fndtn.abide', function () {
          $.ajax({
              type: "POST",
-             url: '/users/editprofile',
+             url: '/SpringCassandra/users/editprofile',
              data: $('#editProfile').serialize(),
              success: function(data){
+            	 var data = JSON.parse(data);
                  if(data.error){
                      $('#result2').html("<div data-alert class=\"alert-box alert \">"+data.error+"<a href=\"#\" class=\"close\">&times;</a></div>");
                  }else{

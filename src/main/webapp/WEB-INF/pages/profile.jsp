@@ -63,7 +63,7 @@
     <div style="background-color:#f9f9f9;" class="row">
         <div style="padding-top:15px;" class="large-12 columns">
             <div class="large-6 columns">
-                <form id="userSearch" action="/users/search" method="GET">
+                <form id="userSearch" action="${pageContext.request.contextPath}/users/search" method="GET">
                     <div class="row collapse">
                         <div class="large-8 small-8 medium-8 columns">
                             <input type="text" placeholder="Search other users by name" name="usersearchterm" required="">

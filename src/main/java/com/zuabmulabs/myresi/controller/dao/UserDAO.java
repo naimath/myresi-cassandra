@@ -129,5 +129,23 @@ public class UserDAO {
 		}
 		return true;
 	}
+
+	public User userSearch(User user) {
+		try{
+			 Select s = QueryBuilder.select().from("registeredusers"); 
+			 s.where(QueryBuilder.eq("email", user.getEmail())).and(QueryBuilder.eq("activate", "Y"));
+			 
+			 ResultSet result = cassandraOperations.query(s);
+			 Row row = result.one();
+			 if( row == null){
+					return null;
+			 }
+			user.setProfileadded(row.getString("profileadded"));
+		}catch(Exception e){
+			logger.error("Error Occured whild doing verifyUser .. "+e);
+			return null;
+		}
+		return user;
+	}
 	
 }
