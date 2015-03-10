@@ -74,7 +74,7 @@
                     </div>
                 </form>
             </div>
-            <div class="large-3 columns text-center"><a class="button small radius right center expand">Send Message</a>
+            <div class="large-3 columns text-center"><a data-reveal-id="hitMeUpModal" href="#" class="button small radius right center expand">Send Message</a>
             </div>
             <div class="large-3 columns text-center"><a href="${pageContext.request.contextPath}/logout" class="button small radius right center expand">Logout</a>
             </div>
@@ -401,15 +401,10 @@ div.large-6.medium-3.small-3.columns
                         <textarea name="message" placeholder="Your message here" rows="5" required=""></textarea>
                     </label><small class="error">Message Cannot be empty.</small>
                 </div>
-                <div class="large-12 columns">
-                    <label>Your Email
-                        <input type="email" name="sendersEmailAddress" placeholder="Your email address here" required="" pattern="email">
-                    </label><small class="error">Email Cannot be empty.</small>
-                </div>
                 <div class="large-12 columns text-center">
                     <input type="submit" value="Send Mail" class="button radius">
                 </div>
-            </div><a class="close-reveal-modal">×</a>
+            </div><a class="close-reveal-modal">x</a>
         </form>
     </div>
     <footer>

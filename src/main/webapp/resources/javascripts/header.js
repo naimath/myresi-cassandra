@@ -180,6 +180,7 @@ $('#hitMeUpForm')
         return false;
     })
     .on('valid.fndtn.abide', function () {
+        //alert('Sending Message');
         $.ajax({
             type: "POST",
             url: '/users/mail',
