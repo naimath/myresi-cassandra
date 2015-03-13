@@ -34,6 +34,7 @@ public class LoginService {
 		return true;
 	}
 	
+
 	public User validateRegistration(String token) {
 		return loginDao.validateRegistration(token) ;
 		

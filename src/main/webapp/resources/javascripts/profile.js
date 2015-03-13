@@ -92,71 +92,12 @@ event.stopPropagation(); // Stop stuff happening
 }
 
 
- $('#profileImageOverlay').click(function(){
-     $('input[name=imageUploder]').trigger('click');
- });
-
- $('input[name=imageUploder]').change(function(){
-     console.log('Change Event fired');
-     var form1 = new FormData($('#editProfile')[0]);
-     if($('input[name=imageUploder]').prop('files')){
-         console.log('Yeah');
-     }else{
-         console.log('No');
-     }
-     //form1.append("image", $('input[name=imageUploder]').prop('files'));
-     console.log(form1);
-     $.ajax({
-         type: "POST",
-         url: '/SpringCassandra/users/imageupload',
-         cache: false,
-         contentType: false,
-         processData: false,
-         data: form1,
-         success: function(data){
-        	 var data = JSON.parse(data);
-             if(data.error){
-                 //$('#loginModal').foundation('reveal', 'close');
-                 $( "#secondModal" ).remove();
-                 $('body').append("<div id=\"secondModal\" class=\"reveal-modal tiny\" data-reveal>"+
-                     "<h2>Error</h2><hr>"+
-                     "<p>"+data.error+"</p>"+
-                     "<a class=\"close-reveal-modal\">&#215;</a>"+
-                     "</div>");
-                 $('#secondModal').foundation('reveal', 'open');
-             }else{
-                 $('#profileImage').css('background-image','url(/uploads/'+data.success+')');
-                 $('#profileImagePopup').css('background-image','url(/uploads/'+data.success+')');
-             }
-         }
-     });
- });
 
  /*
   Ajax To Validate and POST the skills .
   */
 
  
- $('#"imageUpload"')
- .on('invalid.fndtn.abide', function () {
-     return false;
- })
- .on('valid.fndtn.abide', function () {
-     $.ajax({
-         type: "POST",
-         url: '/SpringCassandra/users/imageupload',
-         data: $('#imageUpload').serialize(),
-         success: function(data){
-        	 var data = JSON.parse(data);
-             if(data.error){
-                 $('#result1').html("<div data-alert class=\"alert-box alert \">"+data.error+"<a href=\"#\" class=\"close\">&times;</a></div>");
-             }else{
-                 $('#result1').html("<div data-alert class=\"alert-box success \">"+data.success+"<a href=\"#\" class=\"close\">&times;</a></div>");
-             }
-         }
-     });
-     return false;
- });
  
  $('#editSkills')
      .on('invalid.fndtn.abide', function () {
@@ -169,10 +110,13 @@ event.stopPropagation(); // Stop stuff happening
              data: $('#editSkills').serialize(),
              success: function(data){
             	 var data = JSON.parse(data);
-                 if(data.error){
+            	 if(data.redirect){
+         	 		window.location.href=data.redirect;
+         	     }else if(data.error){
                      $('#result1').html("<div data-alert class=\"alert-box alert \">"+data.error+"<a href=\"#\" class=\"close\">&times;</a></div>");
                  }else{
                      $('#result1').html("<div data-alert class=\"alert-box success \">"+data.success+"<a href=\"#\" class=\"close\">&times;</a></div>");
+                     window.location.href='/SpringCassandra/users/profile';
                  }
              }
          });
@@ -198,10 +142,13 @@ event.stopPropagation(); // Stop stuff happening
              data: $('#editProfile').serialize(),
              success: function(data){
             	 var data = JSON.parse(data);
-                 if(data.error){
+            	   if(data.redirect){
+            	 		window.location.href=data.redirect;
+            	  }else  if(data.error){
                      $('#result2').html("<div data-alert class=\"alert-box alert \">"+data.error+"<a href=\"#\" class=\"close\">&times;</a></div>");
                  }else{
                      $('#result2').html("<div data-alert class=\"alert-box success \">"+data.success+"<a href=\"#\" class=\"close\">&times;</a></div>");
+                     window.location.href='/SpringCassandra/users/profile';
                  }
              }
          });

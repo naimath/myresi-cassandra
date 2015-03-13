@@ -14,11 +14,11 @@ public class EmailSender {
     }
  
  
-    public void sendEmail(String from, String to, String subject, String msg){
+    public void sendEmail(String fromEmail, String toEmail, String subject, String msg){
     	
     	SimpleMailMessage message = new SimpleMailMessage();
-    	message.setFrom(from);
-		message.setTo(to);
+    	message.setFrom(fromEmail);
+		message.setTo(toEmail);
 		message.setSubject(subject);
 		message.setText(msg);
 		mailSender.send(message);

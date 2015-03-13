@@ -44,7 +44,8 @@ public class User {
 		String familiarSkills;
 		@Column(value = "profileAdded")
 		String profileadded;
-		
+		@Column(value = "image")
+		byte[] image;
 		
 		public String getFirstName() {
 			return firstName;
@@ -153,6 +154,12 @@ public class User {
 		}
 		public void setProfileadded(String profileadded) {
 			this.profileadded = profileadded;
+		}
+		public byte[] getImage() {
+			return image;
+		}
+		public void setImage(byte[] image) {
+			this.image = image;
 		}
 		
 }

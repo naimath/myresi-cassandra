@@ -183,9 +183,10 @@ $('#hitMeUpForm')
         //alert('Sending Message');
         $.ajax({
             type: "POST",
-            url: '/users/mail',
+            url: '/SpringCassandra/users/mail',
             data: $('#hitMeUpForm').serialize(),
             success: function(data){
+            	var data = JSON.parse(data);
                 if(data.error){
                     $('#loginModal').foundation('reveal', 'close');
                     $( "#secondModal" ).remove();

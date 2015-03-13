@@ -1,13 +1,16 @@
 package com.zuabmulabs.myresi.controller;
 
-import java.nio.ByteBuffer;
+import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -17,6 +20,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.zuabmulabs.myresi.model.User;
 import com.zuabmulabs.myresi.service.UserService;
+
+
+
 
 @Controller
 public class UserController {
@@ -32,6 +38,31 @@ public class UserController {
 		ModelAndView modelAndView = new ModelAndView("profile");		
 		modelAndView.addObject("user", user); 
 		return modelAndView;		
+	}
+	
+	
+	@RequestMapping(value="/users/profile/{userEmail}", method = RequestMethod.GET)
+	public ModelAndView getOthersProfile(HttpServletRequest request,@PathVariable("userEmail") String userEmail) {		
+		request.getSession().setAttribute("otherEmail", userEmail);
+		logger.info("Inside getOthersProfile ..."+userEmail);
+		User user= userService.getProfile(userEmail);		
+		ModelAndView modelAndView = new ModelAndView("profile");		
+		modelAndView.addObject("user", user); 
+		return modelAndView;		
+	}
+	
+	
+	@RequestMapping(value="/users/mail", method = RequestMethod.POST)
+	public @ResponseBody String sendUserMail(HttpServletRequest request ,@RequestParam String subject,@RequestParam String message) {	
+		
+		logger.info("Inside getOthersProfile ..."+request.getSession().getAttribute("otherEmail"));
+		try{
+			userService.sendEmail((String)request.getSession().getAttribute("otherEmail"), subject,message);	
+		}catch(Exception e){
+			return "{\"error\":\"Error While Sending email\"}";
+		}
+		return "{\"success\":\"Mail Sent Successfull\"}";
+				
 	}
 	
 	@RequestMapping(value = "/users/firstlogin", method = RequestMethod.GET)
@@ -133,36 +164,74 @@ public class UserController {
 	}
 	
 	@RequestMapping(value = "/users/search", method = RequestMethod.POST)
-	public @ResponseBody String userSearch(HttpServletRequest request,@RequestParam String usersearchterm) {
+	public ModelAndView  userSearch(HttpServletRequest request,@RequestParam String usersearchterm) {
 		logger.info("Editing Skills .."+request.getSession().getAttribute("email"));
-		User user = new User();
-		user.setEmail(usersearchterm);
-		
 			
-		if(userService.userSearch(user)==null){			
-			return "{\"success\":\"Modificaion Successfull\"}";
-		}else{						
-			return "{\"error\":\"Error in Edit Skills\"}";
-		}	
+		List<User> users = userService.userSearch(usersearchterm);
+		ModelAndView modelAndView = new ModelAndView("searchResult");		
+		modelAndView.addObject("users", users); 
+		return modelAndView;	
+			
+		
 		
 	}
 	
 	@RequestMapping(value = "/users/imageupload", method = RequestMethod.POST)
-	public @ResponseBody String imageUpload(HttpServletRequest request, @RequestParam("file") MultipartFile file) {
+	public @ResponseBody String imageUpload(HttpServletRequest request, @RequestParam("file") MultipartFile file) throws IOException {
 		logger.info("Editing Skills .."+request.getSession().getAttribute("email"));
 		User user = new User();
-		ByteBuffer fileByteBuffer = ByteBuffer.wrap( file.getBytes()) ;
-
+		user.setEmail((String)request.getSession().getAttribute("email"));
+		user.setImage(file.getBytes());
+		userService.imageUpload(user);
+		
+	
+		//ByteBuffer fileByteBuffer = ByteBuffer.wrap( file.getBytes()) ;
+		return "{\"success\":\"Modificaion Successfull\"}";
 		
 			
-		if(userService.userSearch(user)==null){			
+		/*if(userService.userSearch(user)==null){			
 			return "{\"success\":\"Modificaion Successfull\"}";
 		}else{						
 			return "{\"error\":\"Error in Edit Skills\"}";
-		}	
+		}	*/
 		
 	}
 	
+	@RequestMapping(value = "/users/image", method = RequestMethod.GET)
+	public @ResponseBody void getImage(HttpServletRequest request,HttpServletResponse response) throws IOException {
+		logger.info("Editing Skills .."+request.getSession().getAttribute("email"));
+		User user = new User();
+		user.setEmail((String)request.getSession().getAttribute("email"));
+		byte[] image = userService.getImage(user);
+		
+		 response.setContentType("image/png"); //or whatever file type you want to send. 
+		 try {
+			 response.getOutputStream().write(image);
+			 response.flushBuffer();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+	/*	InputStream in = new ByteArrayInputStream(image);
+		BufferedImage bImageFromConvert = ImageIO.read(in);
+		ImageIO.write(bImageFromConvert, "jpg", new File("c:/new-darksouls.jpg"));*/
+
+		 
+		
+
+
+		
+		//ByteBuffer fileByteBuffer = ByteBuffer.wrap( file.getBytes()) ;
+	//	return "{\"success\":\"Modificaion Successfull\"}";
+		
+			
+		/*if(userService.userSearch(user)==null){			
+			return "{\"success\":\"Modificaion Successfull\"}";
+		}else{						
+			return "{\"error\":\"Error in Edit Skills\"}";
+		}	*/
+		
+	}
 	
 	
 }

@@ -83,7 +83,7 @@
         <br>
         <div style="border-right:1px solid #ddd" class="large-4 columns text-center">
             <a href="#" data-reveal-id="secondModal" class="right fi-page-edit size-24"></a>
-            <div id="profileImage" style="background-image:url(${pageContext.request.contextPath}/resources/images/avatar.png)" class="large-centered"></div>
+            <div id="profileImage" style="background-image:url(${pageContext.request.contextPath}/users/image)" class="large-centered"></div>
             <div class="large-centered">
                 <h3>${user.firstName} ${user.lastName}</h3>
             </div>
@@ -153,7 +153,7 @@
             <h4>Personal Info</h4>
             <hr>
             <div class="large-12 columns">
-                <div id="profileImagePopup" style="background-image:url(https://graph.facebook.com/304390036414009/picture?width=150&amp;height=150)" class="large-centered">
+                <div id="profileImagePopup" style="background-image:url(${pageContext.request.contextPath}/users/image)" class="large-centered">
                     <div id="profileImageOverlay"></div>
                     <input id="imageUploder" type="file" name="imageUploder" style="opacity:0;">
                 </div>

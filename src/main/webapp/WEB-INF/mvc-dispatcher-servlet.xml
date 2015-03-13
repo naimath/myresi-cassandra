@@ -52,10 +52,10 @@
 	<mvc:resources mapping="/resources/**" location="resources/" />
 
 	<bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
-		<property name="host" value="smtp.gmail.com" />
+		<property name="host" value="smtp.zoho.com" />
 		<property name="port" value="587" />
-		<property name="username" value="mdnaimathullah@gmail.com" />
-		<property name="password" value="IRONDESK16" />
+		<property name="username" value="welcome@myresi.com" />
+		<property name="password" value="MyR351Activate!" />
 
 		<property name="javaMailProperties">
 			<props>

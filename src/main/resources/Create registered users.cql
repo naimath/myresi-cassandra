@@ -25,3 +25,5 @@ CREATE TABLE IF NOT EXISTS myresitest.registeredusers (
 
 CREATE INDEX IF NOT EXISTS registeredusers_activationtoken_idx ON myresitest.registeredusers (activationtoken);
 CREATE INDEX IF NOT EXISTS registeredusers_activate_idx ON myresitest.registeredusers (activate);
+CREATE INDEX IF NOT EXISTS registeredusers_firstname_idx ON myresitest.registeredusers (firstname);
+CREATE INDEX IF NOT EXISTS registeredusers_lastname_idx ON myresitest.registeredusers (lastname);
