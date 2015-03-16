@@ -59,6 +59,7 @@ public class UserController {
 		try{
 			userService.sendEmail((String)request.getSession().getAttribute("otherEmail"), subject,message);	
 		}catch(Exception e){
+			logger.error(e);
 			return "{\"error\":\"Error While Sending email\"}";
 		}
 		return "{\"success\":\"Mail Sent Successfull\"}";
