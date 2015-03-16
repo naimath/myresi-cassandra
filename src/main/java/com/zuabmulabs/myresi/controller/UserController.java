@@ -41,7 +41,7 @@ public class UserController {
 	}
 	
 	
-	@RequestMapping(value="/users/profile/{userEmail}", method = RequestMethod.GET)
+	@RequestMapping(value="/users/profile/{userEmail:.+}", method = RequestMethod.GET)
 	public ModelAndView getOthersProfile(HttpServletRequest request,@PathVariable("userEmail") String userEmail) {		
 		request.getSession().setAttribute("otherEmail", userEmail);
 		logger.info("Inside getOthersProfile ..."+userEmail);
