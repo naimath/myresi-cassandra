@@ -19,6 +19,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.zuabmulabs.myresi.model.User;
+import com.zuabmulabs.myresi.service.LoginService;
 import com.zuabmulabs.myresi.service.UserService;
 
 
@@ -30,6 +31,8 @@ public class UserController {
 	private static final Logger logger = Logger.getLogger(UserController.class);
 	@Autowired
 	private UserService userService;
+	@Autowired
+	private LoginService loginService;
 
 	@RequestMapping(value="/users/profile", method = RequestMethod.GET)
 	public ModelAndView getProfile(HttpServletRequest request) {		
@@ -37,17 +40,23 @@ public class UserController {
 		User user= userService.getProfile((String)request.getSession().getAttribute("email"));		
 		ModelAndView modelAndView = new ModelAndView("profile");		
 		modelAndView.addObject("user", user); 
+		modelAndView.addObject("visibility", "inline"); 
 		return modelAndView;		
 	}
 	
 	
-	@RequestMapping(value="/users/profile/{userEmail:.+}", method = RequestMethod.GET)
-	public ModelAndView getOthersProfile(HttpServletRequest request,@PathVariable("userEmail") String userEmail) {		
-		request.getSession().setAttribute("otherEmail", userEmail);
-		logger.info("Inside getOthersProfile ..."+userEmail);
-		User user= userService.getProfile(userEmail);		
+	@RequestMapping(value="/users/profile/{token:.+}", method = RequestMethod.GET)
+	public ModelAndView getOthersProfile(HttpServletRequest request,@PathVariable("token") String token) {		
+		
+		User user = loginService.validateRegistration(token);
+		
+		request.getSession().setAttribute("otherEmail", user.getEmail());		
+		logger.info("Inside getOthersProfile ..."+user.getEmail());
+		//User user= userService.getProfile(userEmail);		
 		ModelAndView modelAndView = new ModelAndView("profile");		
 		modelAndView.addObject("user", user); 
+		modelAndView.addObject("visibility", "none"); 
+		
 		return modelAndView;		
 	}
 	

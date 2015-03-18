@@ -1,17 +1,20 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:cassandra="http://www.springframework.org/schema/data/cassandra"
 	xmlns:context="http://www.springframework.org/schema/context"
-	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:security="http://www.springframework.org/schema/security"
 	xsi:schemaLocation="http://www.springframework.org/schema/cql 
 		http://www.springframework.org/schema/cql/spring-cql.xsd
    		http://www.springframework.org/schema/data/cassandra
    		http://www.springframework.org/schema/data/cassandra/spring-cassandra.xsd	
         http://www.springframework.org/schema/beans     
-        http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+        http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
         http://www.springframework.org/schema/context 
-        http://www.springframework.org/schema/context/spring-context-3.0.xsd
+        http://www.springframework.org/schema/context/spring-context-3.2.xsd
         http://www.springframework.org/schema/mvc
-        http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd">
+        http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd
+        http://www.springframework.org/schema/security
+		http://www.springframework.org/schema/security/spring-security-3.2.xsd">
+
 
 	<context:component-scan base-package="com.zuabmulabs.myresi" />
 
@@ -72,9 +75,37 @@
 	<bean id="multipartResolver"
 		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
 		<!-- setting maximum upload size -->
-		<property name="maxUploadSize" value="500000" />
-
+		<property name="maxUploadSize" value="25000000" />
 	</bean>
+
+	<bean id="cassandraDataSource"
+		class="org.apache.cassandra.cql.jdbc.CassandraDataSource">
+		<constructor-arg name="host"	value="localhost"></constructor-arg>
+		<constructor-arg name="port" type="int" value="9160"></constructor-arg>
+		<constructor-arg name="keyspace"    	value="myresitest"></constructor-arg>
+		<constructor-arg name="user" 		value="cassandra"></constructor-arg>
+		<constructor-arg name="password"	value="cassandra"></constructor-arg>
+		<constructor-arg name="version" value="2.1.2"></constructor-arg>
+  		<constructor-arg name="consistency" value="ALL"></constructor-arg>
+		
+	</bean>
+
+	<security:http auto-config="true">
+		<security:intercept-url pattern="/home"
+			access="IS_AUTHENTICATED_ANONYMOUSLY" />
+		<security:intercept-url pattern="/resources/**"
+			access="IS_AUTHENTICATED_ANONYMOUSLY" />
+		<security:intercept-url pattern="/**" access="IS_AUTHENTICATED_ANONYMOUSLY" />
+	</security:http>
+
+	<security:authentication-manager>
+		<security:authentication-provider>
+			<security:jdbc-user-service
+				data-source-ref="cassandraDataSource"
+				users-by-username-query="select email , password  from registeredusers where email = ? "
+				authorities-by-username-query="select email, role from registeredusers where email= ? " />
+		</security:authentication-provider>
+	</security:authentication-manager>
 
 </beans>
 

@@ -180,6 +180,7 @@ public class UserDAO {
 			 user.setFamiliarSkills(row.getString("familiarskills"));
 			 user.setAboutMe(row.getString("aboutme"));
 			 user.setProfileadded(row.getString("profileadded"));
+			 user.setActivationToken(row.getString("activationtoken"));
 			 users.add(user);
 		 }
 	}

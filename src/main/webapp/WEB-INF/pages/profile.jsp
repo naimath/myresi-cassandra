@@ -45,9 +45,7 @@
             </ul>
             <!-- Left Nav Section-->
             <ul class="left">
-                <li><a href="#" data-reveal-id="registerModal">Register</a>
-                </li>
-                <li><a href="#" data-reveal-id="loginModal">Login</a>
+               <li><a href="${pageContext.request.contextPath}/logout" >logout</a>
                 </li>
                 <li><a href="#">About Us</a>
                 </li>
@@ -82,7 +80,9 @@
         <hr>
         <br>
         <div style="border-right:1px solid #ddd" class="large-4 columns text-center">
-            <a href="#" data-reveal-id="secondModal" class="right fi-page-edit size-24"></a>
+			<div style="display: ${visibility}">
+				<a href="#" data-reveal-id="secondModal" class="right fi-page-edit size-24" ></a>
+			</div>
             <div id="profileImage" style="background-image:url(${pageContext.request.contextPath}/users/image)" class="large-centered"></div>
             <div class="large-centered">
                 <h3>${user.firstName} ${user.lastName}</h3>
@@ -112,7 +112,9 @@
             </ul>
         </div>
         <div class="large-8 columns">
+        	<div style="display: ${visibility}">
             <a id="editIconNotCenter" href="#" data-reveal-id="fourthModal" class="right fi-page-edit size-24"></a>
+            </div>
             <div class="large-centered"></div>
             <div class="large-12 columns">
                 <h4>Skills</h4>

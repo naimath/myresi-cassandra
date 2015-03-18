@@ -46,9 +46,7 @@
             </ul>
             <!-- Left Nav Section-->
             <ul class="left">
-                <li><a href="#" data-reveal-id="registerModal">Register</a>
-                </li>
-                <li><a href="#" data-reveal-id="loginModal">Login</a>
+               <li><a href="${pageContext.request.contextPath}/logout" >logout</a>
                 </li>
                 <li><a href="#">About Us</a>
                 </li>
@@ -61,25 +59,28 @@
 	    <div style="padding:10px;" class="row">
 	        <h1>Users</h1>
 	        <hr>
-	        <c:if  test="${!empty users}">
-   				<c:forEach items="${users}" var="user">
-			        <div class="large-12 columns panel text-center">
-			            <!--div.large-2.columns-->
-			            <div id="profileImage" style="background-image:url(${pageContext.request.contextPath}/resources/images/avatar.png)" class="large-centered"></div>
-			            <div class="large-12 columns">
-			                <h3> ${user.lastName}, ${user.firstName}</h3>
-			                <h5> ${user.position}</h5>
-			                <h5 class="left"> About ${user.firstName} </h5>
-			                 <hr>
-			                 <p class="text-left">
-			                 	${user.aboutMe}
-			                 </p>
-			            </div>
-			            <p class="large-centered medium-centered small-centered text-center"><a href="${pageContext.request.contextPath}/users/profile/${user.email}" class="button small">View Profile</a>
-			            </p>
-			        </div>
-	           </c:forEach>
-			</c:if>  
+	        <c:choose>
+		        <c:when  test="${!empty users}">
+	   				<c:forEach items="${users}" var="user">
+				        <div class="large-12 columns panel text-center">
+				            <!--div.large-2.columns-->
+				            <div id="profileImage" style="background-image:url(${pageContext.request.contextPath}/resources/images/avatar.png)" class="large-centered"></div>
+				            <div class="large-12 columns">
+				                <h3> ${user.lastName}, ${user.firstName}</h3>
+				                <h5> ${user.position}</h5>
+				                <h5 class="left"> About ${user.firstName} </h5>
+				                 <hr>
+				                 <p class="text-left">
+				                 	${user.aboutMe}
+				                 </p>
+				            </div>
+				            <p class="large-centered medium-centered small-centered text-center"><a href="${pageContext.request.contextPath}/users/profile/${user.activationToken}" class="button small">View Profile</a>
+				            </p>
+				        </div>
+		           </c:forEach>
+				</c:when>  
+				<c:otherwise>No users found matching this name. Please try your search again.</c:otherwise>
+			</c:choose>
 	    </div>
 	   
 		

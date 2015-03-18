@@ -73,8 +73,11 @@ event.stopPropagation(); // Stop stuff happening
       {
           if(typeof data.error === 'undefined')
           {
-              // Success so call function to process the form
-              submitForm(event, data);
+        	  var el = document.getElementById("profileImagePopup");
+ 			 el.style.backgroundImage = "url(/SpringCassandra/users/image)"; // change it			
+ 			
+ 			var el = document.getElementById("profileImage");
+ 		 	 el.style.backgroundImage = "url(/SpringCassandra/users/image)"; // change it	
           }
           else
           {
