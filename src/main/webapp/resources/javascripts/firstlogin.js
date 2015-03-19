@@ -1,5 +1,5 @@
 $(document).foundation();
-$('#firstModal').foundation('reveal', 'open');
+$('#secondModal').foundation('reveal', 'open');
 /*
  Ajax To Validate and POST the Registration Form.
  * *
@@ -48,7 +48,8 @@ $('#editSkills')
                 if(data.error){
                     $('#result1').html("<div data-alert class=\"alert-box alert \">"+data.error+"<a href=\"#\" class=\"close\">&times;</a></div>");
                 }else{
-                    $('#result1').html("<div data-alert class=\"alert-box success \">"+data.success+"<a href=\"#\" class=\"close\">&times;</a></div>");
+                    $('#fourthModal').foundation('reveal', 'close');
+                    window.location.href='/users/profile';
                 }
             }
         });
@@ -77,7 +78,8 @@ $('#editProfile')
                 if(data.error){
                     $('#result2').html("<div data-alert class=\"alert-box alert \">"+data.error+"<a href=\"#\" class=\"close\">&times;</a></div>");
                 }else{
-                    $('#result2').html("<div data-alert class=\"alert-box success \">"+data.success+"<a href=\"#\" class=\"close\">&times;</a></div>");
+                    $('#secondModal').foundation('reveal', 'close');
+                    $('#thirdModal').foundation('reveal', 'open');
                 }
             }
         });
@@ -90,7 +92,7 @@ $('#editProfile')
 
 /*
  Ajax To Validate and POST the profile .
- */
+
 
 $('#saveemail')
     .on('invalid.fndtn.abide', function () {
@@ -121,10 +123,6 @@ $('#saveemail')
 /*
  Image Upload Handler.
  */
-
-$('#profileImageOverlay').click(function(){
-    $('input[name=imageUploder]').trigger('click');
-});
 
 $('input[name=imageUploder]').change(function(){
     console.log('Change Event fired');
@@ -180,7 +178,8 @@ $('#workDetails')
                 if(data.error){
                     $('#result').html("<div data-alert class=\"alert-box alert \">"+data.error+"<a href=\"#\" class=\"close\">&times;</a></div>");
                 }else{
-                    $('#result').html("<div data-alert class=\"alert-box success \">"+data.success+"<a href=\"#\" class=\"close\">&times;</a></div>");
+                    $('#thirdModal').foundation('reveal', 'close');
+                    $('#fourthModal').foundation('reveal', 'open');
                 }
             }
         });

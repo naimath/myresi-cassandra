@@ -11,7 +11,7 @@
 <nav data-topbar="" role="navigation" class="top-bar">
         <ul class="title-area">
             <li class="name">
-                <h1><a href="/">My Resi</a></h1>
+                <h1><a href="${pageContext.request.contextPath}/">My Resi</a></h1>
             </li>
             <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone-->
             <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a>
@@ -87,7 +87,7 @@
         <hr>
         <form id="registrationForm" data-abide="ajax" novalidate="novalidate">
             <div class="row">
-                <div class="large-8 columns">
+                <div class="large-12 columns">
                     <div class="large-6 columns">
                         <label>First Name
                             <input type="text" name="firstName" placeholder="Enter your first name" required="" data-abide-validator="badWordsValidator">
@@ -113,31 +113,21 @@
                             <input type="password" name="confirmPassword" placeholder="Re-type password" required="" data-equalto="password">
                         </label><small class="error">Passwords Do Not Match.</small>
                     </div>
+                    <div class="large-12 columns text-center panel">
+                        By clicking Register, you agree to our <a href="#"><em>Terms and Conditions</em></a>, <a href="#"><em>Privacy Policy</em></a>, and <a href="#"><em>Use of Cookies</em></a>.
+                    </div>
                     <div class="large-12 columns text-center">
                         <input type="submit" value="Register" class="button">
                     </div>
                     <hr class="show-for-medium-down">
                 </div>
-                <div class="large-4 columns text-center">
-                    <br>
+                <div class="large-12 columns text-center">
+                    <p>Or Sign Up with Social Media</p>
                     <div class="large-6 medium-6 small-6 columns">
-                        <a href="/users/auth/facebook">
-                            <div class="button fi-social-facebook size-36"></div>
-                        </a>
+                        <a class="button fi-social-facebook size-36 right" href="/users/auth/facebook"> </a>
                     </div>
                     <div class="large-6 medium-6 small-6 columns">
-                        <a href="/users/auth/twitter">
-                            <div class="button fi-social-twitter size-36"></div>
-                        </a>
-                    </div>
-                    <div class="large-6 medium-6 small-6 columns">
-                        <a href="/users/auth/linkedin">
-                            <div class="button fi-social-linkedin size-36"></div>
-                        </a>
-                    </div>
-                    <div class="large-6 medium-6 small-6 columns">
-                        <a href="/users/auth/google">
-                            <div class="button fi-social-google-plus size-36"></div>
+                        <a href="/users/auth/google" class="button fi-social-google-plus size-36 left">
                         </a>
                     </div>
                 </div>
