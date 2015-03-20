@@ -19,7 +19,7 @@
     <nav data-topbar="" role="navigation" class="top-bar">
         <ul class="title-area">
             <li class="name">
-                <h1><a href="/">My Resi</a></h1>
+                <h1><a href="${pageContext.request.contextPath}/">My Resi</a></h1>
             </li>
             <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone-->
             <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a>
@@ -57,7 +57,7 @@
         </section>
     </nav>
     <div class="row">
-        <div id="firstModal" data-reveal="" data-options="close_on_background_click:false" class="reveal-modal">
+        <!--div id="firstModal" data-reveal="" data-options="close_on_background_click:false" class="reveal-modal">
             <h1>Welcome to Myresi</h1><sub>Step 1 of 4</sub>
             <hr>
             <h4>We just need some information from you, press next to get started!!</h4>
@@ -80,15 +80,17 @@
                 </form>
                 <div id="resultEmail"></div><a href="#" data-reveal-id="secondModal" class="secondary button right">Next</a>
             </div>
-        </div>
+        </div-->
         <div id="secondModal" data-reveal="" data-options="close_on_background_click:false" class="reveal-modal" style="top: 0">
             <form id="editProfile" data-abide="ajax">
-                <h4>Personal Info</h4><sub>Step 2 of 4</sub>
+                <h4>Personal Info</h4><sub>Step 1 of 3</sub>
                 <hr>
                 <div class="large-12 columns">
                     <div id="profileImage" style="background-image:url(/images/avatar.png/); position:relative;overflow:hidden" class="large-centered">
                         <div id="profileImageOverlay"></div>
-                        <input id="imageUploder" type="file" name="imageUploder" accept="image/*" style="position:absolute; left:-999;" class="show-for-medium-down">
+                    </div>
+                    <div class="large-12 columns text-center">
+                        <input id="imageUploder" type="file" name="imageUploder" style="width: 88px" accept="image/*">
                     </div>
                     <div class="large-6 columns">
                         <label>First Name
@@ -131,24 +133,16 @@
                             <input id="dp-margin" class="span2" type="text" name="dateOfBirth" placeholder="mm/dd/yyyy" data-date-format="mm/dd/yyyy" required=""/>
                         </label>
                     </div>
+                    <hr/>
                     <div class="text-center large-12 columns">
-                        <input type="submit" value="Update Profile" class="button">
+                            <input type="submit" value="Next" class="button right">
                     </div>
                 </div>
-                <hr>
                 <div id="result2" class="large-12 columns text-center"></div>
             </form>
-            <div class="large-12 columns"></div>
-            <br>
-            <div class="large-12 columns">
-                <div class="large-6 medium-3 small-3 columns"><a href="#" data-reveal-id="firstModal" class="secondary button">Back</a>
-                </div>
-                <div class="large-6 medium-3 small-3 columns"><a href="#" data-reveal-id="thirdModal" class="secondary button right">Next</a>
-                </div>
-            </div>
         </div>
         <div id="thirdModal" data-reveal="" data-options="close_on_background_click:false" class="reveal-modal">
-            <h4>Work Details</h4><sub>Step 3 of 4</sub>
+            <h4>Work Details</h4><sub>Step 2 of 3</sub>
             <hr>
             <form id="workDetails" data-abide="ajax">
                 <div class="large-12 columns">
@@ -176,20 +170,20 @@
                     </div>
                 </div>
                 <div class="large-12 columns text-center">
-                    <input type="submit" value="Save" style="margin-bottom:10px !important;" class="button">
+                    <div class="large-6 columns">
+                        <div class="large-6 medium-3 small-3 columns"><a href="#" data-reveal-id="secondModal" class="secondary button">Back</a></div>
+                    </div>
+                    <div class="large-6 columns">
+                        <input type="submit" value="Next" style="margin-bottom:10px !important;" class="button right">
+                    </div>
                 </div>
-                <hr>
-                <div id="result" class="large-12 columns text-center"></div>
+                <div id="result" class="large-12 columns text-center">
+                </div>
             </form>
-            <div class="large-12 columns">
-                <div class="large-6 medium-3 small-3 columns"><a href="#" data-reveal-id="secondModal" class="secondary button">Back</a>
-                </div>
-                <div class="large-6 medium-3 small-3 columns"><a href="#" data-reveal-id="fourthModal" class="secondary button right">Next</a>
-                </div>
-            </div>
         </div>
+
         <div id="fourthModal" data-reveal="" data-options="close_on_background_click:false" class="reveal-modal">
-            <h4>Skills</h4><sub>Step 4 of 4</sub>
+            <h4>Skills</h4><sub>Step 3 of 3</sub>
             <hr>
             <p class="large-12 columns">
                 <h4 class="text-center">Edit Skills</h4>
@@ -217,20 +211,19 @@
                             <input type="text" name="familiarSkills" id="familiarSkills" placeholder="Select Your skills by typing the name" class="skillsInput">
                             <!--small.error Cannot be Empty-->
                         </div>
-                        <div style="margin-bottom:10px;" class="large-12 columns text-center">
-                            <input type="submit" value="Update Skills" class="button">
+                        <div style="margin-bottom:10px;" class="large-12 columns">
+                            <input type="submit" value="Done" class="button right">
                         </div>
+                        <div class="large-12 columns text-center" id="result1"></div>
                     </div>
-                    <hr>
-                    <div id="result1" class="large-12 columns text-center"></div>
                 </form>
             </p>
-            <div class="large-12 columns">
+            <!--div class="large-12 columns">
                 <div class="large-6 medium-3 small-3 columns"><a href="#" data-reveal-id="thirdModal" class="secondary button">Back</a>
                 </div>
                 <div class="large-6 medium-3 small-3 columns"><a href="${pageContext.request.contextPath}/users/firstLoginCompleted" class="primary button right">Done</a>
                 </div>
-            </div>
+            </div-->
             <!--a.close-reveal-modal ×-->
         </div>
         <div id="linkedInWizard1" data-reveal="" class="reveal-modal">
@@ -243,10 +236,10 @@
             <input id="importedSkills" type="text" value=""><a class="close-reveal-modal">&times;</a>
         </div>
     </div>
-    <script type="text/javascript" src="https://platform.linkedin.com/in.js">
+    <!--script type="text/javascript" src="https://platform.linkedin.com/in.js">
         api_key: 75 rmn6s0ittiqp
         authorize: true
-    </script>
+    </script-->
 
     <script type="text/javascript" src="${pageContext.request.contextPath}/resources/vendor/foundation/js/vendor/jquery.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/resources/vendor/foundation/js/vendor/jquery-ui.min.js"></script>
