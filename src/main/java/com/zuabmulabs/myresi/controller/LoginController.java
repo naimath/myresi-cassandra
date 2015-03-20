@@ -99,7 +99,7 @@ public class LoginController {
 		
 		
 		if(loginService.resisterUser(user)){	
-			if(loginService.sendEmail(user,request.getServerName(), request.getServerPort(),request.getContextPath())){
+			if(loginService.sendEmail(user,request.getServerName(), request.getServerPort(),request.getContextPath(),request.getSession().getServletContext().getRealPath("/WEB-INF/pages/UserContactEmail.html"))){
 				return "{\"success\":\"Mail sent, Registration successfull\"}";
 			}else{
 				return "{\"error\":\"Error in sending mail\"}";

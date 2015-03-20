@@ -74,10 +74,10 @@ event.stopPropagation(); // Stop stuff happening
           if(typeof data.error === 'undefined')
           {
         	  var el = document.getElementById("profileImagePopup");
- 			 el.style.backgroundImage = "url(/SpringCassandra/users/image)"; // change it			
- 			
- 			var el = document.getElementById("profileImage");
- 		 	 el.style.backgroundImage = "url(/SpringCassandra/users/image)"; // change it	
+  			 el.style.backgroundImage = "url(/SpringCassandra/users/image?"+new Date().getTime()+")"; // change it			
+  			
+  			var el = document.getElementById("profileImage");
+  		 	 el.style.backgroundImage = "url(/SpringCassandra/users/image?"+new Date().getTime()+")"; // change it		
           }
           else
           {
