@@ -46,7 +46,7 @@
             </ul>
             <!-- Left Nav Section-->
             <ul class="left">
-               <li><a href="${pageContext.request.contextPath}/logout" >logout</a>
+               <li><a href="${pageContext.request.contextPath}/logout" >Logout</a>
                 </li>
                 <li><a href="#">About Us</a>
                 </li>
@@ -160,7 +160,7 @@
                     </div>
                 </div>
             </div>
-        </form><a class="close-reveal-modal">×</a>
+        </form><a class="close-reveal-modal">x</a>
     </div>
     <div id="loginModal" data-reveal="" class="reveal-modal large">
         <h2>Login</h2>
@@ -206,7 +206,7 @@
                     </div>
                 </div>
             </div>
-        </form><a class="close-reveal-modal">×</a>
+        </form><a class="close-reveal-modal">x</a>
     </div>
     <div id="contactModal" data-reveal="" class="reveal-modal large">
         <h2>Get in touch</h2>
@@ -231,7 +231,7 @@
                 <div class="large-12 columns text-center">
                     <input type="submit" value="Send Mail" class="button radius">
                 </div>
-            </div><a class="close-reveal-modal">×</a>
+            </div><a class="close-reveal-modal">x</a>
         </form>
     </div>
     <div id="hitMeUpModal" data-reveal="" class="reveal-modal large">
@@ -257,7 +257,7 @@
                 <div class="large-12 columns text-center">
                     <input type="submit" value="Send Mail" class="button radius">
                 </div>
-            </div><a class="close-reveal-modal">×</a>
+            </div><a class="close-reveal-modal">x</a>
         </form>
     </div>
     <footer>

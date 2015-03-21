@@ -1,5 +1,5 @@
 $(document).foundation();
-$('#secondModal').foundation('reveal', 'open');
+$('#firstModal').foundation('reveal', 'open');
 /*
  Ajax To Validate and POST the Registration Form.
  * *
