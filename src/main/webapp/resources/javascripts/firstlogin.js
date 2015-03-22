@@ -49,7 +49,7 @@ $('#editSkills')
                     $('#result1').html("<div data-alert class=\"alert-box alert \">"+data.error+"<a href=\"#\" class=\"close\">&times;</a></div>");
                 }else{
                     $('#fourthModal').foundation('reveal', 'close');
-                    window.location.href='/users/profile';
+                    window.location.href='/SpringCassandra/users/profile';
                 }
             }
         });

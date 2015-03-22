@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <html lang="en" class="no-js">
 
 <head>
@@ -72,8 +73,10 @@
                     </div>
                 </form>
             </div>
-            <div class="large-3 columns text-center"><a data-reveal-id="hitMeUpModal" href="#" class="button small radius right center expand">Send Message</a>
-            </div>
+             <c:if test="${visibility == \"none\"}">
+           		 <div class="large-3 columns text-center"><a data-reveal-id="hitMeUpModal" href="#" class="button small radius right center expand">Send Message</a>
+           		 </div>
+           	</c:if>
             <div class="large-3 columns text-center"><a href="${pageContext.request.contextPath}/logout" class="button small radius right center expand">Logout</a>
             </div>
         </div>
