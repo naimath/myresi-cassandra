@@ -57,33 +57,18 @@
         </section>
     </nav>
     <div class="row">
-        <!--div id="firstModal" data-reveal="" data-options="close_on_background_click:false" class="reveal-modal">
+        <div id="firstModal" data-reveal="" data-options="close_on_background_click:false" class="reveal-modal small">
             <h1>Welcome to Myresi</h1><sub>Step 1 of 4</sub>
             <hr>
-            <h4>We just need some information from you, press next to get started!!</h4>
+            <h5>Let's get this party started!  Click "Continue" below to start building your MyResi profile!</h5>
+            <hr/>
             <div class="large-12 columns">
-                <form id="saveemail" data-abide="ajax">
-                    <div class="large-12 columns">
-                        <label>Email address
-                            <input type="email" id="enterEmail" name="enterEmail" placeholder="Enter email address" required="" value="${user.email}">
-                        </label><small class="error">Email cannot be empty</small>
-                    </div>
-                    <div class="large-12 columns">
-                        <label>Confirm Email Address
-                            <input type="email" name="confirmEmail" placeholder="Confirm Email Address" required="" data-equalto="enterEmail" value="${user.email}">
-                        </label><small class="error">Email does not match</small>
-                    </div>
-                    <div class="large-12 columns text-center">
-                        <input type="submit" value="Update" class="button">
-                    </div>
-                    <hr>
-                </form>
-                <div id="resultEmail"></div><a href="#" data-reveal-id="secondModal" class="secondary button right">Next</a>
+                <a href="#" data-reveal-id="secondModal" class="secondary button right">Next</a>
             </div>
-        </div-->
+        </div>
         <div id="secondModal" data-reveal="" data-options="close_on_background_click:false" class="reveal-modal" style="top: 0">
             <form id="editProfile" data-abide="ajax">
-                <h4>Personal Info</h4><sub>Step 1 of 3</sub>
+                <h4>Personal Info</h4><sub>Step 2 of 4</sub>
                 <hr>
                 <div class="large-12 columns">
                     <div id="profileImage" style="background-image:url(/images/avatar.png/); position:relative;overflow:hidden" class="large-centered">
@@ -119,7 +104,7 @@
                         </label>
                     </div>
                     <div class="large-6 columns">
-                        <label>State
+                        <label>State or Province
                             <input type="text" name="state" placeholder="State" required="">
                         </label>
                     </div>
@@ -129,20 +114,30 @@
                         </label>
                     </div>
                     <div class="large-6 columns">
+                        <label> Zipcode
+                            <input type="text" name="zipcode" placeholder="Enter your zipcode" required=""/>
+                        </label><small class="error">Cannot Be Empty</small>
+                    </div>
+                    <div class="large-12 columns">
                         <label>Date Of birth
                             <input id="dp-margin" class="span2" type="text" name="dateOfBirth" placeholder="mm/dd/yyyy" data-date-format="mm/dd/yyyy" required=""/>
                         </label>
                     </div>
                     <hr/>
                     <div class="text-center large-12 columns">
-                            <input type="submit" value="Next" class="button right">
+                        <div class="large-6 columns">
+                            <button data-reveal-id="firstModal" class="button secondary expand left"> Back </button>
+                        </div>
+                        <div class="large-6 columns">
+                            <input type="submit" value="Next" class="button expand right">
+                        </div>
                     </div>
                 </div>
                 <div id="result2" class="large-12 columns text-center"></div>
             </form>
         </div>
         <div id="thirdModal" data-reveal="" data-options="close_on_background_click:false" class="reveal-modal">
-            <h4>Work Details</h4><sub>Step 2 of 3</sub>
+            <h4>Work Details</h4><sub>Step 3 of 4</sub>
             <hr>
             <form id="workDetails" data-abide="ajax">
                 <div class="large-12 columns">
@@ -171,10 +166,10 @@
                 </div>
                 <div class="large-12 columns text-center">
                     <div class="large-6 columns">
-                        <div class="large-6 medium-3 small-3 columns"><a href="#" data-reveal-id="secondModal" class="secondary button">Back</a></div>
+                        <div class="large-6 medium-3 small-3 columns"><a href="#" data-reveal-id="secondModal" class="secondary expand button">Back</a></div>
                     </div>
                     <div class="large-6 columns">
-                        <input type="submit" value="Next" style="margin-bottom:10px !important;" class="button right">
+                        <input type="submit" value="Next" style="margin-bottom:10px !important;" class="button expand right">
                     </div>
                 </div>
                 <div id="result" class="large-12 columns text-center">
@@ -183,7 +178,7 @@
         </div>
 
         <div id="fourthModal" data-reveal="" data-options="close_on_background_click:false" class="reveal-modal">
-            <h4>Skills</h4><sub>Step 3 of 3</sub>
+            <h4>Skills</h4><sub>Step 4 of 4</sub>
             <hr>
             <p class="large-12 columns">
                 <h4 class="text-center">Edit Skills</h4>

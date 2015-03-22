@@ -4,8 +4,9 @@
 
 <head>
     <meta charset="utf-8">
+    <!-- If you delete this meta tag World War Z will become a reality -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title></title>
+    <title>MyResi | Profile</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/vendor/foundation/css/normalize.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/vendor/foundation/css/foundation.min.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/vendor/foundation/css/foundation-icons.css">
@@ -20,7 +21,7 @@
     <nav data-topbar="" role="navigation" class="top-bar">
         <ul class="title-area">
             <li class="name">
-                <h1><a href="/">My Resi</a></h1>
+                <h1><a href="${pageContext.request.contextPath}/">My Resi</a></h1>
             </li>
             <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone-->
             <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a>
@@ -55,10 +56,6 @@
             </ul>
         </section>
     </nav>
-    <script type="text/javascript" src="https://platform.linkedin.com/in.js">
-        api_key: 75 rmn6s0ittiqp
-        authorize: true
-    </script>
     <div style="background-color:#f9f9f9;" class="row">
         <div style="padding-top:15px;" class="large-12 columns">
             <div class="large-6 columns">
@@ -86,7 +83,7 @@
 			<div style="display: ${visibility}">
 				<a href="#" data-reveal-id="secondModal" class="right fi-page-edit size-24" ></a>
 			</div>
-            <div id="profileImage" style="background-image:url(${pageContext.request.contextPath}/users/image)" class="large-centered"></div>
+            <div id="profileImage1" style="background-image:url(${pageContext.request.contextPath}/users/image)" class="large-centered"></div>
             <div class="large-centered">
                 <h3>${user.firstName} ${user.lastName}</h3>
             </div>
@@ -149,69 +146,92 @@
             <h4>About Me<p> ${user.aboutMe} </p></h4>
         </div>
     </div>
-    <div id="secondModal" data-reveal="" class="reveal-modal xlarge">
-  			  <form  id="imageUpload" method="POST"  enctype="multipart/form-data" data-abide="ajax">
-       				    <input type="file" name="file">    				   
-   				        <input type="submit" value="Upload"> Press here to upload the file!
- 				 </form>
-        <form id="editProfile" data-abide="ajax">
+    <div id="secondModal" data-reveal="" class="reveal-modal xlarge" style="top: 0">
+        <form id="editProfileInfo" data-abide="ajax">
             <h4>Personal Info</h4>
             <hr>
             <div class="large-12 columns">
-                <div id="profileImagePopup" style="background-image:url(${pageContext.request.contextPath}/users/image)" class="large-centered">
+                <div id="profileImage" style="background-image:url(/images/avatar.png/); position:relative;overflow:hidden" class="large-centered">
                     <div id="profileImageOverlay"></div>
-                    <input id="imageUploder" type="file" name="imageUploder" style="opacity:0;">
                 </div>
-            </div>
-            <div class="large-6 columns">
-                <label>First Name
-                    <input type="text" name="firstName" placeholder="Enter your first name" value="${user.firstName}" required="">
-                </label>
-            </div>
-            <div class="large-6 columns">
-                <label>Last Name
-                    <input type="text" name="lastName" placeholder="Enter your last name" value="${user.lastName}" required="">
-                </label>
-            </div>
-            <div style="border-left:1px solid #ddd" class="large-centered">
-                <div class="large-12 columns">
-                    <label>About Me
-                        <textarea rows="1" name="aboutMe" placeholder="Write somehting about yourself, no more than 250 characters.">${user.aboutMe}</textarea>
+                <div class="large-12 columns text-center">
+                    <input id="imageUploder" type="file" name="imageUploder" style="width: 89px" accept="image/*">
+                </div>
+                <div class="large-6 columns">
+                    <label>First Name
+                        <input type="text" name="firstName" placeholder="Enter your first name" required="" value="${user.firstName}">
                     </label>
+                </div>
+                <div class="large-6 columns">
+                    <label>Last Name
+                        <input type="text" name="lastName" placeholder="Enter your last name" required="" value="${user.lastName}">
+                    </label>
+                </div>
+                <div style="border-left:1px solid #ddd" class="large-centered">
+                    <div class="large-12 columns">
+                        <label>About Me
+                            <textarea rows="1" name="aboutMe" maxlength="250" placeholder="Write something about yourself, no more than 250 characters." style="resize:none;"></textarea>
+                        </label>
+                    </div>
                 </div>
             </div>
             <div class="large-12 columns">
-                <h5 style="padding-left:0.9375rem">Address</h5>
-                <br>
                 <div class="large-6 columns">
                     <label>City
-                        <input type="text" name="city" placeholder="City" value="${user.city}" required="">
+                        <input type="text" name="city" placeholder="City" required="">
                     </label>
                 </div>
                 <div class="large-6 columns">
                     <label>State
-                        <input type="text" name="state" placeholder="State" value="${user.state}" required="">
+                        <input type="text" name="state" placeholder="State" required="">
                     </label>
                 </div>
                 <div class="large-6 columns">
                     <label>Country
-                        <input type="text" name="country" placeholder="Country" value="${user.country}" required="">
+                        <input type="text" name="country" placeholder="Country" required="">
+                    </label>
+                </div>
+                <div class="large-6 columns">
+                    <label>Date Of birth
+                        <input id="dp-margin" class="span2" type="text" name="dateOfBirth" placeholder="mm/dd/yyyy" data-date-format="mm/dd/yyyy" required=""/>
+                    </label>
+                </div>
+                <div class="large-12 columns" style="padding-left: 0;padding-right: 0;">
+                    <div class="large-6 columns">
+                        <label>Positions
+                            <input type="text" name="position" placeholder="CEO an Lorem Ipsum" required="">
+                        </label><small class="error">Cannot Be empty</small>
+                    </div>
+                    <div class="large-6 columns">
+                        <label>Current Workplace
+                            <input type="text" name="currentWorkplace" placeholder="Information Technology And Services" required="">
+                        </label><small class="error">Cannot Be empty</small>
+                    </div>
+                </div>
+                <div class="large-12 columns" style="padding-left: 0;padding-right: 0;">
+                    <div class="large-6 columns">
+                        <label>Field of Work
+                            <input type="text" name="workField" placeholder="E.g:RnD, Management" required="" class="right">
+                        </label><small class="error">Cannot Be empty</small>
+                    </div>
+                    <div class="large-6 columns">
+                        <label>Educational Qualification
+                            <input type="text" name="educationalQualification" placeholder="Degree in Randomness" required="" class="right">
+                        </label><small class="error">Cannot Be empty</small>
+                    </div>
+                </div>
+                <div class="large-12 columns">
+                    <label> Chenge Email Address
+                        <input type="email" name="email" placeholder="Enter different email address if you don't want to use the current one."/>
                     </label>
                 </div>
                 <div class="text-center large-12 columns">
-                    <hr>
-                    <input type="submit" value="Update Profile" class="button">
+                    <input type="submit" value="Update" class="button">
                 </div>
             </div>
-            <!--hr-->
             <div id="result2" class="large-12 columns text-center"></div>
         </form>
-        <!--div.large-12.columns-->
-        <!--br-->
-        <!--div.large-12.columnsdiv.large-6.medium-3.small-3.columns
-    a.secondary.button(href='#', data-reveal-id='firstModal') Back
-div.large-6.medium-3.small-3.columns
-    a.secondary.button.right(href='#', data-reveal-id='thirdModal') Next--><a class="close-reveal-modal">x</a>
+        <a class="close-reveal-modal">x</a>
     </div>
     <div id="fourthModal" data-reveal="" class="reveal-modal">
         <h4>Edit Skills</h4>
@@ -231,25 +251,18 @@ div.large-6.medium-3.small-3.columns
                         <label>Intermediate Skills</label>
                     </div>
                     <div class="large-9 columns">
-                        <input type="text" , name="intermediateSkills" id="intermediateSkills" placeholder="Select Your skills by typing the name" value="${user.intermediateSkills}" required="" class="skillsInput">
+                        <input type="text"  name="intermediateSkills" id="intermediateSkills" placeholder="Select Your skills by typing the name" value="${user.intermediateSkills}" required="" class="skillsInput">
                     </div>
                     <div class="large-3 columns">
                         <label>Familiar Skills</label>
                     </div>
                     <div class="large-9 columns">
-                        <input type="text" , name="familiarSkills" id="familiarSkills" placeholder="Select Your skills by typing the name" required="" value="${user.familiarSkills}" class="skillsInput">
+                        <input type="text"  name="familiarSkills" id="familiarSkills" placeholder="Select Your skills by typing the name" required="" value="${user.familiarSkills}" class="skillsInput">
                     </div>
                     <div style="margin-bottom:10px;" class="large-12 columns text-center">
                         <input type="submit" value="Update Skills" class="button">
                     </div>
                 </div>
-                <div class="large-12 columns text-center">
-                    <hr>
-                    <h3>Or import from Linked-in</h3>
-                </div>
-                <div class="large-12 columns text-center"><a href="#" onclick="onLinkedInLoad()" data-reveal-id="linkedInWizard1" class="secondary button">Import From Linked-in</a>
-                </div>
-                <!--hr-->
                 <div id="result1" class="large-12 columns text-center"></div>
             </form>
         </p>
@@ -367,7 +380,7 @@ div.large-6.medium-3.small-3.columns
                     </div>
                 </div>
             </div>
-        </form><a class="close-reveal-modal">×</a>
+        </form><a class="close-reveal-modal">x</a>
     </div>
     <div id="contactModal" data-reveal="" class="reveal-modal large">
         <h2>Get in touch</h2>
@@ -392,7 +405,7 @@ div.large-6.medium-3.small-3.columns
                 <div class="large-12 columns text-center">
                     <input type="submit" value="Send Mail" class="button radius">
                 </div>
-            </div><a class="close-reveal-modal">×</a>
+            </div><a class="close-reveal-modal">x</a>
         </form>
     </div>
     <div id="hitMeUpModal" data-reveal="" class="reveal-modal large">
@@ -464,6 +477,11 @@ div.large-6.medium-3.small-3.columns
             js.src = "//connect.facebook.net/en_US/sdk.js";
             fjs.parentNode.insertBefore(js, fjs);
         }(document, 'script', 'facebook-jssdk'));
+    </script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/resources/javascripts/foundation-datepicker.js"></script>
+    <script type="text/javascript">
+        $('#dp-margin').fdatepicker();
+        $('.datepicker.datepicker-dropdown.dropdown-menu').css('width','250');
     </script>
 </body>
 

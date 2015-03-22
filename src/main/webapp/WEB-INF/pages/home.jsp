@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
+<meta charset="utf-8">
+<!-- If you delete this meta tag World War Z will become a reality -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link href="${pageContext.request.contextPath}/resources/vendor/foundation/css/normalize.css" rel="stylesheet" >
 <link href="${pageContext.request.contextPath}/resources/vendor/foundation/css/foundation.min.css" rel="stylesheet" >
 <link href="${pageContext.request.contextPath}/resources/vendor/foundation/css/foundation-icons.css" rel="stylesheet" >
@@ -139,7 +142,7 @@
         <hr>
         <form id="loginForm" data-abide="ajax" novalidate="novalidate">
             <div class="row">
-                <div class="large-8 columns">
+                <div class="large-12 columns">
                     <div class="large-12 columns">
                         <label>Email Address
                             <input type="text" name="username" placeholder="Enter your verified email address" required="" pattern="email">
@@ -154,28 +157,22 @@
                         <input type="submit" value="Login" class="button">
                     </div>
                 </div>
-                <div class="large-4 columns text-center">
+                <hr/>
+                <div class="large-12 columns text-center">
                     <br class="show-for-medium-down">
                     <div class="large-6 medium-6 small-6 columns">
                         <a href="/users/auth/facebook">
-                            <div class="button fi-social-facebook size-36"></div>
-                        </a>
-                    </div>
-                    <div class="large-6 medium-6 small-6 columns">
-                        <a href="/users/auth/twitter">
-                            <div class="button fi-social-twitter size-36"></div>
-                        </a>
-                    </div>
-                    <div class="large-6 medium-6 small-6 columns">
-                        <a href="/users/auth/linkedin">
-                            <div class="button fi-social-linkedin size-36"></div>
+                            <div class="button fi-social-facebook size-36 right"></div>
                         </a>
                     </div>
                     <div class="large-6 medium-6 small-6 columns">
                         <a href="/users/auth/google">
-                            <div class="button fi-social-google-plus size-36"></div>
+                            <div class="button fi-social-google-plus size-36 left"></div>
                         </a>
                     </div>
+                </div>
+                <div class="large-12 columns panel text-center">
+                    <a href="#">Forgot Password?</a>
                 </div>
             </div>
         </form><a class="close-reveal-modal">x</a>

@@ -20,7 +20,7 @@
     <nav data-topbar="" role="navigation" class="top-bar">
         <ul class="title-area">
             <li class="name">
-                <h1><a href="/">My Resi</a></h1>
+                <h1><a href="${pageContext.request.contextPath}/">My Resi</a></h1>
             </li>
             <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone-->
             <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a>
@@ -46,7 +46,7 @@
             </ul>
             <!-- Left Nav Section-->
             <ul class="left">
-               <li><a href="${pageContext.request.contextPath}/logout" >logout</a>
+               <li><a href="${pageContext.request.contextPath}/logout" >Logout</a>
                 </li>
                 <li><a href="#">About Us</a>
                 </li>
@@ -57,6 +57,19 @@
     </nav>
     
 	    <div style="padding:10px;" class="row">
+            <div class="large-12 columns">
+                <form id="userSearch" action="${pageContext.request.contextPath}/users/search" method="POST">
+                    <h3>Search again or start a new search</h3>
+                    <div class="row collapse">
+                        <div class="large-10 small-10 medium-10 columns">
+                            <input type="text" placeholder="Search other users by name" name="usersearchterm" required="">
+                        </div>
+                        <div class="large-2 small-2 medium-2 columns">
+                            <input type="submit" value="Search" class="button fi-magnifying-glass size-12 postfix">
+                        </div>
+                    </div>
+                </form>
+            </div>
 	        <h1>Users</h1>
 	        <hr>
 	        <c:choose>
@@ -147,7 +160,7 @@
                     </div>
                 </div>
             </div>
-        </form><a class="close-reveal-modal">×</a>
+        </form><a class="close-reveal-modal">x</a>
     </div>
     <div id="loginModal" data-reveal="" class="reveal-modal large">
         <h2>Login</h2>
@@ -193,7 +206,7 @@
                     </div>
                 </div>
             </div>
-        </form><a class="close-reveal-modal">×</a>
+        </form><a class="close-reveal-modal">x</a>
     </div>
     <div id="contactModal" data-reveal="" class="reveal-modal large">
         <h2>Get in touch</h2>
@@ -218,7 +231,7 @@
                 <div class="large-12 columns text-center">
                     <input type="submit" value="Send Mail" class="button radius">
                 </div>
-            </div><a class="close-reveal-modal">×</a>
+            </div><a class="close-reveal-modal">x</a>
         </form>
     </div>
     <div id="hitMeUpModal" data-reveal="" class="reveal-modal large">
@@ -244,7 +257,7 @@
                 <div class="large-12 columns text-center">
                     <input type="submit" value="Send Mail" class="button radius">
                 </div>
-            </div><a class="close-reveal-modal">×</a>
+            </div><a class="close-reveal-modal">x</a>
         </form>
     </div>
     <footer>

@@ -134,15 +134,15 @@ event.stopPropagation(); // Stop stuff happening
   Ajax To Validate and POST the profile .
   */
 
- $('#editProfile')
+ $('#editProfileInfo')
      .on('invalid.fndtn.abide', function () {
          return false;
      })
      .on('valid.fndtn.abide', function () {
          $.ajax({
              type: "POST",
-             url: '/SpringCassandra/users/editprofile',
-             data: $('#editProfile').serialize(),
+             url: '/SpringCassandra/users/editProfileInfo',
+             data: $('#editProfileInfo').serialize(),
              success: function(data){
             	 var data = JSON.parse(data);
             	   if(data.redirect){
@@ -151,7 +151,6 @@ event.stopPropagation(); // Stop stuff happening
                      $('#result2').html("<div data-alert class=\"alert-box alert \">"+data.error+"<a href=\"#\" class=\"close\">&times;</a></div>");
                  }else{
                      $('#result2').html("<div data-alert class=\"alert-box success \">"+data.success+"<a href=\"#\" class=\"close\">&times;</a></div>");
-                     window.location.href='/SpringCassandra/users/profile';
                  }
              }
          });
@@ -161,6 +160,8 @@ event.stopPropagation(); // Stop stuff happening
  /*
   END Ajax To Validate and POST the profile.
   */
+ editProfileInfo
+
 
 /*
  var expertSkillArray = [];
