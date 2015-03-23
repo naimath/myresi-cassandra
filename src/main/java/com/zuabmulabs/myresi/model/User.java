@@ -46,6 +46,8 @@ public class User {
 		String profileadded;
 		@Column(value = "image")
 		byte[] image;
+		@Column(value = "dob")
+		private String dateOfBirth;
 		
 		public String getFirstName() {
 			return firstName;
@@ -160,6 +162,12 @@ public class User {
 		}
 		public void setImage(byte[] image) {
 			this.image = image;
+		}
+		public void setDateOfBirth(String dateOfBirth) {
+			this.dateOfBirth = dateOfBirth;			
+		}
+		public String getDateOfBirth() {
+			return this.dateOfBirth;			
 		}
 		
 }

@@ -151,6 +151,7 @@ event.stopPropagation(); // Stop stuff happening
                      $('#result2').html("<div data-alert class=\"alert-box alert \">"+data.error+"<a href=\"#\" class=\"close\">&times;</a></div>");
                  }else{
                      $('#result2').html("<div data-alert class=\"alert-box success \">"+data.success+"<a href=\"#\" class=\"close\">&times;</a></div>");
+                     window.location.href='/SpringCassandra/users/profile';
                  }
              }
          });

@@ -83,7 +83,7 @@
 			<div style="display: ${visibility}">
 				<a href="#" data-reveal-id="secondModal" class="right fi-page-edit size-24" ></a>
 			</div>
-            <div id="profileImage1" style="background-image:url(${pageContext.request.contextPath}/users/image)" class="large-centered"></div>
+           <div id="profileImage" style="background-image:url(${pageContext.request.contextPath}/users/image)" class="large-centered"></div>
             <div class="large-centered">
                 <h3>${user.firstName} ${user.lastName}</h3>
             </div>
@@ -91,7 +91,7 @@
             <div class="large-centered">            
                 <p>${user.workField}
                     <br>${user.city}, ${user.state}, ${user.country}
-                    <br>Computer Science</p>
+                    <br>${user.educationalQualification}</p>
             </div>
             <!--div.large-offset-8.center-->
             <hr>
@@ -147,12 +147,16 @@
         </div>
     </div>
     <div id="secondModal" data-reveal="" class="reveal-modal xlarge" style="top: 0">
+     	<form  id="imageUpload" method="POST"  enctype="multipart/form-data" data-abide="ajax">
+       				    <input type="file" name="file">    				   
+   				        <input type="submit" value="Upload"> Press here to upload the file!
+ 		 </form>
         <form id="editProfileInfo" data-abide="ajax">
             <h4>Personal Info</h4>
             <hr>
             <div class="large-12 columns">
-                <div id="profileImage" style="background-image:url(/images/avatar.png/); position:relative;overflow:hidden" class="large-centered">
-                    <div id="profileImageOverlay"></div>
+               <div id="profileImagePopup" style="background-image:url(${pageContext.request.contextPath}/users/image)" class="large-centered">
+                    <div id="profileImageOverlay"></div>                    
                 </div>
                 <div class="large-12 columns text-center">
                     <input id="imageUploder" type="file" name="imageUploder" style="width: 89px" accept="image/*">
@@ -178,51 +182,51 @@
             <div class="large-12 columns">
                 <div class="large-6 columns">
                     <label>City
-                        <input type="text" name="city" placeholder="City" required="">
+                        <input type="text" name="city" placeholder="City" required="" value="${user.city}">
                     </label>
                 </div>
                 <div class="large-6 columns">
                     <label>State
-                        <input type="text" name="state" placeholder="State" required="">
+                        <input type="text" name="state" placeholder="State" required="" value="${user.state}">
                     </label>
                 </div>
                 <div class="large-6 columns">
                     <label>Country
-                        <input type="text" name="country" placeholder="Country" required="">
+                        <input type="text" name="country" placeholder="Country" required="" value="${user.country}">
                     </label>
                 </div>
                 <div class="large-6 columns">
                     <label>Date Of birth
-                        <input id="dp-margin" class="span2" type="text" name="dateOfBirth" placeholder="mm/dd/yyyy" data-date-format="mm/dd/yyyy" required=""/>
+                        <input id="dp-margin" class="span2" type="text" name="dateOfBirth" placeholder="mm/dd/yyyy" data-date-format="mm/dd/yyyy" required="" value="${user.dateOfBirth}"/>
                     </label>
                 </div>
                 <div class="large-12 columns" style="padding-left: 0;padding-right: 0;">
                     <div class="large-6 columns">
                         <label>Positions
-                            <input type="text" name="position" placeholder="CEO an Lorem Ipsum" required="">
+                            <input type="text" name="position" placeholder="CEO an Lorem Ipsum" required="" value="${user.position}">
                         </label><small class="error">Cannot Be empty</small>
                     </div>
                     <div class="large-6 columns">
                         <label>Current Workplace
-                            <input type="text" name="currentWorkplace" placeholder="Information Technology And Services" required="">
+                            <input type="text" name="currentWorkplace" placeholder="Information Technology And Services" required="" value="${user.currentWorkplace}">
                         </label><small class="error">Cannot Be empty</small>
                     </div>
                 </div>
                 <div class="large-12 columns" style="padding-left: 0;padding-right: 0;">
                     <div class="large-6 columns">
                         <label>Field of Work
-                            <input type="text" name="workField" placeholder="E.g:RnD, Management" required="" class="right">
+                            <input type="text" name="workField" placeholder="E.g:RnD, Management" required="" class="right" value="${user.workField}">
                         </label><small class="error">Cannot Be empty</small>
                     </div>
                     <div class="large-6 columns">
                         <label>Educational Qualification
-                            <input type="text" name="educationalQualification" placeholder="Degree in Randomness" required="" class="right">
+                            <input type="text" name="educationalQualification" placeholder="Degree in Randomness" required="" class="right" value="${user.educationalQualification}">
                         </label><small class="error">Cannot Be empty</small>
                     </div>
                 </div>
                 <div class="large-12 columns">
                     <label> Chenge Email Address
-                        <input type="email" name="email" placeholder="Enter different email address if you don't want to use the current one."/>
+                        <input type="email" name="otherEmail" placeholder="Enter different email address if you don't want to use the current one." value="${user.email}"/>
                     </label>
                 </div>
                 <div class="text-center large-12 columns">

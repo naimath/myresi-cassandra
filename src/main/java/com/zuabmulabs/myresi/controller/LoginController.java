@@ -89,9 +89,10 @@ public class LoginController {
 	public @ResponseBody String userRegistraion(HttpServletRequest request,@RequestParam String firstName,@RequestParam String lastName,@RequestParam String email,@RequestParam String password,ModelMap map) {
 		User user = new User();
 		String uuid = UUID.randomUUID().toString();
-
-		user.setFirstName(firstName);
-		user.setLastName(lastName);
+		if(firstName!=null)
+			user.setFirstName(firstName.toLowerCase());
+		if(lastName != null)
+			user.setLastName(lastName.toLowerCase());
 		user.setPassword(password);
 		user.setEmail(email);
 		user.setActivationToken(uuid);
@@ -100,7 +101,7 @@ public class LoginController {
 		
 		if(loginService.resisterUser(user)){	
 			if(loginService.sendEmail(user,request.getServerName(), request.getServerPort(),request.getContextPath(),request.getSession().getServletContext().getRealPath("/WEB-INF/pages/UserContactEmail.html"))){
-				return "{\"success\":\"Mail sent, Registration successfull\"}";
+				return "{\"success\":\"You've just taken the first step towards building your career!  In order to complete the setup of your account, please check your email for a confirmation link to start using MyResi\"}";
 			}else{
 				return "{\"error\":\"Error in sending mail\"}";
 			}

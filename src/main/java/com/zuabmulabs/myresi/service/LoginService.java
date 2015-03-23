@@ -34,16 +34,16 @@ public class LoginService {
 	
 
 	public boolean sendEmail(User user, String serverName, int port, String contextPath, String filepath){
-		String linkMessage = "Please click on link to confirm "+"https://"+serverName+contextPath+"/registration/"+user.getActivationToken();
+		String linkMessage = "You are just a click away from building your new profile on MyResi!  Please click the confirmation link below to complete your account creation.<br/>"+"https://"+serverName+contextPath+"/registration/"+user.getActivationToken();
 		logger.info(filepath);
 		
 		try {
 			String fileContent = IOUtils.toString(new FileInputStream(new File(filepath)), "UTF-8");
 			fileContent= fileContent.replaceFirst("req.body.firstName", user.getFirstName());	
-			fileContent= fileContent.replaceFirst("req.body.lastName", user.getLastName());
+			//fileContent= fileContent.replaceFirst("req.body.lastName", user.getLastName());
 			fileContent= fileContent.replaceFirst("req.body.message",linkMessage);
 			
-			return emailSender.sendEmail("welcome@myresi.com",user.getEmail(), "Registration Confirmation", fileContent);
+			return emailSender.sendEmail("welcome@myresi.com",user.getEmail(), "MyResi Account Confirmation", fileContent);
 		} catch (FileNotFoundException e) {
 			logger.error(e);
 		} catch (IOException e) {

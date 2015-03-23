@@ -45,12 +45,18 @@ public class UserDAO {
 	public boolean editProfle(User user) {
 		try{
 			Update u =	QueryBuilder.update("registeredusers");
-			u.with(QueryBuilder.set("firstname", user.getFirstName()));
-			u.with(QueryBuilder.set("lastname", user.getLastName()));
+			u.with(QueryBuilder.set("firstname", user.getFirstName()!=null?user.getFirstName().toLowerCase():user.getFirstName()));
+			u.with(QueryBuilder.set("lastname", user.getLastName()!=null?user.getLastName():user.getLastName()));
 			u.with(QueryBuilder.set("aboutme", user.getAboutMe()));
 			u.with(QueryBuilder.set("city", user.getCity()));
 			u.with(QueryBuilder.set("state", user.getState()));
 			u.with(QueryBuilder.set("country", user.getCountry()));
+			u.with(QueryBuilder.set("dob", user.getDateOfBirth()));
+			u.with(QueryBuilder.set("position", user.getPosition()));
+			u.with(QueryBuilder.set("currentWorkplace", user.getCurrentWorkplace()));
+			u.with(QueryBuilder.set("workField", user.getWorkField()));
+			u.with(QueryBuilder.set("educationalQualification", user.getEducationalQualification()));	
+			
 			u.where(QueryBuilder.eq("email", user.getEmail()));
 			cassandraOperations.execute(u);
 		}catch(Exception e){
@@ -116,6 +122,9 @@ public class UserDAO {
 			 user.setFamiliarSkills(row.getString("familiarskills"));
 			 user.setAboutMe(row.getString("aboutme"));
 			 user.setProfileadded(row.getString("profileadded"));
+			 user.setCurrentWorkplace(row.getString("currentworkplace"));
+			 user.setDateOfBirth(row.getString("dob"));
+			 user.setEducationalQualification(row.getString("educationalqualification"));
 		}catch(Exception e){
 			logger.error("Error Occured whild doing getProfile .. "+e);
 			return null;
@@ -141,17 +150,17 @@ public class UserDAO {
 		User user=null;
 		try{
 			 Select s = QueryBuilder.select().from("registeredusers"); 
-			 s.where(QueryBuilder.eq("email",usersearchterm));			 
+			 s.where(QueryBuilder.eq("email",usersearchterm.toLowerCase()));			 
 			 ResultSet result = cassandraOperations.query(s);
 			 populateList(users, result);
 			
 			 s = QueryBuilder.select().from("registeredusers"); 
-			 s.where(QueryBuilder.eq("firstname",usersearchterm));			 
+			 s.where(QueryBuilder.eq("firstname",usersearchterm.toLowerCase()));			 
 			 result = cassandraOperations.query(s);
 			 populateList(users, result);
 			 
 			 s = QueryBuilder.select().from("registeredusers"); 
-			 s.where(QueryBuilder.eq("lastname",usersearchterm));			 
+			 s.where(QueryBuilder.eq("lastname",usersearchterm.toLowerCase()));			 
 			 result = cassandraOperations.query(s);
 			 populateList(users, result);
 			
@@ -218,7 +227,9 @@ public class UserDAO {
 				return null;
 		 }
 		 
-		 ByteBuffer fileBytes = row.getBytes( "image" );	 
+		 ByteBuffer fileBytes = row.getBytes("image");	 
+		 if(fileBytes == null)
+			 return new byte[1];
 		 
 		return  Bytes.getArray(fileBytes);
 	     
