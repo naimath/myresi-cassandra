@@ -147,20 +147,20 @@
         </div>
     </div>
     <div id="secondModal" data-reveal="" class="reveal-modal xlarge" style="top: 0">
-     	<form  id="imageUpload" method="POST"  enctype="multipart/form-data" data-abide="ajax">
-       				    <input type="file" name="file">    				   
-   				        <input type="submit" value="Upload"> Press here to upload the file!
- 		 </form>
+   		 <div id="profileImagePopup" style="background-image:url(${pageContext.request.contextPath}/users/image)" class="large-centered">
+                    <div id="profileImageOverlay"></div>                    
+                </div>
+     	<div class="large-12 columns text-center">
+	     	<form  id="imageUpload" method="POST"  enctype="multipart/form-data" data-abide="ajax">
+	       				    <input type="file" name="file" style="width: 150px" accept="image/*">    				   
+	   				        <input type="submit" value="Upload" >
+	 		 </form>
+ 		 </div>
         <form id="editProfileInfo" data-abide="ajax">
             <h4>Personal Info</h4>
             <hr>
-            <div class="large-12 columns">
-               <div id="profileImagePopup" style="background-image:url(${pageContext.request.contextPath}/users/image)" class="large-centered">
-                    <div id="profileImageOverlay"></div>                    
-                </div>
-                <div class="large-12 columns text-center">
-                    <input id="imageUploder" type="file" name="imageUploder" style="width: 89px" accept="image/*">
-                </div>
+            <div class="large-12 columns">               
+                
                 <div class="large-6 columns">
                     <label>First Name
                         <input type="text" name="firstName" placeholder="Enter your first name" required="" value="${user.firstName}">
