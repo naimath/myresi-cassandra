@@ -10,14 +10,22 @@ public class User {
 		@PrimaryKey
 		@Column(value = "email")
 		String email;		
+		
 		@Column(value = "firstname")
 		String firstName;
+		
 		@Column(value = "lastname")
-		String lastName;		
+		String lastName;	
+		
+		@Column(value = "fullname")
+		String fullName;	
+		
 		@Column(value = "password")
 		String password;
+		
 		@Column(value = "activationtoken")
 		String activationToken;
+		
 		@Column(value = "activate")
 		String activate;
 		@Column(value = "aboutme")
@@ -168,6 +176,12 @@ public class User {
 		}
 		public String getDateOfBirth() {
 			return this.dateOfBirth;			
+		}
+		public String getFullName() {
+			return fullName;
+		}
+		public void setFullName(String fullName) {
+			this.fullName = fullName;
 		}
 		
 }

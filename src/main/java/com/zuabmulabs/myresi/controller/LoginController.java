@@ -57,19 +57,33 @@ public class LoginController {
 	
 	
 	
-	@RequestMapping(value = "/logout", method = RequestMethod.GET)
+	@RequestMapping(value = "/logoutPage", method = RequestMethod.GET)
 	public String logout(HttpServletRequest request) {
+		request.getSession().removeAttribute("otherEmail") ;
+		request.getSession().removeAttribute("email");
+		
 		request.getSession().invalidate();
 		return "logout";
 	}
 
-	@RequestMapping(value="/{name}", method = RequestMethod.GET)
+/*	@RequestMapping(value="/{name}", method = RequestMethod.GET)
 	public String getMovie(@PathVariable String name, ModelMap model) {
 		model.addAttribute("movie", name);
 		return "list";
-
-	}
+/loginPage
+	}*/
 	
+	@RequestMapping(value="/loginPage", method = RequestMethod.GET)
+	public ModelAndView getLoginPage(HttpServletRequest request) {
+		ModelAndView modelAndView = new ModelAndView("home");	
+		String auth = (String)request.getParameter("auth")		;
+		if("fail".equals(auth)){
+			modelAndView.addObject("fail", "Y");		
+		}
+		
+		modelAndView.addObject("userLoggedIn", "N");		
+		return modelAndView;
+	}
 	
 	@RequestMapping(value="/registration/{token}", method = RequestMethod.GET)
 	public ModelAndView  validateRegistration(@PathVariable String token,HttpServletRequest request) {	
@@ -79,7 +93,7 @@ public class LoginController {
 			request.getSession().setAttribute("email", user.getEmail());
 			modelAndView.addObject("user", user); 			
 		}else{
-			modelAndView.addObject("user", new User()); 
+			modelAndView.addObject("user", null); 
 		}
 		return modelAndView;	
 		
@@ -89,10 +103,15 @@ public class LoginController {
 	public @ResponseBody String userRegistraion(HttpServletRequest request,@RequestParam String firstName,@RequestParam String lastName,@RequestParam String email,@RequestParam String password,ModelMap map) {
 		User user = new User();
 		String uuid = UUID.randomUUID().toString();
-		if(firstName!=null)
+		if(firstName!=null){
 			user.setFirstName(firstName.toLowerCase());
-		if(lastName != null)
+		}
+		if(lastName != null){
 			user.setLastName(lastName.toLowerCase());
+		}
+		if(firstName!=null && lastName !=null){
+			user.setFullName(firstName+" "+lastName);
+		}
 		user.setPassword(password);
 		user.setEmail(email);
 		user.setActivationToken(uuid);

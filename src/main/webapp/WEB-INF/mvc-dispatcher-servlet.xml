@@ -91,13 +91,32 @@
 	</bean>
 
 	<security:http auto-config="true">
-		<security:intercept-url pattern="/home"
-			access="IS_AUTHENTICATED_ANONYMOUSLY" />
-		<security:intercept-url pattern="/resources/**"
-			access="IS_AUTHENTICATED_ANONYMOUSLY" />
-		<security:intercept-url pattern="/**" access="IS_AUTHENTICATED_ANONYMOUSLY" />
+		<security:intercept-url pattern="/home"	access="IS_AUTHENTICATED_ANONYMOUSLY" />
+		<security:intercept-url pattern="/resources/**" access="IS_AUTHENTICATED_ANONYMOUSLY" />
+		<security:intercept-url pattern="/loginPage" access="IS_AUTHENTICATED_ANONYMOUSLY" />
+		<security:intercept-url pattern="/users/login" access="IS_AUTHENTICATED_ANONYMOUSLY" />
+		<security:intercept-url pattern="/users/register" access="IS_AUTHENTICATED_ANONYMOUSLY" />
+		<security:intercept-url pattern="/logoutPage" access="IS_AUTHENTICATED_ANONYMOUSLY" />	
+		<security:intercept-url pattern="/registration/*" access="IS_AUTHENTICATED_ANONYMOUSLY" />	
+		<security:intercept-url pattern="/users/editProfile"	 access="IS_AUTHENTICATED_ANONYMOUSLY" />	
+		<security:intercept-url pattern="/users/editSkills"	 access="IS_AUTHENTICATED_ANONYMOUSLY" />	
+		<security:intercept-url pattern="/users/editwork"	 access="IS_AUTHENTICATED_ANONYMOUSLY" />	
+		<security:intercept-url pattern="/users/editwork"	 access="IS_AUTHENTICATED_ANONYMOUSLY" />	
+		<security:intercept-url pattern="/users/imageupload"	 access="IS_AUTHENTICATED_ANONYMOUSLY" />
+		<security:intercept-url pattern="/users/image"	 access="IS_AUTHENTICATED_ANONYMOUSLY" />		
+		
+		
+		
+			
+		<security:intercept-url pattern="/**" access="ROLE_USER" />
+		
+		 <security:form-login login-processing-url="/users/login" login-page="/loginPage"
+            username-parameter="username" password-parameter="password"
+            default-target-url="/users/loginSuccess" authentication-failure-url="/loginPage?auth=fail" />
+        <security:logout logout-url="/logout" logout-success-url="/logoutPage" /> 
+		
 	</security:http>
-
+<!-- 
 	<security:authentication-manager>
 		<security:authentication-provider>
 			<security:jdbc-user-service
@@ -105,7 +124,13 @@
 				users-by-username-query="select email , password  from registeredusers where email = ? "
 				authorities-by-username-query="select email, role from registeredusers where email= ? " />
 		</security:authentication-provider>
-	</security:authentication-manager>
+	</security:authentication-manager> -->
+	
+   <security:authentication-manager>
+        <security:authentication-provider ref="customAuthenticationProvider" />
+    </security:authentication-manager>
+ 
+
 
 </beans>
 

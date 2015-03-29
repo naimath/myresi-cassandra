@@ -106,12 +106,22 @@ public class UserController {
 
 		return "redirect:/users/profile";
 	}
+	@RequestMapping(value = "/users/loginSuccess", method = RequestMethod.GET)
+	public @ResponseBody String userLoginSuccess(HttpServletRequest request) {
+		request.getSession().removeAttribute("otherEmail");
+		
+		if("Y".equals(request.getSession().getAttribute("profile"))){
+			return "{\"redirect\":\"/SpringCassandra/users/firstlogin\"}";
+		}else{
+			return "{\"redirect\":\"/SpringCassandra/users/profile\"}";
+		}
+		
+		
+	}
 
 	@RequestMapping(value = "/users/login", method = RequestMethod.POST)
 	public @ResponseBody
-	String userLogin(@RequestParam String username,
-			@RequestParam String password, ModelMap map,
-			HttpServletRequest request) {
+	String userLogin(@RequestParam String username,	@RequestParam String password,HttpServletRequest request) {
 		logger.info("Inside userLogin ..."
 				+ request.getSession().getAttribute("email"));
 		User user = new User();
@@ -120,8 +130,7 @@ public class UserController {
 		user = userService.verifyUser(user);
 		if (user != null) {
 			request.getSession().setAttribute("email", username);
-			if (user.getProfileadded() != null
-					&& "Y".equals(user.getProfileadded())) {
+			if (user.getProfileadded() != null	&& "Y".equals(user.getProfileadded())) {
 				return "{\"redirect\":\"/SpringCassandra/users/profile\"}";
 			} else {
 				return "{\"redirect\":\"/SpringCassandra/users/firstlogin\"}";
@@ -219,7 +228,9 @@ public class UserController {
 		user.setFamiliarSkills(familiarSkills);
 
 		if (userService.editSkills(user)) {
+			firstLoginCompleted(request);
 			return "{\"success\":\"Modificaion Successfull\"}";
+		
 		} else {
 			return "{\"error\":\"Error in Edit Skills\"}";
 		}

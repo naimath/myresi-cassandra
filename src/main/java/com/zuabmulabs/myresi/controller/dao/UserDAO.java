@@ -27,8 +27,8 @@ public class UserDAO {
 	public User verifyUser(User user) {
 		try{
 			 Select s = QueryBuilder.select().from("registeredusers"); 
-			 s.where(QueryBuilder.eq("email", user.getEmail())).and(QueryBuilder.eq("activate", "Y"));
-			 
+			 s.where(QueryBuilder.eq("email", user.getEmail())).and(QueryBuilder.eq("activate", "Y")).and(QueryBuilder.eq("password", user.getPassword()));
+			 s.allowFiltering();
 			 ResultSet result = cassandraOperations.query(s);
 			 Row row = result.one();
 			 if( row == null){
@@ -45,8 +45,12 @@ public class UserDAO {
 	public boolean editProfle(User user) {
 		try{
 			Update u =	QueryBuilder.update("registeredusers");
-			u.with(QueryBuilder.set("firstname", user.getFirstName()!=null?user.getFirstName().toLowerCase():user.getFirstName()));
-			u.with(QueryBuilder.set("lastname", user.getLastName()!=null?user.getLastName():user.getLastName()));
+			String firstName=user.getFirstName()!=null?user.getFirstName().toLowerCase():user.getFirstName();
+			String lastName=user.getLastName()!=null?user.getLastName().toLowerCase():user.getLastName();
+			u.with(QueryBuilder.set("firstname", firstName));
+			u.with(QueryBuilder.set("lastname", lastName));
+			u.with(QueryBuilder.set("fullname", firstName+" "+lastName));
+			
 			u.with(QueryBuilder.set("aboutme", user.getAboutMe()));
 			u.with(QueryBuilder.set("city", user.getCity()));
 			u.with(QueryBuilder.set("state", user.getState()));
@@ -164,6 +168,11 @@ public class UserDAO {
 			 result = cassandraOperations.query(s);
 			 populateList(users, result);
 			
+			 s = QueryBuilder.select().from("registeredusers"); 
+			 s.where(QueryBuilder.eq("fullname",usersearchterm.toLowerCase()));			 
+			 result = cassandraOperations.query(s);
+			 populateList(users, result);
+			 
 			
 		}catch(Exception e){
 			logger.error("Error Occured whild doing verifyUser .. "+e);

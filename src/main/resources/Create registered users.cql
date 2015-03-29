@@ -28,6 +28,8 @@ CREATE INDEX IF NOT EXISTS registeredusers_activationtoken_idx ON myresitest.reg
 CREATE INDEX IF NOT EXISTS registeredusers_activate_idx ON myresitest.registeredusers (activate);
 CREATE INDEX IF NOT EXISTS registeredusers_firstname_idx ON myresitest.registeredusers (firstname);
 CREATE INDEX IF NOT EXISTS registeredusers_lastname_idx ON myresitest.registeredusers (lastname);
+CREATE INDEX IF NOT EXISTS registeredusers_password_idx ON myresitest.registeredusers (password);
+CREATE INDEX IF NOT EXISTS registeredusers_fullname_idx ON myresitest.registeredusers (fullname);
 
 ALTER TABLE myresitest.registeredusers  ADD image blob;
 ALTER TABLE myresitest.registeredusers  ADD ROLE  text;

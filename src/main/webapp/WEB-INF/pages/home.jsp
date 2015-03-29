@@ -1,4 +1,12 @@
+<%
+	if("Y".equals(request.getAttribute("fail"))){
+		out.print("{\"failed\":\" Login failed either wrong password or not active\"}");
+		 return;
+	}
+%>
+
 <!DOCTYPE html>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <html>
 <head>
 <meta charset="utf-8">
@@ -53,6 +61,13 @@
                 </li>
                 <li><a href="#" data-reveal-id="contactModal">Contact Us</a>
                 </li>
+                <c:if test="${userLoggedIn == \"N\"}">                 
+             	   <li><a href="#" data-reveal-id="noLoggedin"> You are not logged in. Please login or Regiter</a>
+             	   </li>
+                </c:if>
+                
+                
+               
             </ul>
         </section>
     </nav>

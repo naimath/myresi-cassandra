@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <html lang="en" class="no-js">
 
 <head>
@@ -58,13 +59,22 @@
     </nav>
     <div class="row">
         <div id="firstModal" data-reveal="" data-options="close_on_background_click:false" class="reveal-modal small">
-            <h1>Welcome to Myresi</h1><sub>Step 1 of 4</sub>
-            <hr>
-            <h5>Let's get this party started!  Click "Continue" below to start building your MyResi profile!</h5>
-            <hr/>
-            <div class="large-12 columns">
-                <a href="#" data-reveal-id="secondModal" class="secondary button right">Next</a>
-            </div>
+        
+         <c:choose>
+		        <c:when  test="${empty user}">
+	   				<h1>Wrong token please register again.</h1>
+				</c:when>  
+				<c:otherwise>
+					<h1>Welcome to Myresi</h1><sub>Step 1 of 4</sub>
+		            <hr>
+		            <h5>Let's get this party started!  Click "Continue" below to start building your MyResi profile!</h5>
+		            <hr/>
+		            <div class="large-12 columns">
+		                <a href="#" data-reveal-id="secondModal" class="secondary button right">Next</a>
+		            </div>	
+				</c:otherwise>
+			</c:choose>
+            
         </div>
         <div id="secondModal" data-reveal="" data-options="close_on_background_click:false" class="reveal-modal" style="top: 0">
 	         <div id="profileImagePopup" style="background-image:url(${pageContext.request.contextPath}/users/image)" class="large-centered">
