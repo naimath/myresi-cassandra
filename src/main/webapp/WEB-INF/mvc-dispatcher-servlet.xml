@@ -103,11 +103,11 @@
 		<security:intercept-url pattern="/users/editwork"	 access="IS_AUTHENTICATED_ANONYMOUSLY" />	
 		<security:intercept-url pattern="/users/editwork"	 access="IS_AUTHENTICATED_ANONYMOUSLY" />	
 		<security:intercept-url pattern="/users/imageupload"	 access="IS_AUTHENTICATED_ANONYMOUSLY" />
-		<security:intercept-url pattern="/users/image"	 access="IS_AUTHENTICATED_ANONYMOUSLY" />		
+		<security:intercept-url pattern="/users/image"	 access="IS_AUTHENTICATED_ANONYMOUSLY" />	
+		<security:intercept-url pattern="/users/forgotPassword"	 access="IS_AUTHENTICATED_ANONYMOUSLY" />	
+		<security:intercept-url pattern="/users/forgotPassword/*"	 access="IS_AUTHENTICATED_ANONYMOUSLY" />	
+		<security:intercept-url pattern="/users/setPassword"	 access="IS_AUTHENTICATED_ANONYMOUSLY" />	
 		
-		
-		
-			
 		<security:intercept-url pattern="/**" access="ROLE_USER" />
 		
 		 <security:form-login login-processing-url="/users/login" login-page="/loginPage"

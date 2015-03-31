@@ -129,6 +129,7 @@ public class UserDAO {
 			 user.setCurrentWorkplace(row.getString("currentworkplace"));
 			 user.setDateOfBirth(row.getString("dob"));
 			 user.setEducationalQualification(row.getString("educationalqualification"));
+			 user.setActivationToken(row.getString("activationtoken"));
 		}catch(Exception e){
 			logger.error("Error Occured whild doing getProfile .. "+e);
 			return null;
@@ -242,6 +243,19 @@ public class UserDAO {
 		 
 		return  Bytes.getArray(fileBytes);
 	     
+	}
+
+	public boolean setPassword(User user) {
+		try{
+			Update u =	QueryBuilder.update("registeredusers");
+			u.with(QueryBuilder.set("password", user.getPassword()));			
+			u.where(QueryBuilder.eq("email", user.getEmail()));
+			cassandraOperations.execute(u);
+		}catch(Exception e){
+			logger.error("Error Occured whild doing profileCompleted .. "+e);
+			return false;
+		}
+		return true;
 	}
 	
 }

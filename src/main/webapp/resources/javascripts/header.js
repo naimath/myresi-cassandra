@@ -27,6 +27,10 @@ $(document).ready(function () {
     if (window.location.href.indexOf('#_=_') > 0) {
         window.location = window.location.href.replace(/#.*/, '');
     }});
+
+if(	forgotPasswordShow == 'Y'){
+		$('#forgetPasswordProcessModal').foundation('reveal', 'open');
+}
 /*
  Ajax To Validate and POST the Registration Form.
  * */
@@ -289,3 +293,100 @@ $('#editProfile')
 /*
  END Ajax To Validate and POST the profile.
  */
+
+
+
+/*
+ Ajax To Validate and POST the hit me up Form.
+ * */
+
+
+
+$('#forgetPasswordForm')
+    .on('invalid.fndtn.abide', function () {
+        return false;
+    })
+    .on('valid.fndtn.abide', function () {
+        //alert('Sending Message');
+        $.ajax({
+            type: "POST",
+            url: '/SpringCassandra/users/forgotPassword',
+            data: $('#forgetPasswordForm').serialize(),
+            success: function(data){
+            	var data = JSON.parse(data);
+                if(data.error){
+                    $('#forgetPasswordModal').foundation('reveal', 'close');
+                    $( "#forgetPasswordMsgModal" ).remove();
+                    $('body').append("<div id=\"forgetPasswordMsgModal\" class=\"reveal-modal tiny\" data-reveal>"+
+                        "<h2>Error</h2><hr>"+
+                        "<p>"+data.error+"</p>"+
+                        "<a class=\"close-reveal-modal\">&#215;</a>"+
+                        "</div>");
+                    $('#forgetPasswordMsgModal').foundation('reveal', 'open');
+                }else{
+                    $('#forgetPasswordModal').foundation('reveal', 'close');
+                    $( "#forgetPasswordMsgModal" ).remove();
+                    $('body').append("<div id=\"forgetPasswordMsgModal\" class=\"reveal-modal tiny\" data-reveal>"+
+                        "<h2>Success</h2><hr>"+
+                        "<p>"+data.success+"</p>"+
+                        "<a class=\"close-reveal-modal\">&#215;</a>"+
+                        "</div>");
+                    $('#forgetPasswordMsgModal').foundation('reveal', 'open');
+                }
+            }
+        });
+        return false;
+    });
+
+/*
+ END Ajax To Validate and POST the hit me up Form.
+ * */
+
+
+
+
+/*
+ Ajax To Validate and POST the hit me up Form.
+ * */
+
+
+
+$('#forgetPasswordProcessForm')
+    .on('invalid.fndtn.abide', function () {
+        return false;
+    })
+    .on('valid.fndtn.abide', function () {
+        //alert('Sending Message');
+        $.ajax({
+            type: "POST",
+            url: '/SpringCassandra/users/setPassword',
+            data: $('#forgetPasswordProcessForm').serialize(),
+            success: function(data){
+            	var data = JSON.parse(data);
+                if(data.error){
+                    $('#forgetPasswordModal').foundation('reveal', 'close');
+                    $( "#forgetPasswordMsgModal" ).remove();
+                    $('body').append("<div id=\"forgetPasswordMsgModal\" class=\"reveal-modal tiny\" data-reveal>"+
+                        "<h2>Error</h2><hr>"+
+                        "<p>"+data.error+"</p>"+
+                        "<a class=\"close-reveal-modal\">&#215;</a>"+
+                        "</div>");
+                    $('#forgetPasswordMsgModal').foundation('reveal', 'open');
+                }else{
+                    $('#forgetPasswordModal').foundation('reveal', 'close');
+                    $( "#forgetPasswordMsgModal" ).remove();
+                    $('body').append("<div id=\"forgetPasswordMsgModal\" class=\"reveal-modal tiny\" data-reveal>"+
+                        "<h2>Success</h2><hr>"+
+                        "<p>"+data.success+"</p>"+
+                        "<a class=\"close-reveal-modal\">&#215;</a>"+
+                        "</div>");
+                    $('#forgetPasswordMsgModal').foundation('reveal', 'open');
+                }
+            }
+        });
+        return false;
+    });
+
+/*
+ END Ajax To Validate and POST the hit me up Form.
+ * */

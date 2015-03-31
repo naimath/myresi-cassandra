@@ -64,4 +64,15 @@ public class UserService {
 		emailSender.sendEmail("welcome@myresi.com",toAddress, subject, text);
 		return true;
 	}
+
+	public boolean sendForgetPasswordEmail(User user, String serverName, int port, String contextPath) {
+		String linkMessage = " Please click the forgot link below <br/>"+"https://"+serverName+contextPath+"/users/forgotPassword/"+user.getActivationToken();
+		emailSender.sendEmail("welcome@myresi.com",user.getEmail(), "Forgor Pasword ", linkMessage);
+		return true;
+		
+	}
+
+	public boolean setPassword(User user) {
+		return userDao.setPassword(user);
+	}
 }

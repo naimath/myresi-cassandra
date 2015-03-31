@@ -187,7 +187,7 @@
                     </div>
                 </div>
                 <div class="large-12 columns panel text-center">
-                    <a href="#">Forgot Password?</a>
+                    <a href="#" data-reveal-id="forgetPasswordModal">Forgot Password?</a>
                 </div>
             </div>
         </form><a class="close-reveal-modal">x</a>
@@ -244,6 +244,44 @@
             </div><a class="close-reveal-modal">x</a>
         </form>
     </div>
+    <div id="forgetPasswordModal" data-reveal="" class="reveal-modal large">
+        <h2>Forget Password</h2>
+        <hr>
+        <form id="forgetPasswordForm" data-abide="ajax" novalidate="novalidate">
+            <div class="row">
+                <div class="large-12 columns">
+                    <label>Your Email
+                        <input type="email" name="forgetPasswordEmailAddress" placeholder="Your email address here" required="" pattern="email">
+                    </label><small class="error">Email Cannot be empty.</small>
+                </div>
+                <div class="large-12 columns text-center">
+                    <input type="submit" value="Send Mail" class="button radius">
+                </div>
+            </div><a class="close-reveal-modal">x</a>
+        </form>
+    </div>
+    <div id="forgetPasswordProcessModal" data-reveal="" class="reveal-modal large">
+        <h2>Forget Password</h2>
+        <hr>
+        <form id="forgetPasswordProcessForm" data-abide="ajax" novalidate="novalidate">
+            <div class="row">
+                <div class="large-12 columns">
+                    <label>New Password
+				     	 <input type="password" name="newPassword" placeholder="Choose a password" required="" id="newPassword">
+                    </label><small class="error">New Password Cannot be empty.</small>
+                </div>
+                 <div class="large-12 columns">
+                    <label>Confirm Password
+				        <input type="password" name="newPasswordConfirm" placeholder="Re-type password" required="" data-equalto="newPassword">
+                        <input type="hidden" name="token" value="${token}">
+                    </label><small class="error">Confirm Password Cannot be empty.</small>
+                </div>
+                <div class="large-12 columns text-center">
+                    <input type="submit" value="Save" class="button radius">
+                </div>
+            </div><a class="close-reveal-modal">x</a>
+        </form>
+    </div>
     <footer style="margin-top:0px;">
         <div class="large-text-center small-text-center medium-text-center">
             <p>
@@ -263,7 +301,9 @@
             </div>
         </div>
 	</footer>
-
+<script>
+  		var forgotPasswordShow="${forgotPassword}";
+  </script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/vendor/foundation/js/vendor/jquery.js"  ></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/vendor/foundation/js/foundation.min.js" ></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/vendor/foundation/js/vendor/stickyfooter.js" ></script>

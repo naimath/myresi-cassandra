@@ -271,7 +271,49 @@ public class UserController {
 		 */
 
 	}
+	
+	
+	@RequestMapping(value = "/users/forgotPassword", method = RequestMethod.POST)
+	public @ResponseBody String sendForgetPasswordEmail(@RequestParam  String forgetPasswordEmailAddress, HttpServletRequest request)	throws IOException {
+		User user = userService.getProfile(forgetPasswordEmailAddress);
+		if (user != null) {	
+			userService.sendForgetPasswordEmail(user,request.getServerName(), request.getServerPort(),request.getContextPath());
+			return "{\"success\":\"Forgot Password email sent\"}";		
+		} else {
+			return "{\"error\":\"Entered email is not valid\"}";
+		}
+		
+	}
+	
+	
+	@RequestMapping(value = "/users/forgotPassword/{token:.+}", method = RequestMethod.GET)
+	public ModelAndView processForgotPassword(HttpServletRequest request,	@PathVariable("token") String token) {		
+		ModelAndView modelAndView = new ModelAndView("home");
+		modelAndView.addObject("forgotPassword", "Y");
+		modelAndView.addObject("token", token);
+		
+		return modelAndView;
+	}
+	
+	@RequestMapping(value = "/users/setPassword", method = RequestMethod.POST)
+	public @ResponseBody String setForgotPassword(@RequestParam  String newPassword, @RequestParam  String newPasswordConfirm ,@RequestParam  String token , HttpServletRequest request)	throws IOException {
+		User user = loginService.validateRegistration(token);
 
+		if (user != null) {	
+			if(newPassword != null && newPasswordConfirm != null && newPasswordConfirm.equals(newPassword)){
+				user.setPassword(newPassword);		
+				userService.setPassword(user);
+				return "{\"success\":\"Password Successfully Changed. Please login. \"}";	
+			}else{
+				return "{\"error\":\" New Password and Confirm Password do not match \"}";
+			}
+				
+		} else {
+			return "{\"error\":\"Error in setting the password \"}";
+		}
+		
+	}
+	
 	@RequestMapping(value = "/users/image", method = RequestMethod.GET)
 	public @ResponseBody
 	void getImage(HttpServletRequest request, HttpServletResponse response)
