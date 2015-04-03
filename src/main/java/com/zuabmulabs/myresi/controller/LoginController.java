@@ -57,7 +57,7 @@ public class LoginController {
 	
 	
 	
-	@RequestMapping(value = "/logoutPage", method = RequestMethod.GET)
+	@RequestMapping(value = {"/logoutPage", "/logout"}, method = RequestMethod.GET)
 	public String logout(HttpServletRequest request) {
 		request.getSession().removeAttribute("otherEmail") ;
 		request.getSession().removeAttribute("email");
