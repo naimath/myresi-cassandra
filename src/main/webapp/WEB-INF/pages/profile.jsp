@@ -180,7 +180,7 @@ response.addDateHeader ("Expires", 0);
                 <div style="border-left:1px solid #ddd" class="large-centered">
                     <div class="large-12 columns">
                         <label>About Me
-                            <textarea rows="1" name="aboutMe" maxlength="250" placeholder="Write something about yourself, no more than 250 characters." style="resize:none;"></textarea>
+                            <textarea rows="1" name="aboutMe" maxlength="250" placeholder="Write something about yourself, no more than 250 characters." style="resize:none;" >${user.aboutMe}</textarea>
                         </label>
                     </div>
                 </div>

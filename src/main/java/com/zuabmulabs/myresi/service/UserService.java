@@ -66,7 +66,7 @@ public class UserService {
 	}
 
 	public boolean sendForgetPasswordEmail(User user, String serverName, int port, String contextPath) {
-		String linkMessage = " Please click the forgot link below <br/>"+"https://"+serverName+contextPath+"/users/forgotPassword/"+user.getActivationToken();
+		String linkMessage = " Please click the forgot link below <br/>"+"http://"+serverName+":"+port+contextPath+"/users/forgotPassword/"+user.getActivationToken();
 		emailSender.sendEmail("noreply@myresi.com",user.getEmail(), "Forgot Pasword ", linkMessage);
 		return true;
 		

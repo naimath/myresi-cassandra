@@ -129,7 +129,7 @@
                     </div>
                     <div class="large-6 columns">
                         <label> Zipcode
-                            <input type="text" name="zipcode" placeholder="Enter your zipcode" required=""/>
+                            <input type="text" name="zipCode" placeholder="Enter your zipCode" required=""/>
                         </label><small class="error">Cannot Be Empty</small>
                     </div>
                     <div class="large-12 columns">

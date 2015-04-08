@@ -175,7 +175,7 @@ public class UserController {
 	}
 
 	@RequestMapping(value = "/users/editprofile", method = RequestMethod.POST)
-	public @ResponseBody String editProfile(HttpServletRequest request,@RequestParam String firstName,@RequestParam String lastName,@RequestParam String aboutMe,@RequestParam String city,@RequestParam  String state,@RequestParam  String country, ModelMap map) {
+	public @ResponseBody String editProfile(HttpServletRequest request,@RequestParam String firstName,@RequestParam String lastName,@RequestParam String aboutMe,@RequestParam String city,@RequestParam  String state,@RequestParam  String country, @RequestParam  String zipCode,@RequestParam  String dateOfBirth ,ModelMap map) {
 		logger.info("Inside editProfile ..."+request.getSession().getAttribute("email"));
 		User user = new User();
 		user.setEmail((String)request.getSession().getAttribute("email"));
@@ -185,6 +185,9 @@ public class UserController {
 		user.setCity(city);
 		user.setState(state);
 		user.setCountry(country);
+		user.setZipCode(zipCode);
+		user.setDateOfBirth(dateOfBirth);
+		
 		if(userService.editProfile(user)){			
 			return "{\"success\":\"Modificaion Successfull\"}";
 		}else{						

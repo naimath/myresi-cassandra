@@ -3,6 +3,7 @@
 		out.print("{\"failed\":\" Login failed either wrong password or not active\"}");
 		 return;
 	}
+	
 %>
 
 <!DOCTYPE html>
@@ -61,10 +62,7 @@
                 </li>
                 <li><a href="#" data-reveal-id="contactModal">Contact Us</a>
                 </li>
-                <c:if test="${userLoggedIn == \"N\"}">                 
-             	   <li><a href="#" data-reveal-id="noLoggedin"> You are not logged in. Please login or Regiter</a>
-             	   </li>
-                </c:if>
+               
                 
                 
                
@@ -282,6 +280,11 @@
             </div><a class="close-reveal-modal">x</a>
         </form>
     </div>
+      <div id="loggedInProcessModal" data-reveal="" class="reveal-modal large">
+        <h3>You are not logged in. Please login or Regiter</h3>
+        <hr>
+        </div><a class="close-reveal-modal">x</a>
+    </div>
     <footer style="margin-top:0px;">
         <div class="large-text-center small-text-center medium-text-center">
             <p>
@@ -303,6 +306,7 @@
 	</footer>
 <script>
   		var forgotPasswordShow="${forgotPassword}";
+  		var isLoggedIn = "${userLoggedIn}";
   </script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/vendor/foundation/js/vendor/jquery.js"  ></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/vendor/foundation/js/foundation.min.js" ></script>

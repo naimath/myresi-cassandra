@@ -56,6 +56,8 @@ public class User {
 		byte[] image;
 		@Column(value = "dob")
 		private String dateOfBirth;
+		@Column(value = "zipcode")
+		private String zipCode;
 		
 		public String getFirstName() {
 			return firstName;
@@ -182,6 +184,12 @@ public class User {
 		}
 		public void setFullName(String fullName) {
 			this.fullName = fullName;
+		}
+		public String getZipCode() {
+			return zipCode;
+		}
+		public void setZipCode(String zipCode) {
+			this.zipCode = zipCode;
 		}
 		
 }

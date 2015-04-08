@@ -34,7 +34,7 @@ public class LoginService {
 	
 
 	public boolean sendEmail(User user, String serverName, int port, String contextPath, String filepath){
-		String linkMessage = "You are just a click away from building your new profile on MyResi!  Please click the confirmation link below to complete your account creation.<br/>"+"https://"+serverName+contextPath+"/registration/"+user.getActivationToken();
+		String linkMessage = "You are just a click away from building your new profile on MyResi!  Please click the confirmation link below to complete your account creation.<br/>"+"http://"+serverName+":"+port+contextPath+"/registration/"+user.getActivationToken();
 		logger.info(filepath);
 		
 		try {

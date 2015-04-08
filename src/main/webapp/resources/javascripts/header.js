@@ -31,6 +31,10 @@ $(document).ready(function () {
 if(	forgotPasswordShow == 'Y'){
 		$('#forgetPasswordProcessModal').foundation('reveal', 'open');
 }
+
+if(isLoggedIn == 'N'){
+	$('#loggedInProcessModal').foundation('reveal', 'open');
+}
 /*
  Ajax To Validate and POST the Registration Form.
  * */

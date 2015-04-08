@@ -60,7 +60,8 @@ public class UserDAO {
 			u.with(QueryBuilder.set("currentWorkplace", user.getCurrentWorkplace()));
 			u.with(QueryBuilder.set("workField", user.getWorkField()));
 			u.with(QueryBuilder.set("educationalQualification", user.getEducationalQualification()));	
-			
+			u.with(QueryBuilder.set("zipcode", user.getZipCode()));	
+					
 			u.where(QueryBuilder.eq("email", user.getEmail()));
 			cassandraOperations.execute(u);
 		}catch(Exception e){

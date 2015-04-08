@@ -34,6 +34,9 @@ CREATE INDEX IF NOT EXISTS registeredusers_fullname_idx ON myresitest.registered
 ALTER TABLE myresitest.registeredusers  ADD image blob;
 ALTER TABLE myresitest.registeredusers  ADD ROLE  text;
 ALTER TABLE myresitest.registeredusers  ADD dob  text;
+ALTER TABLE myresitest.registeredusers  ADD zipcode  text;
+
+
 
 
 
