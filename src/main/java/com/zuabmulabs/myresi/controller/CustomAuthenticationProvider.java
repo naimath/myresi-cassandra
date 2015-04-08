@@ -1,10 +1,13 @@
 package com.zuabmulabs.myresi.controller;
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -17,10 +20,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.zuabmulabs.myresi.model.User;
 import com.zuabmulabs.myresi.service.UserService;
+import com.zuabmulabs.myresi.util.Helper;
 
 @Component("customAuthenticationProvider")
 public class CustomAuthenticationProvider implements AuthenticationProvider {
-	
+	private static final Logger logger = Logger.getLogger(CustomAuthenticationProvider.class);
 	@Autowired
 	private UserService userService;
 	@Autowired
@@ -49,7 +53,8 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
 	public String userLogin(@RequestParam String username,	@RequestParam String password) {
 	
 		User user = new User();
-		user.setPassword(password);
+		
+		user.setPassword(Helper.getMd5String(password));
 		user.setEmail(username);
 		user = userService.verifyUser(user);
 		if (user != null) {

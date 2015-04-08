@@ -21,6 +21,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.zuabmulabs.myresi.model.User;
 import com.zuabmulabs.myresi.service.LoginService;
 import com.zuabmulabs.myresi.service.UserService;
+import com.zuabmulabs.myresi.util.Helper;
 
 @Controller
 public class UserController {
@@ -125,7 +126,8 @@ public class UserController {
 		logger.info("Inside userLogin ..."
 				+ request.getSession().getAttribute("email"));
 		User user = new User();
-		user.setPassword(password);
+	
+		user.setPassword(Helper.getMd5String(password));		
 		user.setEmail(username);
 		user = userService.verifyUser(user);
 		if (user != null) {
@@ -301,7 +303,7 @@ public class UserController {
 
 		if (user != null) {	
 			if(newPassword != null && newPasswordConfirm != null && newPasswordConfirm.equals(newPassword)){
-				user.setPassword(newPassword);		
+				user.setPassword(Helper.getMd5String(newPassword));		
 				userService.setPassword(user);
 				return "{\"success\":\"Password Successfully Changed. Please login. \"}";	
 			}else{
