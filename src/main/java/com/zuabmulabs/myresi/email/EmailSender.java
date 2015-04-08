@@ -16,6 +16,14 @@ public class EmailSender {
 		this.mailSender = mailSender;
 	}
 
+	
+	
+	public JavaMailSender getMailSender() {
+		return mailSender;
+	}
+
+
+
 	public boolean sendEmail(String fromEmail, String toEmail, String subject,	String htmlText) {
 
 	

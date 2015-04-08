@@ -1,9 +1,9 @@
 package com.zuabmulabs.myresi.service;
 
-import java.io.File;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.stereotype.Service;
 
 import com.zuabmulabs.myresi.controller.dao.UserDAO;
@@ -61,12 +61,18 @@ public class UserService {
 	}
 	
 	public boolean sendEmail(String toAddress, String subject, String text){
+		((JavaMailSenderImpl)emailSender.getMailSender()) .setUsername("welcome@myresi.com");
+		((JavaMailSenderImpl)emailSender.getMailSender()) .setPassword("MyR351Activate!");
 		emailSender.sendEmail("welcome@myresi.com",toAddress, subject, text);
 		return true;
 	}
 
 	public boolean sendForgetPasswordEmail(User user, String serverName, int port, String contextPath) {
 		String linkMessage = " Please click the forgot link below <br/>"+"http://"+serverName+":"+port+contextPath+"/users/forgotPassword/"+user.getActivationToken();
+		((JavaMailSenderImpl)emailSender.getMailSender()) .setUsername("noreply@myresi.com");
+		((JavaMailSenderImpl)emailSender.getMailSender()) .setPassword("MyR35!N0R3ply$");
+		
+		
 		emailSender.sendEmail("noreply@myresi.com",user.getEmail(), "Forgot Pasword ", linkMessage);
 		return true;
 		

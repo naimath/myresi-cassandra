@@ -8,6 +8,7 @@ import java.io.IOException;
 import org.apache.commons.io.IOUtils;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.stereotype.Service;
 
 import com.zuabmulabs.myresi.controller.LoginController;
@@ -42,7 +43,8 @@ public class LoginService {
 			fileContent= fileContent.replaceFirst("req.body.firstName", user.getFirstName());	
 			//fileContent= fileContent.replaceFirst("req.body.lastName", user.getLastName());
 			fileContent= fileContent.replaceFirst("req.body.message",linkMessage);
-			
+			((JavaMailSenderImpl)emailSender.getMailSender()) .setUsername("welcome@myresi.com");
+			((JavaMailSenderImpl)emailSender.getMailSender()) .setPassword("MyR351Activate!");
 			return emailSender.sendEmail("welcome@myresi.com",user.getEmail(), "MyResi Account Confirmation", fileContent);
 		} catch (FileNotFoundException e) {
 			logger.error(e);
