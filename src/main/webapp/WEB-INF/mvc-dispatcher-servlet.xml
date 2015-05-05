@@ -30,9 +30,9 @@
 		</property>
 	</bean>
 
-	<!-- REQUIRED: The Cassandra Cluster 
-	<cassandra:cluster contact-points="localhost" port="9042" /> -->
-	<cassandra:cluster contact-points="192.168.1.81" port="9042" />
+	<!-- REQUIRED: The Cassandra Cluster -->
+	<cassandra:cluster contact-points="localhost" port="9042" />
+	<!--cassandra:cluster contact-points="192.168.1.81" port="9042" /-->
 	
 
 	<!-- REQUIRED: The Cassandra Session, built from the Cluster, and attaching 

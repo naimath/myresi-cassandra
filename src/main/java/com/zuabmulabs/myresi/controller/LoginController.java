@@ -54,6 +54,39 @@ public class LoginController {
 		return "profilepartial";
 	}
 
+
+    @RequestMapping(value = "/header", method = RequestMethod.GET)
+    public String header(ModelMap map) {
+        // Header Template.
+        return "header";
+    }
+
+    @RequestMapping(value = "/loggedinheader", method = RequestMethod.GET)
+    public String loggedinheader(ModelMap map) {
+        // Header Template.
+        return "loggedinheader";
+    }
+
+    @RequestMapping(value = "/footer", method = RequestMethod.GET)
+    public String footer(ModelMap map) {
+        // footer Template.
+        return "footer";
+    }
+
+    @RequestMapping(value = "/sidebar", method = RequestMethod.GET)
+    public String sidebar(ModelMap map) {
+        // Rendered only if user is NOT logged in.
+        // Also this template will be used to display the search results if a user searches the site for other users.
+        return "sidebar";
+    }
+
+    @RequestMapping(value = "/lightboxes", method = RequestMethod.GET)
+    public String lightboxes(ModelMap map) {
+        // Rendered only if user is NOT logged in.
+        // Also this template will be used to display the search results if a user searches the site for other users.
+        return "lightboxes";
+    }
+
 	// -----------------------------------------------------------------------End
 	// routing for myResi
 	// UI----------------------------------------------------------------

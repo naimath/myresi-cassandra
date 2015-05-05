@@ -12,94 +12,239 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/vendor/selectize/css/selectize.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/vendor/selectize/css/selectize.default.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/foundation-datepicker.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/app.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/style.css">
     <script type="text/javascript" src="${pageContext.request.contextPath}/resources/vendor/foundation/js/vendor/modernizr.js"></script>
 </head>
 
 <body>
-    <nav data-topbar="" role="navigation" class="top-bar">
-        <ul class="title-area">
-            <li class="name">
-                <h1><a href="${pageContext.request.contextPath}/">My Resi</a></h1>
-            </li>
-            <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone-->
-            <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a>
-            </li>
-        </ul>
-        <section class="top-bar-section">
-            <!-- Right Nav Section-->
-            <ul class="right">
-                <!--li.has-formform#userSearch(action='/users/search', method='GET')
-    div.row.collapse.medium-uncollapse
-        div.large-8.small-8.medium-8.columns
-            input(type='text', placeholder='Search users', name='usersearchterm')
-        div.large-4.small-4.medium-4.columns
-            input(type='submit', value='Search').button-->
-                <li class="has-dropdown"><a href="#">Help</a>
-                    <ul class="dropdown">
-                        <li><a href="#">Disclaimer / Privacy Policy</a>
-                        </li>
-                        <li><a href="#">How To / FAQ’s</a>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
-            <!-- Left Nav Section-->
-            <ul class="left">
-               <li><a href="${pageContext.request.contextPath}/logout" >Logout</a>
-                </li>
-                <li><a href="#">About Us</a>
-                </li>
-                <li><a href="#" data-reveal-id="contactModal">Contact Us</a>
-                </li>
-            </ul>
-        </section>
-    </nav>
-    
-	    <div style="padding:10px;" class="row">
-            <div class="large-12 columns">
-                <form id="userSearch" action="${pageContext.request.contextPath}/users/search" method="POST">
-                    <h3>Search again or start a new search</h3>
-                    <div class="row collapse">
-                        <div class="large-10 small-10 medium-10 columns">
-                            <input type="text" placeholder="Search other users by name" name="usersearchterm" required="">
-                        </div>
-                        <div class="large-2 small-2 medium-2 columns">
-                            <input type="submit" value="Search" class="button fi-magnifying-glass size-12 postfix">
-                        </div>
+
+<nav class="top-bar show-for-large-up" data-topbar role="navigation">
+    <ul class="title-area">
+        <li class="name">
+            <h1><a href="#">My Site</a></h1>
+        </li>
+        <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
+        <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+    </ul>
+
+    <section class="top-bar-section">
+        <!-- Right Nav Section -->
+        <ul class="right">
+
+            <li class="has-form" style="min-width: 300px;">
+                <div class="row collapse">
+                    <div class="large-9 small-11 columns">
+                        <input type="text" placeholder="Find users">
                     </div>
-                </form>
+                    <div class="large-3 small-1 columns">
+                        <a href="#" class="primary button expand fi-magnifying-glass"></a>
+                    </div>
+                </div>
+            </li>
+
+            <li> <a href="#"> Hit John Up </a> </li>
+
+            <li class="has-dropdown">
+                <a href="#">Menu</a>
+                <ul class="dropdown">
+                    <li><a href="#"> My Account </a></li>
+                    <li><a href="#"> Privacy </a> </li>
+                    <li><a href="#"> Help </a> </li>
+                    <li><a href="#" data-reveal-id="reportAProblem"> Report A problem  </a> </li>
+                    <li><a href="#"> Sign Out  </a> </li>
+                </ul>
+            </li>
+
+        </ul>
+
+        <!-- Left Nav Section -->
+        <ul class="left">
+            <li><a href="#"> My Feed </a></li>
+            <li><a href="#"> My Resi </a></li>
+            <li><a href="#"> Shoutouts </a></li>
+            <li><a href="#"> Logout </a></li>
+        </ul>
+    </section>
+</nav>
+
+<div class="large-12 show-for-medium-down">
+
+    <div class="icon-bar five-up " style="background-color: #274C77">
+        <a class="item" style="background-color: #274C77; padding-bottom: 15px ">
+            <br/><p style="font-size:1.1rem; color: #fffffc">MyResi</p>
+        </a>
+        <a class="item" style="background-color: #274C77">
+            <i class="fi-mail"></i><label>Myfeed</label>
+        </a>
+        <a class="item" style="background-color: #274C77">
+            <i class="fi-info"></i><label>MyResi</label>
+        </a>
+        <a class="item" style="background-color: #274C77; padding: 1.25rem 0 1.25rem 0">
+            <i class="fi-mail"></i><label>Shoutouts</label>
+        </a>
+        <a class="item" style="background-color: #274C77">
+            <i class="fi-power"></i><label>Logout</label>
+        </a>
+    </div>
+
+    <div class="row">
+        <div class="large-12 columns">
+            <div class="row collapse">
+                <div class="small-10 columns">
+                    <input type="text" placeholder="Name here">
+                </div>
+                <div class="small-2 columns">
+                    <a href="#" class="button postfix radius">Go</a>
+                </div>
             </div>
-	        <h1>Users</h1>
-	        <hr>
-	        <c:choose>
-		        <c:when  test="${!empty users}">
-	   				<c:forEach items="${users}" var="user">
-				        <div class="large-12 columns panel text-center">
-				            <!--div.large-2.columns-->
-				            <div id="profileImage" style="background-image:url(${pageContext.request.contextPath}/resources/images/avatar.png)" class="large-centered"></div>
-				            <div class="large-12 columns">
-				                <h3> ${user.lastName}, ${user.firstName}</h3>
-				                <h5> ${user.position}</h5>
-				                <h5 class="left"> About ${user.firstName} </h5>
-				                 <hr>
-				                 <p class="text-left">
-				                 	${user.aboutMe}
-				                 </p>
-				            </div>
-				            <p class="large-centered medium-centered small-centered text-center"><a href="${pageContext.request.contextPath}/users/profile/${user.activationToken}" class="button small">View Profile</a>
-				            </p>
-				        </div>
-		           </c:forEach>
-				</c:when>  
-				<c:otherwise>No users found matching this name. Please try your search again.</c:otherwise>
-			</c:choose>
-	    </div>
-	   
-		
-			
-		
-    
+        </div>
+        <div class="large-12 columns">
+            <button href="#" data-dropdown="drop1" aria-controls="drop1" aria-expanded="false" class="button expand dropdown">Menu</button><br>
+            <ul id="drop1" data-dropdown-content class="f-dropdown" aria-hidden="true">
+                <li><a href="#">My Account</a></li>
+                <li><a href="#">Privacy</a></li>
+                <li><a href="#">Help</a></li>
+                <li><a href="#">Report a Problem</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="large-centered" style="margin-top:20px; ">
+
+        <div class="medium-3 small-5 columns" >
+            <img src="${pageContext.request.contextPath}/resources/images/avatar.png" alt="Image not found"/>
+        </div>
+
+        <div class="medium-9 small-7 columns" style="padding:0;">
+            <textarea name="share" id="share" cols="30" rows="7" placeholder="Write something to share" style="resize: none; height: 93px; max-height: 93px;"></textarea>
+        </div>
+
+        <div class="large-8 columns">
+            Share with: <select name="carlist">
+            <option selected value="allShare">All</option>
+            <option value="facebookShare">Facebook</option>
+            <option value="twitterShare">Twitter</option>
+            <option value="googleShare">Google+</option>
+            <option value="linkedinShare">Linkedin</option>
+        </select>
+        </div>
+
+        <div class="large-4 columns" style="margin-top: 23px; padding-left: 0; padding-right: 0;">
+            <button class="button small secondary radius expand" style="padding-top: 0.7rem; padding-bottom: 0.7rem; ">Share</button>
+        </div>
+
+    </div>
+
+</div>
+
+
+<div class="row fullWidth">
+
+        <div id="sidebar" style="width: 320px;">
+            <div class="large-12 columns show-for-large-up" style="background-color: #1C7C54; min-height: 100%; padding:10px">
+
+                <div class="large-centered" style="margin-top:20px;">
+
+                    <div class="large-5 columns">
+                        <img src="${pageContext.request.contextPath}/resources/images/avatar.png" alt="Image not found"/>
+                    </div>
+
+                    <div class="large-7 columns" style="padding:0;">
+                        <textarea name="share" id="share" cols="30" rows="7" placeholder="Write something to share" style="resize: none; height: 93px; max-height: 93px;"></textarea>
+                    </div>
+
+                    <div class="large-8 columns">
+                        Share with: <select name="carlist">
+                        <option selected value="allShare">All</option>
+                        <option value="facebookShare">Facebook</option>
+                        <option value="twitterShare">Twitter</option>
+                        <option value="googleShare">Google+</option>
+                        <option value="linkedinShare">Linkedin</option>
+                    </select>
+                    </div>
+
+                    <div class="large-4 columns" style="margin-top: 23px; padding-left: 0; padding-right: 0;">
+                        <button class="button small secondary radius expand" style="padding-top: 0.7rem; padding-bottom: 0.7rem; ">Share</button>
+                    </div>
+
+                </div>
+
+                <div id="userSideMenu" class="large-centered radius">
+                    <ul>
+                        <li> <a href="#"> My Peeps </a> </li>
+                        <li> <a href="#"> Good Fits </a> </li>
+                        <li> <a href="#"> My Searches </a> </li>
+                        <li> <a href="#"> Other Stuff </a> </li>
+                        <li> <a href="#"> Hit Us Up </a> </li>
+                    </ul>
+                </div>
+
+                <div id="advertisement" class="large-centered radius" style="background-color: #f2f2f2; margin-top: 20px; margin-bottom: 20px">
+
+                    <img src="${pageContext.request.contextPath}/resources/images/edit.png" alt="Advertisement here"/>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div id="contentShow" style="display: inline-block; background-color:#fffffc;">
+
+            <div id="contentShowChild" style="margin:5% auto 0 auto; box-shadow: -2px -2px 5px 0 rgba(0,0,0,0.25);" >
+
+                <!--div style="padding:10px;" class="row">
+                    <div class="large-12 columns">
+                        <form id="userSearch" action="${pageContext.request.contextPath}/users/search" method="POST">
+                            <h3>Search again or start a new search</h3>
+                            <div class="row collapse">
+                                <div class="large-10 small-10 medium-10 columns">
+                                    <input type="text" placeholder="Search other users by name" name="usersearchterm" required="">
+                                </div>
+                                <div class="large-2 small-2 medium-2 columns">
+                                    <input type="submit" value="Search" class="button fi-magnifying-glass size-12 postfix">
+                                </div>
+                            </div>
+                        </form>
+                    </div-->
+                    <c:choose>
+                        <c:when  test="${!empty users}">
+                            <c:forEach items="${users}" var="user">
+
+                                <div class="large-12 columns panel">
+                                    <div class="large-3 columns text-center">
+                                        <!--div.large-2.columns-->
+                                        <div id="profileImage" style="background-image:url(${pageContext.request.contextPath}/resources/images/avatar.png)" class="large-centered"></div>
+                                        <div class="large-12 columns">
+                                            <h3> ${user.lastName}, ${user.firstName}</h3>
+                                            <h5> ${user.position}</h5>
+                                        </div>
+                                    </div>
+                                    <div class="large-9 columns">
+                                        <h5 class="left"> About ${user.firstName} </h5>
+                                        <hr>
+                                        <p class="text-left">
+                                                ${user.aboutMe}
+                                        </p>
+                                        <p class="large-centered medium-centered small-centered text-center"><a href="${pageContext.request.contextPath}/users/profile/${user.activationToken}" class="button small">View Profile</a>
+                                        </p>
+                                    </div>
+                                </div>
+
+                            </c:forEach>
+                        </c:when>
+                        <c:otherwise>No users found matching this name. Please try your search again.</c:otherwise>
+                    </c:choose>
+                </div>
+
+            <!--/div-->
+
+        </div>
+
+    </div>
+
+
     <div id="registerModal" data-reveal="" class="reveal-modal large">
         <h2>Register</h2>
         <hr>
@@ -260,31 +405,102 @@
             </div><a class="close-reveal-modal">x</a>
         </form>
     </div>
-    <footer>
-        <div class="large-text-center small-text-center medium-text-center">
-            <p>
-                <a href="https://www.facebook.com/myresi" target="_blank" class="fi-social-facebook size-36"></a>
-            </p>
-            <p>
-                <a href="https://twitter.com/MyResiApp" target="_blank" class="fi-social-twitter size-36"></a>
-            </p>
-            <p>
-                <a href="https://plus.google.com/104915935073099587267/about" target="_blank" class="fi-social-google-plus size-36"></a>
-            </p>
-            <p>
-                <a href="https://www.linkedin.com/company/myresi" target="_blank" class="fi-social-linkedin size-36"></a>
-            </p>
-            <div class="large-text-center small-text-center medium-text-center">
-                <p>&copy; 2014 MyResi.com All rights reserved.</p>
+
+<footer>
+
+    <!--div class="row" style="padding-top:20px">
+        <h3 class="text-center" style="color: #ffffff"> Look up a friend on myresi</h3>
+        <div class="large-12 columns">
+            <div class="row collapse">
+                <div class="small-10 columns">
+                    <input type="text" placeholder="Name here">
+                </div>
+                <div class="small-2 columns">
+                    <a href="#" class="button postfix radius">Go</a>
+                </div>
             </div>
         </div>
-    </footer>
+    </div-->
+
+    <div class="row">
+        <div class="large-centered text-center">
+
+            <a href="https://www.facebook.com/myresi">
+                <div class="fi-social-facebook size-36" style="display: inline-block"> </div>
+                Facebook
+            </a>
+
+            <p class="divider"></p>
+
+            <a href="https://twitter.com/MyResiApp" target="_blank">
+                <div class="fi-social-twitter size-36" style="display:inline-block"> </div>
+                Twitter
+            </a>
+
+            <p class="divider"></p>
+
+            <a href="https://plus.google.com/104915935073099587267/about" target="_blank">
+                <div class="fi-social-google-plus size-36" style="display:inline-block"> </div>
+                Google+
+            </a>
+
+            <p class="divider"></p>
+
+            <a href="https://www.linkedin.com/company/myresi" target="_blank">
+                <div class="fi-social-linkedin size-36" style="display:inline-block"> </div>
+                Linkedin
+            </a>
+
+        </div>
+
+        <div class="large-centered text-center" style="padding-bottom:8px">
+            <p>
+                <a href="#">About Us</a>
+            </p>
+            <p class="divider"></p>
+            <p>
+                <a href="#" data-reveal-id="contactModal">Contact Us</a>
+            </p>
+        </div>
+
+        <div class="large-text-center small-text-center medium-text-center">
+            <p>&copy; 2014 MyResi.com All rights reserved.</p>
+        </div>
+
+    </div>
+
+</footer>
+
     <script type="text/javascript" src="${pageContext.request.contextPath}/resources/vendor/foundation/js/vendor/jquery.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/resources/vendor/foundation/js/vendor/jquery-ui.min.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/resources/vendor/foundation/js/vendor/jquery.ui.touch-punch.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/resources/vendor/foundation/js/foundation.min.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/resources/vendor/foundation/js/vendor/stickyfooter.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/resources/javascripts/header.js"></script>
+    <script type="text/javascript">
+        $(window).resize(function(){
+            var remainingSpace = $(window).width() -322;
+            console.log(remainingSpace);
+            if($(window).width() < 1026 ){
+                $("#contentShow").width(100+"%");
+                $("#contentShowChild").width(100+"%");
+            }else{
+                $("#contentShow").width(remainingSpace+"px");
+                $("#contentShowChild").width(1200+"px");
+            }
+        });
+        $(document).ready(function(){
+            var remainingSpace = $(window).width() -322;
+            console.log(remainingSpace);
+            if($(window).width() < 1026 ){
+                $("#contentShow").width(100+"%");
+                $("#contentShowChild").width(100+"%");
+            }else{
+                $("#contentShow").width(remainingSpace+"px");
+                $("#contentShowChild").width(1200+"px");
+            }
+        });
+    </script>
 </body>
 
 </html>

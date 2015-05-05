@@ -26,6 +26,7 @@ import com.zuabmulabs.myresi.util.Helper;
 @Controller
 public class UserController {
 
+
 	private static final Logger logger = Logger.getLogger(UserController.class);
 	@Autowired
 	private UserService userService;
@@ -318,6 +319,8 @@ public class UserController {
 		}
 		
 	}
+
+
 	
 	@RequestMapping(value = "/users/image", method = RequestMethod.GET)
 	public @ResponseBody

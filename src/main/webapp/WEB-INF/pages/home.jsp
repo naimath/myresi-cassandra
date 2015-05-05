@@ -16,6 +16,7 @@
 <link href="${pageContext.request.contextPath}/resources/vendor/foundation/css/normalize.css" rel="stylesheet" >
 <link href="${pageContext.request.contextPath}/resources/vendor/foundation/css/foundation.min.css" rel="stylesheet" >
 <link href="${pageContext.request.contextPath}/resources/vendor/foundation/css/foundation-icons.css" rel="stylesheet" >
+<link href="${pageContext.request.contextPath}/resources/css/app.css" rel="stylesheet" >
 <link href="${pageContext.request.contextPath}/resources/css/style.css" rel="stylesheet" >
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/vendor/foundation/js/vendor/modernizr.js"></script>
 </head>
@@ -62,10 +63,10 @@
                 </li>
                 <li><a href="#" data-reveal-id="contactModal">Contact Us</a>
                 </li>
-               
-                
-                
-               
+
+
+
+
             </ul>
         </section>
     </nav>
