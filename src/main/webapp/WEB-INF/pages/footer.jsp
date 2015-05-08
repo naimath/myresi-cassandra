@@ -61,4 +61,11 @@
 
     </div>
 
+    <script type="text/javascript">
+        window.___gcfg = {
+            lang: 'en-US',
+            parsetags: 'onload'
+        };
+    </script>
+    <script src="https://apis.google.com/js/client:platform.js" async defer></script>
 </footer>

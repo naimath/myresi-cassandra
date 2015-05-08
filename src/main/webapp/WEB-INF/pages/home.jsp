@@ -21,56 +21,10 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/vendor/foundation/js/vendor/modernizr.js"></script>
 </head>
 <body style="height:100%">
-<nav data-topbar="" role="navigation" class="top-bar">
-        <ul class="title-area">
-            <li class="name">
-                <h1><a href="${pageContext.request.contextPath}/">My Resi</a></h1>
-            </li>
-            <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone-->
-            <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a>
-            </li>
-        </ul>
-        <section class="top-bar-section">
-            <!-- Right Nav Section-->
-            <ul class="right">
-                <!--li.has-formform#userSearch(action='/users/search', method='GET')
-    div.row.collapse.medium-uncollapse
-        div.large-8.small-8.medium-8.columns
-            input(type='text', placeholder='Search users', name='usersearchterm')
-        div.large-4.small-4.medium-4.columns
-            input(type='submit', value='Search').button-->
-                <li class="has-dropdown not-click"><a href="#">Help</a>
-                    <ul class="dropdown">
-                        <li class="title back js-generated">
-                            <h5><a href="javascript:void(0)">Back</a></h5>
-                        </li>
-                        <li class="parent-link show-for-small"><a class="parent-link js-generated" href="#">Help</a>
-                        </li>
-                        <li><a href="#">Disclaimer / Privacy Policy</a>
-                        </li>
-                        <li><a href="#">How To / FAQ</a>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
-            <!-- Left Nav Section-->
-            <ul class="left">
-                <li><a href="#" data-reveal-id="registerModal">Register</a>
-                </li>
-                <li><a href="#" data-reveal-id="loginModal">Login</a>
-                </li>
-                <li><a href="#">About Us</a>
-                </li>
-                <li><a href="#" data-reveal-id="contactModal">Contact Us</a>
-                </li>
 
+    <jsp:include page="/header"/>
 
-
-
-            </ul>
-        </section>
-    </nav>
-    <div class="row">
+    <!--div class="row">
         <div class="large-centered text-center">
             <div class="large-12 columns"><img src="${pageContext.request.contextPath}/resources/images/glass.png" width="200" height="200">
             </div>
@@ -98,99 +52,129 @@
             <h3> Trusted products</h3>
             <p> MyResi will use modern software and trusted platforms to deliver a secure and intuitive experience.</p>
         </div>
-    </div>
-    <div id="registerModal" data-reveal="" class="reveal-modal large">
-        <h2>Register</h2>
-        <hr>
-        <form id="registrationForm" data-abide="ajax" novalidate="novalidate">
-            <div class="row">
-                <div class="large-12 columns">
-                    <div class="large-6 columns">
-                        <label>First Name
-                            <input type="text" name="firstName" placeholder="Enter your first name" required="" data-abide-validator="badWordsValidator">
-                        </label><small class="error">First name cannot be empty.</small>
-                    </div>
-                    <div class="large-6 columns">
-                        <label>Last Name
-                            <input type="text" name="lastName" placeholder="Enter your last name" required="" data-abide-validator="badWordsValidator">
-                        </label><small class="error">Last Name cannot be empty.</small>
-                    </div>
-                    <div class="large-12 columns">
-                        <label>Email Address
-                            <input type="email" name="email" placeholder="Enter a valid email address" required="" data-abide-validator="badWordsValidator">
-                        </label><small class="error">An email address is required.</small>
-                    </div>
-                    <div class="large-6 columns">
-                        <label>Choose a Password
-                            <input type="password" name="password" placeholder="Choose a password" required="" id="password">
-                        </label><small class="error">Password Cannot be empty.</small>
-                    </div>
-                    <div class="large-6 columns">
-                        <label>Confirm Password
-                            <input type="password" name="confirmPassword" placeholder="Re-type password" required="" data-equalto="password">
-                        </label><small class="error">Passwords Do Not Match.</small>
-                    </div>
-                    <div class="large-12 columns text-center panel">
-                        By clicking Register, you agree to our <a href="#"><em>Terms and Conditions</em></a>, <a href="#"><em>Privacy Policy</em></a>, and <a href="#"><em>Use of Cookies</em></a>.
-                    </div>
-                    <div class="large-12 columns text-center">
-                        <input type="submit" value="Register" class="button">
-                    </div>
-                    <hr class="show-for-medium-down">
+    </div-->
+
+
+    <div class="row">
+
+        <br/>
+
+        <h1 class="text-center">Myresi, Making Every Skill Count </h1>
+
+        <hr/>
+
+        <br/>
+
+        <div class="large-6 columns">
+
+            <!--iframe style="margin-top: 15px;" width="100%" height="280" src="https://www.youtube.com/embed/TmaOcPYCGMA" frameborder="0" allowfullscreen></iframe-->
+
+            <div class="large-12 columns">
+                <div class="large-1 medium-1 small-1 columns">
+                    <div style="color:#666EC5; font-size: 2.75rem" class="fi-layout"></div>
                 </div>
-                <div class="large-12 columns text-center">
-                    <p>Or Sign Up with Social Media</p>
-                    <div class="large-6 medium-6 small-6 columns">
-                        <a class="button fi-social-facebook size-36 right" href="/users/auth/facebook"> </a>
-                    </div>
-                    <div class="large-6 medium-6 small-6 columns">
-                        <a href="/users/auth/google" class="button fi-social-google-plus size-36 left">
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </form><a class="close-reveal-modal">x</a>
-    </div>
-    <div id="loginModal" data-reveal="" class="reveal-modal large">
-        <h2>Login</h2>
-        <hr>
-        <form id="loginForm" data-abide="ajax" novalidate="novalidate">
-            <div class="row">
-                <div class="large-12 columns">
-                    <div class="large-12 columns">
-                        <label>Email Address
-                            <input type="text" name="username" placeholder="Enter your verified email address" required="" pattern="email">
-                        </label><small class="error">Incorrect Email address entered.</small>
-                    </div>
-                    <div class="large-12 columns">
-                        <label>Password
-                            <input type="password" name="password" placeholder="Your password here" required="">
-                        </label><small class="error">Password Cannot be empty.</small>
-                    </div>
-                    <div class="large-centered text-center">
-                        <input type="submit" value="Login" class="button">
-                    </div>
+                <div class="large-11 medium-11 small-11 columns">
+                    <h3 style="padding-top: 9px"> Designed to help</h3>
                 </div>
                 <hr/>
-                <div class="large-12 columns text-center">
-                    <br class="show-for-medium-down">
-                    <div class="large-6 medium-6 small-6 columns">
-                        <a href="/users/auth/facebook">
-                            <div class="button fi-social-facebook size-36 right"></div>
-                        </a>
-                    </div>
-                    <div class="large-6 medium-6 small-6 columns">
-                        <a href="/users/auth/google">
-                            <div class="button fi-social-google-plus size-36 left"></div>
-                        </a>
-                    </div>
-                </div>
-                <div class="large-12 columns panel text-center">
-                    <a href="#" data-reveal-id="forgetPasswordModal">Forgot Password?</a>
-                </div>
+                <p> MyResi is being designed from the ground up with the purpose of helping to make great matches that lead to great employment.</p>
+
             </div>
-        </form><a class="close-reveal-modal">x</a>
+            <div class="large-12 columns ">
+                <div class="large-1 medium-1 small-1 columns">
+                    <div style="color:#666EC5; font-size: 2.75rem" class="fi-pencil"></div>
+                </div>
+                <div class="large-11 medium-11 small-11 columns">
+                    <h3 style="padding-top: 9px">Easy to use</h3>
+                </div>
+                <hr/>
+                <p> Our goal is to make the job search easy. MyResi is an innovative tool that will help make the connections you need.</p>
+
+            </div>
+            <div class="large-12 columns ">
+                <div class="large-1 medium-1 small-1 columns">
+                    <div style="color:#666EC5; font-size: 2.75rem" class="fi-like size-72"></div>
+                </div>
+                <div class="large-11 medium-11 small-11 columns">
+                    <h3 style="padding-top: 9px"> Trusted products</h3>
+                </div>
+                <hr/>
+                <p> MyResi will use modern software and trusted platforms to deliver a secure and intuitive experience.</p>
+
+            </div>
+
+
+        </div>
+
+        <hr class="show-for-medium-down"/>
+
+        <div class="large-6 columns">
+
+            <h3>Sign up</h3>
+
+            <form id="registrationForm" data-abide="ajax" novalidate="novalidate">
+                <div class="row">
+                    <div class="large-12 columns">
+                        <div class="large-6 columns">
+                            <label>First Name
+                                <input type="text" name="firstName" placeholder="Enter your first name" required="" data-abide-validator="badWordsValidator">
+                            </label><small class="error">First name cannot be empty.</small>
+                        </div>
+                        <div class="large-6 columns">
+                            <label>Last Name
+                                <input type="text" name="lastName" placeholder="Enter your last name" required="" data-abide-validator="badWordsValidator">
+                            </label><small class="error">Last Name cannot be empty.</small>
+                        </div>
+                        <div class="large-12 columns">
+                            <label>Email Address
+                                <input type="email" name="email" placeholder="Enter a valid email address" required="" data-abide-validator="badWordsValidator">
+                            </label><small class="error">An email address is required.</small>
+                        </div>
+                        <div class="large-6 columns">
+                            <label>Choose a Password
+                                <input type="password" name="password" placeholder="Choose a password" required="" id="password">
+                            </label><small class="error">Password Cannot be empty.</small>
+                        </div>
+                        <div class="large-6 columns">
+                            <label>Confirm Password
+                                <input type="password" name="confirmPassword" placeholder="Re-type password" required="" data-equalto="password">
+                            </label><small class="error">Passwords Do Not Match.</small>
+                        </div>
+                        <div class="large-12 columns text-center">
+                            <input type="submit" value="Sign up" class="button radius">
+                        </div>
+                        <hr class="show-for-medium-down">
+
+                    </div>
+                </div>
+            </form>
+
+            <div class="large-centered text-center">
+
+                <p style="margin-bottom:0; display: inline-block ">Sign-up with Social Media:&nbsp;</p>
+
+                <div class="divider show-for-small-down"></div>
+
+                <a href="/users/auth/facebook">
+                    <div class="fi-social-facebook size-36" style="display:inline-block"> </div>
+                    Facebook
+                </a>
+
+                &nbsp;
+                <div class="divider show-for-small-down"></div>
+
+                <a href="/users/auth/facebook">
+                    <div class="fi-social-google-plus size-36" style="display:inline-block"> </div>
+                    Google +
+                </a>
+
+            </div>
+
+        </div>
+
     </div>
+
+
     <div id="contactModal" data-reveal="" class="reveal-modal large">
         <h2>Get in touch</h2>
         <hr>
@@ -282,29 +266,17 @@
         </form>
     </div>
       <div id="loggedInProcessModal" data-reveal="" class="reveal-modal large">
-        <h3>You are not logged in. Please login or Regiter</h3>
+        <br/>
+        <h3>You are not logged in. Please login or Register</h3>
         <hr>
-        </div><a class="close-reveal-modal">x</a>
-    </div>
-    <footer style="margin-top:0px;">
-        <div class="large-text-center small-text-center medium-text-center">
-            <p>
-                <a href="https://www.facebook.com/myresi" target="_blank" class="fi-social-facebook size-36"></a>
-            </p>
-            <p>
-                <a href="https://twitter.com/MyResiApp" target="_blank" class="fi-social-twitter size-36"></a>
-            </p>
-            <p>
-                <a href="https://plus.google.com/104915935073099587267/about" target="_blank" class="fi-social-google-plus size-36"></a>
-            </p>
-            <p>
-                <a href="https://www.linkedin.com/company/myresi" target="_blank" class="fi-social-linkedin size-36"></a>
-            </p>
-            <div class="large-text-center small-text-center medium-text-center">
-                <p>&copy; 2014 MyResi.com All rights reserved.</p>
-            </div>
+          <a class="close-reveal-modal">x</a>
         </div>
-	</footer>
+    </div>
+
+    <div class="large-12">
+        <jsp:include page="/footer"/>
+    </div>
+
 <script>
   		var forgotPasswordShow="${forgotPassword}";
   		var isLoggedIn = "${userLoggedIn}";

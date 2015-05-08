@@ -412,6 +412,14 @@ button, .button{
     background-color:#00A676 ;
 }
 
+.panel{
+    border-color: #d8d8d8;
+}
+
+.f-dropdown.content{
+    border: 1px solid #f8f8f8;
+}
+
 /* Sidebar Page Styles*/
 
 #userSideMenu ul{

@@ -2,7 +2,7 @@
 
 <div class="large-centered" style="margin-top:20px;">
 
-    <div class="large-5 columns">
+    <!--div class="large-5 columns">
         <img src="${pageContext.request.contextPath}/resources/images/avatar.png" alt="Image not found"/>
     </div>
 
@@ -22,7 +22,27 @@
 
     <div class="large-4 columns" style="margin-top: 23px; padding-left: 0; padding-right: 0;">
         <button class="button small secondary radius expand" style="padding-top: 0.7rem; padding-bottom: 0.7rem; ">Share</button>
-    </div>
+    </div-->
+
+        <div class="large-12 columns panel radius">
+            <h5>Share Profile</h5>
+            <hr/>
+            <ul class="inline-list">
+                <li><a data-via="MyResiApp" data-count="none" data-text="Sharing this from Myresi.com" class="twitter-share-button">Tweet<script id="twitter-wjs" src="https://platform.twitter.com/widgets.js"></script><script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script></a>
+                </li>
+                <li style="line-height:1" class="divider">
+                    <div data-href="https://myre.si/null" data-layout="button" class="fb-share-button"></div>
+                </li>
+                <li>
+                    <button data-contenturl="http://myresi.com" data-clientid="865454745657-2iod1oarnst4omnv0fu77s985htqofdl.apps.googleusercontent.com" data-cookiepolicy="single_host_origin" data-prefilltext="Hey Check out this cool Link." data-calltoactionurl="http://myresi.com" class="g-interactivepost" data-gapiscan="true" data-onload="true" data-gapiattached="true">Tell your friends</button>
+
+                </li>
+                <li>
+                    <script src="//platform.linkedin.com/in.js" type="text/javascript"></script>
+                    <script type="IN/Share" data-url="http://localhost:8080/SpringCassandra/users/profile"></script>
+                </li>
+            </ul>
+        </div>
 
     </div>
 

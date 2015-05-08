@@ -12,6 +12,22 @@ response.addDateHeader ("Expires", 0);
     <meta charset="utf-8">
     <!-- If you delete this meta tag World War Z will become a reality -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--Twitter Cards Open Graph Setup-->
+    <meta name="twitter:card" content="@MyResiApp" />
+    <meta name="twitter:site" content="@rahulshelke1988" />
+    <meta name="twitter:title" content="Get On MyResi" />
+    <meta name="twitter:description" content="We are on a mission to change the resume as you know it." />
+    <meta name="twitter:image" content="http://myresi.com/assets/img/logo.png" />
+    <meta name="twitter:url" content="http://mr-app-test.cloudapp.net:8080/SpringCassandra/users/profile/" />
+
+    <!--Open Graph Setup-->
+
+    <meta property="og:url" content="http://mr-app-test.cloudapp.net:8080/SpringCassandra/users/profile/">
+    <meta property="og:title" content="Get On MyResi">
+    <meta property="og:description" content="We are on a mission to change the resume as you know it.">
+    <meta property="og:image" content="http://myresi.com/assets/img/logo.png">
+
     <title>MyResi | Profile</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/vendor/foundation/css/normalize.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/vendor/foundation/css/foundation.min.css">
@@ -40,8 +56,8 @@ response.addDateHeader ("Expires", 0);
 
             <div id="contentShowChild" style="margin:5% auto 0 auto; box-shadow: -2px -2px 5px 0 rgba(0,0,0,0.25);" >
 
-                <div style="background-color:#f9f9f9;" class="row">
-                    <div style="padding-top:15px;" class="large-12 columns">
+                <div style="background-color:#f9f9f9; padding-top: 20px;" class="row">
+                    <!--div style="padding-top:15px;" class="large-12 columns">
                         <div class="large-6 columns">
                             <form id="userSearch" action="${pageContext.request.contextPath}/users/search" method="POST">
                                 <div class="row collapse">
@@ -62,7 +78,7 @@ response.addDateHeader ("Expires", 0);
                         </div>
                     </div>
                     <hr>
-                    <br>
+                    <br-->
                     <div style="border-right:1px solid #ddd" class="large-4 columns text-center">
                         <div style="display: ${visibility}">
                             <a href="#" data-reveal-id="secondModal" class="right fi-page-edit size-24" ></a>
@@ -78,7 +94,7 @@ response.addDateHeader ("Expires", 0);
                                 <br>${user.educationalQualification}</p>
                         </div>
                         <!--div.large-offset-8.center-->
-                        <hr>
+                        <!--hr>
                         <h5>Share Profile</h5>
                         <ul class="inline-list">
                             <li><a data-via="MyResiApp" data-count="none" data-text="Sharing this from Myresi.com" class="twitter-share-button">Tweet<script id="twitter-wjs" src="https://platform.twitter.com/widgets.js"></script><script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script></a>
@@ -90,10 +106,9 @@ response.addDateHeader ("Expires", 0);
                                 <div data-action="share" data-annotation="none" class="g-plus"></div>
                             </li>
                             <li>
-                                <!--script(src='//platform.linkedin.com/in.js', type='text/javascript')-->
                                 <script type="IN/Share"></script>
                             </li>
-                        </ul>
+                        </ul-->
                     </div>
                     <div class="large-8 columns">
                         <div style="display: ${visibility}">
@@ -123,13 +138,15 @@ response.addDateHeader ("Expires", 0);
                             </div>
                         </div>
                     </div>
-                </div>
-                <div style="background-color:#f9f9f9;" class="row">
-                    <hr>
-                    <div class="large-12 columns">
-                        <h4>About Me<p> ${user.aboutMe} </p></h4>
+                    <div style="background-color:#f9f9f9;" class="row">
+                        <hr>
+                        <div class="large-12 columns">
+                            <h4>About Me<p> ${user.aboutMe} </p></h4>
+                        </div>
                     </div>
                 </div>
+
+
                 <div id="secondModal" data-reveal="" class="reveal-modal xlarge" style="top: 0">
                     <div id="profileImagePopup" style="background-image:url(${pageContext.request.contextPath}/users/image)" class="large-centered">
                         <div id="profileImageOverlay"></div>

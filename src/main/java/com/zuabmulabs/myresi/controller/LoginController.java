@@ -87,6 +87,18 @@ public class LoginController {
         return "lightboxes";
     }
 
+    @RequestMapping(value = "/myaccount", method = RequestMethod.GET)
+    public String myaccount(ModelMap map) {
+        // My Account Page.
+        return "myaccount";
+    }
+
+    @RequestMapping(value = "/welcome", method = RequestMethod.GET)
+    public String userhome(ModelMap map) {
+        // My Account Page.
+        return "welcome";
+    }
+
 	// -----------------------------------------------------------------------End
 	// routing for myResi
 	// UI----------------------------------------------------------------

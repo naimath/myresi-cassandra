@@ -12,18 +12,33 @@
     <section class="top-bar-section">
         <!-- Right Nav Section-->
         <ul class="right">
-            <li class="has-form" style="padding:0 5px 5px 5px">
-                <input id="headerLoginEmail" class="radius" type="email" placeholder="Your Email" required=""/>
+            <li class="has-form" style="padding-top:11px; padding-right: 0; text-align: right; color: #FFFFFC ">Sign In</li>
+            <li class="has-form">
+                <form id="loginForm" data-abide="ajax" novalidate="novalidate">
+                    <ul>
+                        <li class="has-form"><input type="email" name="username" placeholder="Email" required="" pattern="email"></li>
+                        <li class="nav-divider"></li>
+                        <li class="has-form"><input type="password" name="password" placeholder="Password" required=""></li>
+                        <li class="nav-divider"></li>
+                        <li class="has-form"><input type="submit" value="Login" class="button expand radius" style="padding: 0 1.5rem"></li>
+                    </ul>
+                    <!--div class="row collapse">
+                        <div class="large-12 columns">
+                            <div class="large-4 columns" style="padding-left: 0; padding-right: 0.5rem;">
+                                <input type="text" name="username" placeholder="Enter your verified email address" required="" pattern="email">
+                                <small class="error">Incorrect Email address entered.</small>
+                            </div>
+                            <div class="large-4 columns" style="padding-left: 0.5rem; padding-right: 0.5rem">
+                                    <input type="password" name="password" placeholder="Your password here" required="">
+                                    <small class="error">Password Cannot be empty.</small>
+                            </div>
+                            <div class="large-4 columns text-center" style="padding-right: 0; padding-left: 0.5rem">
+                                <input type="submit" value="Login" class="button expand">
+                            </div>
+                        </div>
+                    </div-->
+                </form>
             </li>
-            <li class="divider"></li>
-            <li class="has-form" style="padding: 0 5px 5px 5px">
-                <input id="headerLoginPassword" type="password" class="radius" placeholder="Password" required=""/>
-            </li>
-            <li class="divider"></li>
-            <li class="has-form" style="padding: 0 5px 10px 5px">
-                <input id="headerLogin" type="submit" value="login" class="button radius"/>
-            </li>
-            <li class="divider"></li>
         </ul>
         <!-- Left Nav  Section-->
         <ul class="left">
