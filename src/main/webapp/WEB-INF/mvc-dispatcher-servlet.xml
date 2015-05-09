@@ -31,7 +31,7 @@
 	</bean>
 
 	<!-- REQUIRED: The Cassandra Cluster -->
-	<cassandra:cluster contact-points="localhost" port="9042" />
+	<cassandra:cluster contact-points="MR-DBS-TEST.cloudapp.net" port="9042" />
 	<!--cassandra:cluster contact-points="192.168.1.81" port="9042" /-->
 	
 
@@ -82,7 +82,7 @@
 
 	<bean id="cassandraDataSource"
 		class="org.apache.cassandra.cql.jdbc.CassandraDataSource">
-		<constructor-arg name="host"	value="localhost"></constructor-arg>
+		<constructor-arg name="host"	value="MR-DBS-TEST.cloudapp.net"></constructor-arg>
 		<constructor-arg name="port" type="int" value="9160"></constructor-arg>
 		<constructor-arg name="keyspace"    	value="myresitest"></constructor-arg>
 		<constructor-arg name="user" 		value="cassandra"></constructor-arg>
